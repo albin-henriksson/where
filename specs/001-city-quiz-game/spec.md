@@ -72,11 +72,53 @@ A developer uses a Claude Code slash command to generate new city cards. The ski
 
 ---
 
+### User Story 5 - Game Modes: Freeplay & Competition (Priority: P1)
+
+When opening the app, the player sees a start screen to choose game mode. "Frilek" (freeplay) works like the current game — no score tracking, just cards. "Tävling" (competition) asks players to enter their names, then tracks scores per player throughout the session. After each correct guess in competition mode, the reader taps the name of the player who guessed correctly to award them the points. A scoreboard is visible showing all players and their scores, sorted by points.
+
+**Why this priority**: Transforms the app from a solo card viewer into a proper multiplayer party game.
+
+**Independent Test**: Start a competition game with 3 players, play 2 rounds awarding points to different players, verify scoreboard reflects correct totals.
+
+**Acceptance Scenarios**:
+
+1. **Given** the app is opened, **When** the start screen loads, **Then** two game mode options are displayed: "Frilek" and "Tävling".
+2. **Given** "Tävling" is selected, **When** the player setup screen appears, **Then** the user can add player names (minimum 2) and start the game.
+3. **Given** a competition game is in progress and a correct guess is made, **When** the city is revealed, **Then** buttons with each player's name appear to assign the points.
+4. **Given** points are assigned to a player, **When** the scoreboard updates, **Then** that player's total increases by the earned points.
+5. **Given** a competition game is in progress, **When** viewing the game, **Then** a compact scoreboard is visible showing all players sorted by score.
+6. **Given** "Frilek" is selected, **When** the game starts, **Then** no player setup or scoreboard is shown — the game works as before.
+
+---
+
+### User Story 6 - Command Bar (Priority: P2)
+
+At any time during gameplay, the player can press `Cmd+K` (or `Ctrl+K`) to open a VS Code-style command bar. The bar shows searchable commands like "Nollställ poäng" (reset scores), "Korrigera poäng" (correct points), "Hoppa över kort" (skip card), "Ny omgång" (new game), and "Lägg till spelare" (add player). Typing filters the list, pressing Enter executes the highlighted command. Pressing Escape closes the bar.
+
+**Why this priority**: Power-user feature for smooth game management without cluttering the main UI.
+
+**Independent Test**: Open command bar, type "noll", verify "Nollställ poäng" is filtered and can be executed.
+
+**Acceptance Scenarios**:
+
+1. **Given** any game screen is displayed, **When** the player presses `Cmd+K` or `Ctrl+K`, **Then** a command bar overlay appears with a text input and list of available commands.
+2. **Given** the command bar is open, **When** the player types text, **Then** the command list filters to show only matching commands.
+3. **Given** a command is highlighted, **When** the player presses Enter, **Then** the command executes and the bar closes.
+4. **Given** the command bar is open, **When** the player presses Escape, **Then** the bar closes without executing anything.
+5. **Given** a competition game with scores, **When** "Nollställ poäng" is executed, **Then** all player scores reset to 0.
+6. **Given** a competition game, **When** "Korrigera poäng" is executed for a player, **Then** a small input allows adjusting that player's score up or down.
+
+---
+
 ### Edge Cases
 
 - What happens when there is only 1 card left and it gets hidden? → Show "No more cards" message.
 - What happens if the card data file is empty? → Show a friendly message that no cards are available.
 - What happens if the user rapidly taps "Next Clue"? → Each tap reveals exactly one additional clue; no double-reveals.
+- What happens if nobody guesses correctly in competition mode? → No points awarded, proceed to next card.
+- What happens if a player is added mid-game via command bar? → They start with 0 points.
+- What happens if command bar is opened during the reveal phase? → Commands still work normally.
+- What if only 1 player name is entered in competition mode? → Require minimum 2 players to start.
 
 ## Requirements *(mandatory)*
 
@@ -95,11 +137,21 @@ A developer uses a Claude Code slash command to generate new city cards. The ski
 - **FR-011**: Clues MUST be written in Swedish.
 - **FR-012**: The project MUST include a Dockerfile that builds and serves the static site for easy deployment.
 - **FR-013**: All user stories MUST be validated with Playwright end-to-end tests.
+- **FR-014**: System MUST offer a start screen with "Frilek" (freeplay) and "Tävling" (competition) game modes.
+- **FR-015**: In competition mode, system MUST allow adding player names (minimum 2) before starting.
+- **FR-016**: In competition mode, system MUST display player name buttons on reveal to assign points to the correct guesser.
+- **FR-017**: In competition mode, system MUST display a scoreboard sorted by points throughout the game.
+- **FR-018**: System MUST provide a command bar (Cmd+K / Ctrl+K) with searchable game commands.
+- **FR-019**: Command bar MUST support: reset scores, correct scores, skip card, new game, add player.
+- **FR-020**: Command bar MUST filter commands as the user types and execute on Enter.
 
 ### Key Entities
 
 - **CityCard**: Represents a single quiz card. Contains an id (slug), city name, country, and exactly 5 clues ordered from hardest to easiest.
 - **Session State**: Tracks which cards have been seen or hidden during the current browser session. Not persisted across page refreshes.
+- **Player**: A named participant in competition mode. Has a name and cumulative score.
+- **Game Mode**: Either "freeplay" (no scoring) or "competition" (player tracking + scoreboard).
+- **Command**: A named action available in the command bar, with a label, optional keyboard shortcut, and execute function.
 
 ## Success Criteria *(mandatory)*
 
@@ -114,7 +166,7 @@ A developer uses a Claude Code slash command to generate new city cards. The ski
 ## Assumptions
 
 - The game is played in person with one device shared/shown among players — no multiplayer networking needed.
-- Score tracking is manual (players keep score themselves) — no in-app scoreboard for v1.
+- Score tracking is in-app in competition mode; freeplay has no scoring.
 - The game UI language is Swedish.
 - Cards are bundled with the app as static data — no backend or database needed.
 - Deployment is via Docker container serving the static build (e.g., nginx).
