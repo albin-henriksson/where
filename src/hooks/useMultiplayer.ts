@@ -23,6 +23,7 @@ interface GameSync {
   earnedPoints?: number | null;
   buzzWinner?: string | null;
   players: { id: string; name: string; score: number }[];
+  currentReader?: string;
 }
 
 // Messages from player → host

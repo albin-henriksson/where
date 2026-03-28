@@ -1,7 +1,4 @@
-import { useEffect, useState, useCallback, useRef } from "react";
-import { useGameSession } from "./hooks/useGameSession";
-import { useGameState } from "./hooks/useGameState";
-import { useMultiplayer } from "./hooks/useMultiplayer";
+import { useGameOrchestrator } from "./hooks/useGameOrchestrator";
 import { StartScreen } from "./components/StartScreen";
 import { MultiplayerLobby } from "./components/MultiplayerLobby";
 import { BuzzerView } from "./components/BuzzerView";
@@ -13,246 +10,84 @@ import { EmptyDeck } from "./components/EmptyDeck";
 import { SkipButton } from "./components/SkipButton";
 
 function App() {
-  const gameState = useGameState();
-  const session = useGameSession();
-  const mp = useMultiplayer();
-  const [cmdBarOpen, setCmdBarOpen] = useState(false);
-  const [mpScreen, setMpScreen] = useState<"lobby" | "playing" | null>(null);
-  const [playerName, setPlayerName] = useState("");
-  const [showSummary, setShowSummary] = useState(false);
-  const [lastRoundPoints, setLastRoundPoints] = useState(0);
-  const [lastRoundWinner, setLastRoundWinner] = useState<string | null>(null);
-  const prevClueIndex = useRef(session.clueIndex);
-  const hasCheckedUrl = useRef(false);
+  const o = useGameOrchestrator();
 
-  const isCompetition = gameState.mode === "competition";
-  const isMultiplayerHost = mp.role === "host" && mpScreen === "playing";
-  const isMultiplayerPlayer = mp.role === "player";
-
-  // Check URL for room code on mount — auto-open join screen
-  useEffect(() => {
-    if (hasCheckedUrl.current) return;
-    hasCheckedUrl.current = true;
-    const params = new URLSearchParams(window.location.search);
-    const room = params.get("room");
-    if (room && room.length === 4) {
-      setMpScreen("lobby");
-      // The lobby will see the prefilled code via initialRoomCode
-      setUrlRoomCode(room.toUpperCase());
-    }
-  }, []);
-
-  const [urlRoomCode, setUrlRoomCode] = useState<string | null>(null);
-
-  // Update URL when host creates a room
-  useEffect(() => {
-    if (mp.role === "host" && mp.roomCode) {
-      window.history.replaceState({}, "", `/?room=${mp.roomCode}`);
-    }
-  }, [mp.role, mp.roomCode]);
-
-  // Reset buzz when clue advances (host side)
-  useEffect(() => {
-    if (isMultiplayerHost && session.clueIndex !== prevClueIndex.current) {
-      mp.resetBuzz();
-      prevClueIndex.current = session.clueIndex;
-    }
-  }, [isMultiplayerHost, session.clueIndex, mp]);
-
-  // Sync game state to multiplayer peers when host
-  useEffect(() => {
-    if (!isMultiplayerHost || !session.currentCard) return;
-
-    mp.syncGameState({
-      type: "game-sync",
-      clueText: session.currentCard.clues[session.clueIndex],
-      clueIndex: session.clueIndex,
-      pointValue: 5 - session.clueIndex,
-      revealed: session.revealed,
-      cityName: session.revealed ? session.currentCard.city : undefined,
-      country: session.revealed ? session.currentCard.country : undefined,
-      earnedPoints: session.earnedPoints,
-      buzzWinner: mp.buzzWinner,
-      players: gameState.players,
-    });
-  }, [
-    isMultiplayerHost,
-    session.currentCard,
-    session.clueIndex,
-    session.revealed,
-    session.earnedPoints,
-    mp.buzzWinner,
-    gameState.players,
-  ]);
-
-  const handleAwardPoints = useCallback(
-    (playerId: string) => {
-      if (session.earnedPoints && session.earnedPoints > 0) {
-        gameState.awardPoints(playerId, session.earnedPoints);
-        setLastRoundPoints(session.earnedPoints);
-        const player = gameState.players.find((p) => p.id === playerId);
-        setLastRoundWinner(player?.name ?? null);
-      }
-      mp.resetBuzzFull();
-      if (isCompetition) {
-        setShowSummary(true);
-      } else {
-        session.nextCard();
-      }
-    },
-    [session, gameState, mp, isCompetition],
-  );
-
-  const handleNextCardFromSummary = useCallback(() => {
-    setShowSummary(false);
-    setLastRoundPoints(0);
-    setLastRoundWinner(null);
-    session.nextCard();
-  }, [session]);
-
-  const handleNoOneGuessed = useCallback(() => {
-    setLastRoundPoints(0);
-    setLastRoundWinner(null);
-    mp.resetBuzzFull();
-    if (isCompetition) {
-      setShowSummary(true);
-    } else {
-      session.nextCard();
-    }
-  }, [session, mp, isCompetition]);
-
-  // Host: correct buzz
-  const handleBuzzCorrect = useCallback(() => {
-    if (!mp.buzzWinner) return;
-    const player = gameState.players.find((p) => p.name === mp.buzzWinner);
-    if (player) {
-      session.correct();
-      // Slight delay to let earnedPoints update, then award
-      setTimeout(() => {
-        const points = 5 - session.clueIndex;
-        gameState.awardPoints(player.id, points);
-        setLastRoundPoints(points);
-        setLastRoundWinner(player.name);
-        mp.resetBuzzFull();
-        setShowSummary(true);
-      }, 50);
-    }
-  }, [mp.buzzWinner, gameState, session, mp]);
-
-  // Host: wrong buzz
-  const handleBuzzWrong = useCallback(() => {
-    mp.wrongBuzz();
-  }, [mp]);
-
-  const handleMultiplayerStart = useCallback(() => {
-    const playerNames = mp.peers.map((p) => p.name);
-    gameState.startGame("competition", playerNames);
-    setMpScreen("playing");
-  }, [mp.peers, gameState]);
-
-  useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        setCmdBarOpen((prev) => !prev);
-      }
-      if (e.key === "Escape" && !cmdBarOpen && gameState.screen === "playing" && !isMultiplayerPlayer) {
-        session.skip();
-      }
-    }
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [session, cmdBarOpen, gameState.screen, isMultiplayerPlayer]);
-
-  // Multiplayer player view (buzzer)
-  if (isMultiplayerPlayer && mp.gameSync) {
+  if (o.screen === "mp-buzzer" && o.gameSync) {
     return (
       <BuzzerView
-        clueText={mp.gameSync.clueText}
-        clueIndex={mp.gameSync.clueIndex}
-        pointValue={mp.gameSync.pointValue}
-        revealed={mp.gameSync.revealed}
-        cityName={mp.gameSync.cityName}
-        country={mp.gameSync.country}
-        earnedPoints={mp.gameSync.earnedPoints}
-        buzzWinner={mp.buzzWinner}
-        hasBuzzed={mp.hasBuzzed}
-        isLockedOut={mp.isLockedOut}
-        playerName={playerName}
-        players={mp.gameSync.players}
-        onBuzz={mp.buzz}
+        clueText={o.gameSync.clueText}
+        clueIndex={o.gameSync.clueIndex}
+        pointValue={o.gameSync.pointValue}
+        revealed={o.gameSync.revealed}
+        cityName={o.gameSync.cityName}
+        country={o.gameSync.country}
+        earnedPoints={o.gameSync.earnedPoints}
+        buzzWinner={o.buzzWinner}
+        hasBuzzed={o.hasBuzzed}
+        isLockedOut={o.isLockedOut}
+        playerName={o.playerName}
+        players={o.gameSync.players}
+        onBuzz={o.buzz}
       />
     );
   }
 
-  // Multiplayer player waiting
-  if (isMultiplayerPlayer && !mp.gameSync) {
+  if (o.screen === "mp-waiting") {
     return (
       <div className="min-h-svh flex flex-col items-center justify-center bg-surface animate-fade-in">
         <p className="text-text-dim text-lg">Väntar på att spelet ska börja...</p>
-        <p className="text-muted text-sm mt-2">Ansluten till rum {mp.roomCode}</p>
+        <p className="text-muted text-sm mt-2">Ansluten till rum {o.roomCode}</p>
       </div>
     );
   }
 
-  // Multiplayer lobby
-  if (mpScreen === "lobby") {
+  if (o.screen === "mp-lobby") {
     return (
       <div className="min-h-svh flex flex-col items-center justify-center bg-surface">
         <MultiplayerLobby
-          mode={mp.role}
-          roomCode={mp.roomCode}
-          connected={mp.connected}
-          peers={mp.peers}
-          initialRoomCode={urlRoomCode}
-          onHost={() => {
-            mp.hostGame();
-            // URL will be updated once roomCode is set (via effect below)
-          }}
-          onJoin={(code, name) => {
-            setPlayerName(name);
-            mp.joinGame(code, name);
-            window.history.replaceState({}, "", `/?room=${code}`);
-          }}
-          onStart={handleMultiplayerStart}
-          onBack={() => {
-            mp.cleanup();
-            setMpScreen(null);
-            setUrlRoomCode(null);
-            window.history.replaceState({}, "", "/");
-          }}
+          mode={o.mpRole}
+          roomCode={o.roomCode}
+          connected={o.mpConnected}
+          peers={o.mpPeers}
+          initialRoomCode={o.initialRoomCode}
+          onHost={o.hostGame}
+          onJoin={o.joinGame}
+          onStart={o.startMultiplayer}
+          onBack={o.backToStart}
         />
       </div>
     );
   }
 
-  // Start screen
-  if (gameState.screen === "start" && !mpScreen) {
+  if (o.screen === "start") {
     return (
       <div className="min-h-svh flex flex-col items-center justify-center bg-surface">
         <StartScreen
-          onStart={gameState.startGame}
-          onMultiplayer={() => setMpScreen("lobby")}
+          onStart={(mode, names) =>
+            mode === "freeplay" ? o.startFreeplay() : o.startCompetition(names ?? [])
+          }
+          onMultiplayer={o.openMultiplayer}
         />
       </div>
     );
   }
 
-  // Score summary between rounds
-  if (showSummary && isCompetition) {
+  if (o.screen === "summary") {
     return (
       <div className="min-h-svh flex flex-col items-center justify-center bg-surface relative px-6">
         <ScoreSummary
-          players={gameState.players}
-          lastRoundPoints={lastRoundPoints}
-          lastRoundWinner={lastRoundWinner}
-          onNextCard={handleNextCardFromSummary}
+          players={o.players}
+          lastRoundPoints={o.lastRound.points}
+          lastRoundWinner={o.lastRound.winnerName}
+          onNextCard={o.nextCardFromSummary}
         />
       </div>
     );
   }
 
-  // Main game (host or local)
+  // Main game view
+  const isMultiplayerHost = o.mpRole === "host" && o.screen === "playing";
+
   return (
     <div className="min-h-svh flex flex-col items-center justify-center bg-surface relative px-6">
       {/* Header */}
@@ -260,26 +95,31 @@ function App() {
         <h1 className="text-[10px] font-medium tracking-[0.3em] text-muted/40 uppercase">
           Where
         </h1>
-        {isCompetition && gameState.players.length > 0 && (
-          <Scoreboard players={gameState.players} />
+        {o.isCompetition && o.players.length > 0 && (
+          <Scoreboard players={o.players} />
+        )}
+        {isMultiplayerHost && o.currentReader && (
+          <p className="text-[10px] text-muted/40 mt-1">
+            Läsare: <span className="text-text-dim">{o.currentReader}</span>
+          </p>
         )}
       </div>
 
-      {/* Buzz notification for host with Rätt/Fel */}
-      {isMultiplayerHost && mp.buzzWinner && !session.revealed && (
-        <div className="absolute top-24 left-0 right-0 flex flex-col items-center gap-3 animate-score-pop z-10">
-          <p className="text-white font-bold text-lg">{mp.buzzWinner} buzzade!</p>
+      {/* Buzz notification with Rätt/Fel */}
+      {isMultiplayerHost && o.buzzWinner && !o.revealed && (
+        <div className="absolute top-28 left-0 right-0 flex flex-col items-center gap-3 animate-score-pop z-10">
+          <p className="text-white font-bold text-lg">{o.buzzWinner} buzzade!</p>
           <div className="flex gap-3">
             <button
               data-testid="buzz-correct"
-              onClick={handleBuzzCorrect}
+              onClick={o.buzzCorrect}
               className="px-8 py-3 bg-emerald-500 text-white rounded-2xl text-base font-semibold active:scale-95 transition-all shadow-lg shadow-emerald-500/20"
             >
               Rätt ✓
             </button>
             <button
               data-testid="buzz-wrong"
-              onClick={handleBuzzWrong}
+              onClick={o.buzzWrong}
               className="px-8 py-3 bg-red-500/80 text-white rounded-2xl text-base font-semibold active:scale-95 transition-all"
             >
               Fel ✗
@@ -289,27 +129,27 @@ function App() {
       )}
 
       {/* Footer */}
-      {session.currentCard && (
+      {o.currentCard && (
         <p className="absolute bottom-5 text-[10px] text-muted/30 tabular-nums tracking-wider">
-          {session.cardsRemaining} kort kvar
+          {o.cardsRemaining} kort kvar
         </p>
       )}
 
       {/* Main content */}
-      {session.currentCard ? (
+      {o.currentCard ? (
         <>
-          <SkipButton onClick={() => { mp.resetBuzzFull(); session.skip(); }} />
+          <SkipButton onClick={o.skipCard} />
           <CardView
-            card={session.currentCard}
-            clueIndex={session.clueIndex}
-            revealed={session.revealed}
-            earnedPoints={session.earnedPoints}
-            players={isCompetition ? gameState.players : undefined}
-            showAnswer={isCompetition || isMultiplayerHost}
-            onNextClue={session.nextClue}
-            onCorrect={session.correct}
-            onNextCard={isCompetition ? handleNoOneGuessed : () => { mp.resetBuzzFull(); session.nextCard(); }}
-            onAwardPoints={handleAwardPoints}
+            card={o.currentCard}
+            clueIndex={o.clueIndex}
+            revealed={o.revealed}
+            earnedPoints={o.earnedPoints}
+            players={o.isCompetition ? o.players : undefined}
+            showAnswer={o.showAnswer}
+            onNextClue={o.nextClue}
+            onCorrect={o.markCorrect}
+            onNextCard={o.isCompetition ? o.noOneGuessed : o.skipCard}
+            onAwardPoints={o.awardPoints}
           />
         </>
       ) : (
@@ -318,24 +158,15 @@ function App() {
 
       {/* Command Bar */}
       <CommandBar
-        open={cmdBarOpen}
-        onClose={() => setCmdBarOpen(false)}
-        players={gameState.players}
-        isCompetition={isCompetition}
-        onResetScores={gameState.resetScores}
-        onAdjustScore={gameState.adjustScore}
-        onAddPlayer={gameState.addPlayer}
-        onSkipCard={() => {
-          mp.resetBuzzFull();
-          session.skip();
-          setCmdBarOpen(false);
-        }}
-        onNewGame={() => {
-          mp.cleanup();
-          setMpScreen(null);
-          gameState.resetGame();
-          setCmdBarOpen(false);
-        }}
+        open={o.cmdBarOpen}
+        onClose={o.closeCmdBar}
+        players={o.players}
+        isCompetition={o.isCompetition}
+        onResetScores={o.resetScores}
+        onAdjustScore={o.adjustScore}
+        onAddPlayer={o.addPlayer}
+        onSkipCard={() => { o.skipCard(); o.closeCmdBar(); }}
+        onNewGame={o.newGame}
       />
     </div>
   );

@@ -102,10 +102,10 @@ export function BuzzerView({
       <div className="flex flex-col items-center gap-4">
         {isLockedOut ? (
           <div className="animate-fade-in text-center">
-            <div className="w-40 h-40 rounded-full bg-card-border/30 flex items-center justify-center border border-card-border">
-              <span className="text-xl text-muted">Utslagen</span>
+            <div className="w-40 h-40 rounded-full bg-card-border/50 flex items-center justify-center border border-card-border">
+              <span className="text-xl text-text-dim">Utslagen</span>
             </div>
-            <p className="text-xs text-muted mt-3">Du kan inte buzza fler gånger detta kort</p>
+            <p className="text-xs text-text-dim/60 mt-3">Du kan inte buzza fler gånger detta kort</p>
           </div>
         ) : buzzWinner ? (
           <div className="animate-scale-in text-center">
