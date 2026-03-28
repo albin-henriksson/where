@@ -80,8 +80,8 @@ export function ReaderView({
     <div className="min-h-svh flex flex-col items-center justify-between bg-surface px-6 py-10">
       {/* Answer visible to reader */}
       <div className="text-center">
-        <p className="text-[10px] text-muted/40 uppercase tracking-widest mb-1">Du läser — svaret är</p>
-        <p className="text-lg font-bold text-white/30">{cityName || "..."}, {country || ""}</p>
+        <p className="text-[10px] text-text-dim/60 uppercase tracking-widest mb-1">Svaret är</p>
+        <p className="text-lg font-bold text-white/60">{cityName || "..."}, {country || ""}</p>
       </div>
 
       {/* Card */}
@@ -136,20 +136,20 @@ export function ReaderView({
 
           {/* Game controls (when nobody is buzzing) */}
           {!buzzWinner && (
-            <div className="mt-6 flex gap-3">
+            <div className="mt-6 flex flex-col items-center gap-2">
               <button
                 data-testid="reader-next-clue"
                 onClick={onNextClue}
-                className="flex-1 py-4 px-6 bg-card-border/50 text-text-dim rounded-2xl text-base font-medium active:scale-95 transition-all hover:bg-card-border border border-card-border"
+                className="w-full py-4 px-6 bg-card-border/50 text-text-dim rounded-2xl text-base font-medium active:scale-95 transition-all hover:bg-card-border border border-card-border"
               >
                 {clueIndex < 4 ? "Nästa" : "Visa svar"}
               </button>
               <button
                 data-testid="reader-skip"
                 onClick={onSkip}
-                className="py-4 px-4 text-muted text-sm rounded-2xl hover:text-text-dim transition-colors"
+                className="text-[10px] text-muted/30 hover:text-muted/60 transition-opacity"
               >
-                Hoppa
+                hoppa över
               </button>
             </div>
           )}
