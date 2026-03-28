@@ -299,10 +299,10 @@ export function useGameOrchestrator(): Orchestrator {
   }, [lobby]);
 
   const hostGame = useCallback((name: string) => {
-    lobby.stopScanning();
     setPlayerName(name);
     mp.hostGame(name);
-  }, [mp, lobby]);
+    // Don't stop scanning — lobby connection is shared with advertising
+  }, [mp]);
 
   const joinGame = useCallback(
     (code: string, name: string) => {

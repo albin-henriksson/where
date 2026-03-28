@@ -66,6 +66,36 @@ test.describe("Multiplayer UI (US7)", () => {
 test.describe("Multiplayer P2P", () => {
   test.describe.configure({ retries: 2 });
 
+  test("autodiscovery: player sees hosted game on join screen", async ({ browser }) => {
+    const hostContext = await browser.newContext();
+    const playerContext = await browser.newContext();
+    const hostPage = await hostContext.newPage();
+    const playerPage = await playerContext.newPage();
+
+    // Host creates a game
+    await hostPage.goto("http://localhost:5173");
+    await hostPage.getByTestId("mode-multiplayer").click();
+    await hostPage.getByTestId("mp-host").click();
+    await hostPage.getByTestId("host-name-input").fill("Host");
+    await hostPage.getByTestId("host-name-submit").click();
+
+    const roomCode = await hostPage.getByTestId("room-code").textContent();
+    expect(roomCode).toBeTruthy();
+
+    // Player opens join screen
+    await playerPage.goto("http://localhost:5173");
+    await playerPage.getByTestId("mode-multiplayer").click();
+    await playerPage.getByTestId("mp-join").click();
+
+    // Player should see the discovered game within 10s
+    await expect(
+      playerPage.getByTestId(`discovered-${roomCode}`),
+    ).toBeVisible({ timeout: 15000 });
+
+    await hostContext.close();
+    await playerContext.close();
+  });
+
   test("host and two players can connect, rotate reader, and buzz", async ({ browser }) => {
     const hostContext = await browser.newContext();
     const player1Context = await browser.newContext();
