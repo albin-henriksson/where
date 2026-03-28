@@ -8,3 +8,11 @@ export interface CityCard {
   /** 5 clues ordered hardest → easiest. Clue 1 is vague, clue 5 is a giveaway. */
   clues: [string, string, string, string, string];
 }
+
+export type GameMode = "freeplay" | "competition";
+
+export interface Player {
+  id: string;
+  name: string;
+  score: number;
+}
