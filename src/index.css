@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+@theme {
+  --color-surface: #0a0a0f;
+  --color-card: #16161e;
+  --color-card-border: #2a2a35;
+  --color-accent: #6366f1;
+  --color-accent-glow: rgba(99, 102, 241, 0.15);
+  --color-success: #34d399;
+  --color-danger: #f87171;
+  --color-muted: #64748b;
+  --color-text: #e2e8f0;
+  --color-text-dim: #94a3b8;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}

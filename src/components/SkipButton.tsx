@@ -7,10 +7,10 @@ export function SkipButton({ onClick }: SkipButtonProps) {
     <button
       data-testid="skip-button"
       onClick={onClick}
-      className="fixed top-4 right-4 text-gray-300 hover:text-gray-500 text-xs opacity-30 hover:opacity-100 transition-opacity"
+      className="fixed top-4 right-4 text-muted text-xs opacity-20 hover:opacity-70 transition-opacity"
       aria-label="Hoppa över kort"
     >
-      Hoppa över
+      Hoppa över ›
     </button>
   );
 }
