@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import { useGameSession } from "./useGameSession";
 import { useGameState } from "./useGameState";
 import { useMultiplayer } from "./useMultiplayer";
+import { useLobbyDiscovery } from "./useLobbyDiscovery";
 import type { CityCard, Player } from "../data/types";
 
 export type AppScreen =
@@ -43,6 +44,7 @@ export interface Orchestrator {
   hasBuzzed: boolean;
   isLockedOut: boolean;
   initialRoomCode: string | null;
+  availableGames: { roomCode: string; hostName: string; playerCount: number }[];
   currentReader: string | null;
   isReader: boolean;
   gameSync: {
@@ -97,6 +99,7 @@ export function useGameOrchestrator(): Orchestrator {
   const game = useGameState();
   const session = useGameSession();
   const mp = useMultiplayer();
+  const lobby = useLobbyDiscovery();
 
   const [mpScreen, setMpScreen] = useState<"lobby" | "playing" | null>(null);
   const [playerName, setPlayerName] = useState("");
@@ -151,12 +154,13 @@ export function useGameOrchestrator(): Orchestrator {
     }
   }, []);
 
-  // Update URL when host creates room
+  // Update URL and start advertising when host creates room
   useEffect(() => {
     if (mp.role === "host" && mp.roomCode) {
       window.history.replaceState({}, "", `/?room=${mp.roomCode}`);
+      lobby.advertiseGame(mp.roomCode, "Host", mp.peers.length);
     }
-  }, [mp.role, mp.roomCode]);
+  }, [mp.role, mp.roomCode, mp.peers.length, lobby]);
 
   // Reset buzz when clue advances (host)
   useEffect(() => {
@@ -209,9 +213,15 @@ export function useGameOrchestrator(): Orchestrator {
     [game],
   );
 
-  const openMultiplayer = useCallback(() => setMpScreen("lobby"), []);
+  const openMultiplayer = useCallback(() => {
+    setMpScreen("lobby");
+    lobby.startScanning();
+  }, [lobby]);
 
-  const hostGame = useCallback(() => mp.hostGame(), [mp]);
+  const hostGame = useCallback(() => {
+    lobby.stopScanning();
+    mp.hostGame();
+  }, [mp, lobby]);
 
   const joinGame = useCallback(
     (code: string, name: string) => {
@@ -227,14 +237,17 @@ export function useGameOrchestrator(): Orchestrator {
     game.startGame("competition", names);
     setReaderIndex(0);
     setMpScreen("playing");
-  }, [mp.peers, game]);
+    lobby.stopAdvertising();
+  }, [mp.peers, game, lobby]);
 
   const backToStart = useCallback(() => {
     mp.cleanup();
+    lobby.stopScanning();
+    lobby.stopAdvertising();
     setMpScreen(null);
     setInitialRoomCode(null);
     window.history.replaceState({}, "", "/");
-  }, [mp]);
+  }, [mp, lobby]);
 
   const nextClue = useCallback(() => session.nextClue(), [session]);
 
@@ -334,6 +347,7 @@ export function useGameOrchestrator(): Orchestrator {
     hasBuzzed: mp.hasBuzzed,
     isLockedOut: mp.isLockedOut,
     initialRoomCode,
+    availableGames: lobby.availableGames,
     currentReader,
     isReader,
     gameSync: mp.gameSync,

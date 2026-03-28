@@ -68,6 +68,7 @@ function App() {
           connected={o.mpConnected}
           peers={o.mpPeers}
           initialRoomCode={o.initialRoomCode}
+          availableGames={o.availableGames}
           onHost={o.hostGame}
           onJoin={o.joinGame}
           onStart={o.startMultiplayer}

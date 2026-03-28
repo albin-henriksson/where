@@ -5,12 +5,19 @@ interface PeerInfo {
   name: string;
 }
 
+interface AvailableGame {
+  roomCode: string;
+  hostName: string;
+  playerCount: number;
+}
+
 interface MultiplayerLobbyProps {
   mode: "host" | "player" | null;
   roomCode: string;
   connected: boolean;
   peers: PeerInfo[];
   initialRoomCode?: string | null;
+  availableGames?: AvailableGame[];
   onHost: () => void;
   onJoin: (code: string, name: string) => void;
   onStart: () => void;
@@ -23,6 +30,7 @@ export function MultiplayerLobby({
   connected,
   peers,
   initialRoomCode,
+  availableGames = [],
   onHost,
   onJoin,
   onStart,
@@ -114,6 +122,35 @@ export function MultiplayerLobby({
     return (
       <div className="flex flex-col items-center gap-6 p-8 w-full max-w-sm mx-auto animate-slide-up">
         <h2 className="text-2xl font-bold text-white">Gå med i spel</h2>
+
+        {/* Auto-discovered games */}
+        {availableGames.length > 0 && !connected && (
+          <div className="w-full">
+            <p className="text-xs text-muted uppercase tracking-widest mb-2">
+              Spel på nätverket
+            </p>
+            <div className="flex flex-col gap-2">
+              {availableGames.map((game) => (
+                <button
+                  key={game.roomCode}
+                  data-testid={`discovered-${game.roomCode}`}
+                  onClick={() => {
+                    setJoinCode(game.roomCode);
+                    if (playerName.trim()) {
+                      onJoin(game.roomCode, playerName.trim());
+                    }
+                  }}
+                  className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-left hover:border-text-dim/30 transition-all active:scale-[0.98] animate-fade-in"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-white font-medium">{game.roomCode}</span>
+                    <span className="text-xs text-muted">{game.playerCount} spelare</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         <input
           data-testid="join-name"
