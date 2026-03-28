@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { GameMode } from "../data/types";
+import type { GameMode, Difficulty } from "../data/types";
 
 interface AvailableGame {
   roomCode: string;
@@ -12,9 +12,13 @@ interface StartScreenProps {
   onMultiplayer?: () => void;
   availableGames?: AvailableGame[];
   onJoinGame?: (code: string) => void;
+  selectedDifficulties?: Difficulty[];
+  onDifficultyChange?: (d: Difficulty[]) => void;
 }
 
-export function StartScreen({ onStart, onMultiplayer, availableGames = [], onJoinGame }: StartScreenProps) {
+const DIFF_LABELS: Record<Difficulty, string> = { 1: "Lätt", 2: "Medel", 3: "Svår" };
+
+export function StartScreen({ onStart, onMultiplayer, availableGames = [], onJoinGame, selectedDifficulties = [1, 2, 3], onDifficultyChange }: StartScreenProps) {
   const [step, setStep] = useState<"mode" | "players">("mode");
   const [playerNames, setPlayerNames] = useState<string[]>(["", ""]);
   const [newName, setNewName] = useState("");
@@ -111,6 +115,35 @@ export function StartScreen({ onStart, onMultiplayer, availableGames = [], onJoi
         </h1>
         <p className="text-muted mt-3 text-sm">Välj spelläge</p>
       </div>
+
+      {/* Difficulty picker */}
+      {onDifficultyChange && (
+        <div className="flex gap-2 w-full max-w-sm">
+          {([1, 2, 3] as Difficulty[]).map((d) => {
+            const active = selectedDifficulties.includes(d);
+            return (
+              <button
+                key={d}
+                data-testid={`diff-${d}`}
+                onClick={() => {
+                  if (active && selectedDifficulties.length > 1) {
+                    onDifficultyChange(selectedDifficulties.filter((x) => x !== d));
+                  } else if (!active) {
+                    onDifficultyChange([...selectedDifficulties, d].sort());
+                  }
+                }}
+                className={`flex-1 py-2 rounded-xl text-sm font-medium transition-all ${
+                  active
+                    ? "bg-white text-black"
+                    : "bg-card-border/50 text-muted border border-card-border"
+                }`}
+              >
+                {DIFF_LABELS[d]}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       <div className="flex flex-col gap-3 w-full max-w-sm">
         <button

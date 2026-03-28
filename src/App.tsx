@@ -104,6 +104,8 @@ function renderScreen(o: Orchestrator) {
           onMultiplayer={o.openMultiplayer}
           availableGames={o.availableGames}
           onJoinGame={o.joinDiscoveredGame}
+          selectedDifficulties={o.selectedDifficulties}
+          onDifficultyChange={o.setSelectedDifficulties}
         />
       </div>
     );

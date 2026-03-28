@@ -4,7 +4,7 @@ import { useGameState } from "./useGameState";
 import { useMultiplayer } from "./useMultiplayer";
 import { useLobbyDiscovery } from "./useLobbyDiscovery";
 import { saveGameState, loadGameState, clearGameState, isIntroDismissed, dismissIntro } from "./usePersistence";
-import type { CityCard, Player } from "../data/types";
+import type { CityCard, Player, Difficulty } from "../data/types";
 
 export type AppScreen =
   | "intro"
@@ -82,6 +82,8 @@ export interface Orchestrator {
   // Actions
   dismissIntroScreen: () => void;
   dismissIntroForever: () => void;
+  selectedDifficulties: Difficulty[];
+  setSelectedDifficulties: (d: Difficulty[]) => void;
   startFreeplay: () => void;
   startCompetition: (names: string[]) => void;
   openMultiplayer: () => void;
@@ -131,6 +133,7 @@ export function useGameOrchestrator(): Orchestrator {
   const [readerIndex, setReaderIndex] = useState(0);
   const [devMode, setDevMode] = useState(false);
   const [showIntro, setShowIntro] = useState(() => !isIntroDismissed());
+  const [selectedDifficulties, setSelectedDifficulties] = useState<Difficulty[]>([1, 2, 3]);
 
   const prevClueIndex = useRef(session.clueIndex);
   const hasCheckedUrl = useRef(false);
@@ -333,11 +336,17 @@ export function useGameOrchestrator(): Orchestrator {
     dismissIntro();
   }, []);
 
-  const startFreeplay = useCallback(() => game.startGame("freeplay"), [game]);
+  const startFreeplay = useCallback(() => {
+    game.startGame("freeplay");
+    session.filterByDifficulty(selectedDifficulties);
+  }, [game, session, selectedDifficulties]);
 
   const startCompetition = useCallback(
-    (names: string[]) => game.startGame("competition", names),
-    [game],
+    (names: string[]) => {
+      game.startGame("competition", names);
+      session.filterByDifficulty(selectedDifficulties);
+    },
+    [game, session, selectedDifficulties],
   );
 
   const openMultiplayer = useCallback(() => {
@@ -500,6 +509,8 @@ export function useGameOrchestrator(): Orchestrator {
     cmdBarOpen,
     dismissIntroScreen,
     dismissIntroForever,
+    selectedDifficulties,
+    setSelectedDifficulties,
     startFreeplay,
     startCompetition,
     openMultiplayer,

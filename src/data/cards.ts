@@ -5,6 +5,7 @@ export const cards: CityCard[] = [
     id: "istanbul",
     city: "Istanbul",
     country: "Turkiet",
+    difficulty: 1,
     clues: [
       "Staden har varit huvudstad i tre olika imperier genom historien.",
       "En berömd tunnel under vattnet förbinder två kontinenter här.",
@@ -18,6 +19,7 @@ export const cards: CityCard[] = [
     id: "reykjavik",
     city: "Reykjavik",
     country: "Island",
+    difficulty: 2,
     clues: [
       "Stadens namn betyder 'rökvik' på grund av ångan från heta källor.",
       "Det finns inga McDonalds-restauranger i hela detta land.",
@@ -31,6 +33,7 @@ export const cards: CityCard[] = [
     id: "marrakech",
     city: "Marrakech",
     country: "Marocko",
+    difficulty: 2,
     clues: [
       "Staden kallas 'den röda staden' på grund av sina terrakottafärgade murar.",
       "Djemaa el-Fna är ett av Afrikas mest livliga torg med ormtjusare och berättare.",
@@ -44,8 +47,9 @@ export const cards: CityCard[] = [
     id: "buenos-aires",
     city: "Buenos Aires",
     country: "Argentina",
+    difficulty: 2,
     clues: [
-      "Staden har flest boklådor per capita i världen.",
+      "Denna stad är hem för en av världens bredaste gator med upp till 16 körfält.",
       "La Boca-kvarteret är känt för sina färgglada hus byggda av plåt från fartyg.",
       "Tangon uppfanns i denna stads hamnkvarter på 1800-talet.",
       "Avenida 9 de Julio är en av världens bredaste gator.",
@@ -57,6 +61,7 @@ export const cards: CityCard[] = [
     id: "kyoto",
     city: "Kyoto",
     country: "Japan",
+    difficulty: 3,
     clues: [
       "Staden har över 2000 tempel och helgedomar.",
       "Fushimi Inari-taisha med sina tusentals röda torii-portar ligger här.",
@@ -70,8 +75,9 @@ export const cards: CityCard[] = [
     id: "stockholm",
     city: "Stockholm",
     country: "Sverige",
+    difficulty: 1,
     clues: [
-      "Denna stad grundades på en ö och har sedan dess vuxit till att omfatta fjorton öar sammanbundna av över femtio broar.",
+      "Tunnelbanesystemet i denna stad anses vara ett av världens längsta konstgallerier, med konstnärliga utsmyckningar i bergsskäret.",
       "Stadens tunnelbana kallas 'världens längsta konstgalleri' tack vare sina utsmyckade stationer.",
       "Här delar man varje år ut det mest prestigefyllda priset inom vetenskap och litteratur – utom ett, som delas ut i grannlandet.",
       "Stadens gamla stadsdel heter Gamla Stan och är en av Europas bäst bevarade medeltida stadskärnor med smala kullerstensgränder från 1200-talet.",
@@ -83,6 +89,7 @@ export const cards: CityCard[] = [
     id: "tokyo",
     city: "Tokyo",
     country: "Japan",
+    difficulty: 1,
     clues: [
       "Denna stad har världens mest komplexa tunnelbanenät med över 280 stationer och drivs av flera konkurrerande bolag.",
       "Under staden finns en gigantisk underjordisk vattentunnel kallad 'katedralen under jord' för att hantera översvämningar.",
@@ -96,6 +103,7 @@ export const cards: CityCard[] = [
     id: "new-york",
     city: "New York",
     country: "USA",
+    difficulty: 1,
     clues: [
       "Denna stad grundades av holländska kolonisatörer på 1620-talet och bar länge ett annat namn innan det byttes till ett engelskt hertigdöme.",
       "Staden är hem för världens mest kända börs, belägen på en gata uppkallad efter en gammal skyddsmur.",
@@ -109,6 +117,7 @@ export const cards: CityCard[] = [
     id: "cape-town",
     city: "Kapstaden",
     country: "Sydafrika",
+    difficulty: 2,
     clues: [
       "Staden grundades av ett holländskt handelsbolag på 1650-talet som en försörjningsstation för sjömän på väg till Asien.",
       "Staden ligger vid en halvö där två stora oceaner möts, vilket skapar unika havsströmmar och ett extremt varierande klimat.",
@@ -122,6 +131,7 @@ export const cards: CityCard[] = [
     id: "barcelona",
     city: "Barcelona",
     country: "Spanien",
+    difficulty: 1,
     clues: [
       "Staden grundades av romarna för över 2 000 år sedan och bar ursprungligen namnet Barcino.",
       "Regionen där staden ligger har sitt eget språk – katalanska – som skiljer sig markant från kastiliansk spanska.",
@@ -135,6 +145,7 @@ export const cards: CityCard[] = [
     id: "london",
     city: "London",
     country: "Storbritannien",
+    difficulty: 1,
     clues: [
       "Staden är hem för en av världens äldsta tunnelbanesystem, öppnat 1863, och kallas lokalt för 'the Tube'.",
       "Här finns en klocktorn vars klocka är så ikonisk att många felaktigt kallar hela tornet för dess namn.",
@@ -148,9 +159,10 @@ export const cards: CityCard[] = [
     id: "paris",
     city: "Paris",
     country: "Frankrike",
+    difficulty: 1,
     clues: [
       "Stadens katakomber innehåller kvarlevorna av ungefär sex miljoner människor i ett nätverk av tunnlar under gatorna.",
-      "Här uppfanns filmvisningsmetoden av bröderna Lumière, och staden har fler filmteatrar per capita än nästan någon annan stad.",
+      "Den första offentliga biografvisningen i världen hölls i denna stad år 1895 av bröderna Lumière, som reste hit från Lyon.",
       "En av stadens mest kända gator heter 'de Elyseiska fälten' och leder mot en gigantisk triumfbåge.",
       "Stadens järntorn byggdes ursprungligen som en tillfällig konstruktion för en världsutställning 1889.",
       "Huvudstaden i ett land känt för sitt vin, sin ost och sin höga gastronomikultur, belägen vid floden Seine.",
@@ -161,9 +173,10 @@ export const cards: CityCard[] = [
     id: "rom",
     city: "Rom",
     country: "Italien",
+    difficulty: 1,
     clues: [
       "Staden har en suverän stat inuti sig, vilket gör den till den enda huvudstaden i världen med en annan stat inom sina gränser.",
-      "Här finns ett amfiteater som stod klart år 80 e.Kr. och kunde rymma upp till 80 000 åskådare vid gladiatorstrider.",
+      "Här finns ett amfiteater som stod klart år 80 e.Kr. och kunde rymma upp till 70 000 åskådare vid gladiatorstrider.",
       "En fontän i staden sägs ge dig tur och en ny resa dit om du kastar ett mynt med ryggen mot den.",
       "Staden kallas 'den eviga staden' och är byggd på sju kullar vid floden Tibern.",
       "Italiens huvudstad är känd för sina piazzor, sin pasta och sitt rika kulturarv från det antika imperiet.",
@@ -174,6 +187,7 @@ export const cards: CityCard[] = [
     id: "berlin",
     city: "Berlin",
     country: "Tyskland",
+    difficulty: 1,
     clues: [
       "Staden delades i två delar i 28 år av en betongmur, och markeringen av dess sträckning finns fortfarande inlagd i gatorna.",
       "Här finns en paradgata kallad 'Unter den Linden' som leder till en stor port ursprungligen byggd på 1700-talet som symbol för fred.",
@@ -187,6 +201,7 @@ export const cards: CityCard[] = [
     id: "amsterdam",
     city: "Amsterdam",
     country: "Nederländerna",
+    difficulty: 1,
     clues: [
       "Stadens centrum byggdes på träpålar – Kungliga slottet vilar på nästan 14 000 sådana pålar nerslagna i marken.",
       "Staden har fler cyklar än invånare och ett kanalnätverk med 1 500 broar som skapades under 1600-talets guldålder.",
@@ -200,11 +215,12 @@ export const cards: CityCard[] = [
     id: "lissabon",
     city: "Lissabon",
     country: "Portugal",
+    difficulty: 1,
     clues: [
       "Staden drabbades 1755 av ett av Europas mest förödande jordskalv, som omformade hela stadsplaneringen.",
       "Här finns en typ av melankolisk sång kallad 'fado' som är klassad som immateriellt kulturarv av UNESCO.",
       "Staden har ett hisssystem inbyggt i stadsbilden, designat av en elev till Gustave Eiffel, för att ta sig mellan kullarna.",
-      "Europas västligaste och en av dess äldsta huvudstäder, belägen vid mynningen av floden Tejo.",
+      "Kontinentala Europas västligaste och en av dess äldsta huvudstäder, belägen vid mynningen av floden Tejo.",
       "Portugals soliga huvudstad med sina kakelplattor, spårvagnar och utsikt över Atlantkusten.",
     ],
     imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Lisboa_-_Portugal_%2852597836992%29.jpg?width=600",
@@ -213,6 +229,7 @@ export const cards: CityCard[] = [
     id: "prag",
     city: "Prag",
     country: "Tjeckien",
+    difficulty: 1,
     clues: [
       "Staden har en medeltida astronomisk klocka från 1410 som fortfarande fungerar och lockar folkmängder varje timme.",
       "Under andra världskriget skonades staden från bombningar och bevarade sitt gotiska och barockarkitektoniska arv.",
@@ -226,6 +243,7 @@ export const cards: CityCard[] = [
     id: "wien",
     city: "Wien",
     country: "Österrike",
+    difficulty: 1,
     clues: [
       "Stadens kafékultur är listad som immateriellt kulturarv av UNESCO, och kaffehuset har varit en central social institution sedan 1600-talet.",
       "Här uppfann Sigmund Freud psykoanalysen, och hans hem är idag ett museum.",
@@ -239,6 +257,7 @@ export const cards: CityCard[] = [
     id: "aten",
     city: "Aten",
     country: "Grekland",
+    difficulty: 1,
     clues: [
       "Staden är uppkallad efter en gudinna som vann namntävlingen mot Poseidon genom att ge invånarna olivträdet.",
       "Här arrangerades de första moderna olympiska spelen 1896, och staden betraktas som demokratins vagga.",
@@ -252,6 +271,7 @@ export const cards: CityCard[] = [
     id: "dublin",
     city: "Dublin",
     country: "Irland",
+    difficulty: 1,
     clues: [
       "Stadens namn på iriska, 'Dubh Linn', betyder 'svart damm' och syftar på en forntida mörk pool vid flodmynningen.",
       "Här grundades ett av världens mest kända bryggerier 1759, och dess porter-öl är lika svart som stadens namn antyder.",
@@ -265,9 +285,10 @@ export const cards: CityCard[] = [
     id: "kairo",
     city: "Kairo",
     country: "Egypten",
+    difficulty: 1,
     clues: [
       "Staden är hem för ett av världens äldsta universitet, Al-Azhar, grundat år 970 e.Kr.",
-      "Det underjordiska tunnelbanesystemet här är det enda i hela Afrika.",
+      "Denna stad har Afrikas äldsta tunnelbanesystem, invigt redan 1987.",
       "Nilens östra strand domineras av en megastad med över 20 miljoner invånare.",
       "Precis utanför staden vaktar en enorm lejongestalt med ett mänskligt huvud över ökensanden.",
       "Pyramiderna i Giza ligger bokstavligen i stadens utkant och syns från stadens gator.",
@@ -278,8 +299,9 @@ export const cards: CityCard[] = [
     id: "mumbai",
     city: "Mumbai",
     country: "Indien",
+    difficulty: 2,
     clues: [
-      "Staden producerar fler filmer per år än Hollywood och industrin kallas lokalt för 'Bollywood'.",
+      "Denna stad på den indiska västkusten var ursprungligen sju separata öar som britterna landvann och förenade under 1800-talet.",
       "Den historiska järnvägsstationen här, byggd av britterna, är ett UNESCO-världsarv med gotisk arkitektur.",
       "Dharavi, ett av Asiens tätaste stadsområden, är beläget mitt i denna finansiella knutpunkt.",
       "Stadens ikoniska Gateway of India uppfördes 1924 för att hedra kung George V:s besök.",
@@ -291,11 +313,12 @@ export const cards: CityCard[] = [
     id: "bangkok",
     city: "Bangkok",
     country: "Thailand",
+    difficulty: 1,
     clues: [
       "Stadens officiella ceremonititel är världens längsta ortnamn med 168 bokstäver.",
       "Det kungliga palatskomplexet här huserar Smaragd-Buddha, landets mest heliga religiösa ikon.",
       "Staden har fler än 400 buddhisttempel inom sina gränser, lokalt kallade 'wat'.",
-      "Det färgstarka flytande marknaderna lockar miljontals besökare utanför stadskärnan.",
+      "De färgstarka flytande marknaderna lockar miljontals besökare utanför stadskärnan.",
       "Denna sydostasiatiska huvudstad är känd för sin livliga gatumat och nattmarknader längs floden Chao Phraya.",
     ],
     imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Wat_Benjamabophit1.jpg?width=600",
@@ -304,6 +327,7 @@ export const cards: CityCard[] = [
     id: "singapore",
     city: "Singapore",
     country: "Singapore",
+    difficulty: 1,
     clues: [
       "Denna stadsstat är ett av världens tre återstående suveräna stadsstater och täcker bara 733 kvadratkilometer.",
       "Changi Airport har vunnit priset som världens bästa flygplats ett rekordantal gånger.",
@@ -317,6 +341,7 @@ export const cards: CityCard[] = [
     id: "sydney",
     city: "Sydney",
     country: "Australien",
+    difficulty: 1,
     clues: [
       "Operahuset här designades av dansken Jørn Utzon och tog 14 år att bygga, färdigställt 1973.",
       "Stadens hamnbro, kallad 'The Coathanger' av lokalbefolkningen, invigdes 1932.",
@@ -330,6 +355,7 @@ export const cards: CityCard[] = [
     id: "dubai",
     city: "Dubai",
     country: "Förenade Arabemiraten",
+    difficulty: 1,
     clues: [
       "Burj Khalifa, som tronar 828 meter över marken, är fortfarande världens högsta byggnad.",
       "Palm Jumeirah, en konstgjord palmformad ö, skapades av sand muddrad från Persiska viken.",
@@ -343,6 +369,7 @@ export const cards: CityCard[] = [
     id: "moskva",
     city: "Moskva",
     country: "Ryssland",
+    difficulty: 1,
     clues: [
       "Stadens tunnelbana, öppnad 1935, är känd som 'underjordiska palats' tack vare sina ornamenterade stationer.",
       "Kremls murar omsluter ett komplex med fem palats och fyra katedraler, alla byggda under 1400–1500-talen.",
@@ -356,6 +383,7 @@ export const cards: CityCard[] = [
     id: "peking",
     city: "Peking",
     country: "Kina",
+    difficulty: 1,
     clues: [
       "Den Förbjudna staden i stadens centrum innehåller 9 999 rum och var kejserlig residens i nästan 500 år.",
       "Himmelska fridens torg, ett av världens största torg, kan rymma upp till en miljon människor.",
@@ -369,6 +397,7 @@ export const cards: CityCard[] = [
     id: "seoul",
     city: "Seoul",
     country: "Sydkorea",
+    difficulty: 2,
     clues: [
       "Gangnam-distriktet, känt från den globala pophiten 2012, är ett av stadens rikaste affärskvarter.",
       "Staden har en av världens snabbaste internetinfrastrukturer med hastigheter långt över globalt snitt.",
@@ -382,6 +411,7 @@ export const cards: CityCard[] = [
     id: "hanoi",
     city: "Hanoi",
     country: "Vietnam",
+    difficulty: 2,
     clues: [
       "Stadens Gamla kvarter består av 36 gator, var och en historiskt namngiven efter det hantverk som såldes där.",
       "Hoan Kiem-sjön i stadens centrum rymmer legenden om den magiska sköldpaddan som tog tillbaka ett kungssvärd.",
@@ -395,6 +425,7 @@ export const cards: CityCard[] = [
     id: "havanna",
     city: "Havanna",
     country: "Kuba",
+    difficulty: 2,
     clues: [
       "Staden grundades av spanjorerna på 1500-talet och var en av de viktigaste hamnstäderna i Nya världen.",
       "Här finns en av världens mest välbevarade koloniala stadskärnor, listad som UNESCO-världsarv sedan 1982.",
@@ -408,6 +439,7 @@ export const cards: CityCard[] = [
     id: "lima",
     city: "Lima",
     country: "Peru",
+    difficulty: 2,
     clues: [
       "Staden grundades av conquistadoren Francisco Pizarro år 1535 och kallades 'Konungarnas stad'.",
       "Trots att det sällan regnar här är staden nästan alltid täckt av ett grått molntäcke kallat 'garúa'.",
@@ -421,6 +453,7 @@ export const cards: CityCard[] = [
     id: "bogota",
     city: "Bogotá",
     country: "Colombia",
+    difficulty: 2,
     clues: [
       "Staden ligger på Andernas högslätt på nästan 2 600 meters höjd, en av världens högst belägna huvudstäder.",
       "Ciclovía-rörelsen startade här – varje söndag stängs 120 kilometer av gatorna för bilar och öppnas för cyklister.",
@@ -434,6 +467,7 @@ export const cards: CityCard[] = [
     id: "santiago",
     city: "Santiago",
     country: "Chile",
+    difficulty: 2,
     clues: [
       "Staden är inramad av Anderna och på klara dagar kan man se snötäckta bergstoppar direkt från stadskärnan.",
       "Landets vinregioner börjar bara en timmes bilresa från denna huvudstad.",
@@ -447,6 +481,7 @@ export const cards: CityCard[] = [
     id: "mexico-city",
     city: "Mexico City",
     country: "Mexiko",
+    difficulty: 2,
     clues: [
       "Staden är byggd på ruinerna av aztekernas Tenochtitlán, anlagd på en ö mitt i en sjö – varför delar fortfarande sjunker.",
       "Här finns fler museer per kvadratkilometer än i nästan någon annan stad i världen.",
@@ -460,6 +495,7 @@ export const cards: CityCard[] = [
     id: "rio-de-janeiro",
     city: "Rio de Janeiro",
     country: "Brasilien",
+    difficulty: 1,
     clues: [
       "Staden var landets huvudstad i över 150 år, tills en helt ny stad byggdes och tog över rollen 1960.",
       "Den världsberömda karnevalsfesten som hålls här anses vara den största i världen med miljontals deltagare.",
@@ -473,6 +509,7 @@ export const cards: CityCard[] = [
     id: "medellin",
     city: "Medellín",
     country: "Colombia",
+    difficulty: 3,
     clues: [
       "Staden utsågs till 'världens mest innovativa stad' 2013, delvis tack vare en gondolbana som förbinder fattiga stadsdelar med centrum.",
       "På 1990-talet var den världens farligaste stad, men har genomgått en dramatisk urban transformation.",
@@ -486,6 +523,7 @@ export const cards: CityCard[] = [
     id: "cartagena",
     city: "Cartagena",
     country: "Colombia",
+    difficulty: 3,
     clues: [
       "Stadens murar och fästningsverk byggdes på 1500-talet för att skydda guldskatterna mot pirater.",
       "Nobelpristagaren Gabriel García Márquez bodde och verkade här, och stadens atmosfär inspirerade hans magiska realism.",
@@ -499,6 +537,7 @@ export const cards: CityCard[] = [
     id: "cusco",
     city: "Cusco",
     country: "Peru",
+    difficulty: 3,
     clues: [
       "Staden var centrum i Inkaimperiet och kallades 'Qusqu', vilket på quechua betyder 'världens navle'.",
       "Katedraler byggdes ovanpå inkatempel, och de imponerande grunderna är fortfarande synliga under många byggnader.",
@@ -512,6 +551,7 @@ export const cards: CityCard[] = [
     id: "montevideo",
     city: "Montevideo",
     country: "Uruguay",
+    difficulty: 3,
     clues: [
       "Staden grundades 1724 som ett militärt försvar mot portugiserna.",
       "Landet var först i Latinamerika att legalisera marijuana och bland de första med samkönade äktenskap.",
@@ -525,6 +565,7 @@ export const cards: CityCard[] = [
     id: "nairobi",
     city: "Nairobi",
     country: "Kenya",
+    difficulty: 3,
     clues: [
       "Staden grundades 1899 som en järnvägsdepå och fick sitt namn från ett maasaiord som betyder 'kallt vatten'.",
       "Här finns ett av världens få nationalparker inom en storstads gränser, där lejon syns mot en skyskraperhorisont.",
@@ -538,6 +579,7 @@ export const cards: CityCard[] = [
     id: "lagos",
     city: "Lagos",
     country: "Nigeria",
+    difficulty: 3,
     clues: [
       "Staden är belägen på en serie öar och fastland vid Atlantkusten och var landets huvudstad fram till 1991.",
       "Nollywood, världens näst största filmindustri, har sin bas i denna stad.",
@@ -551,6 +593,7 @@ export const cards: CityCard[] = [
     id: "dakar",
     city: "Dakar",
     country: "Senegal",
+    difficulty: 3,
     clues: [
       "Staden är känd som slutpunkt för det historiska Paris–Dakar-rallyt.",
       "Ön Gorée utanför kusten är ett UNESCO-världsarv och ett av slavhandelns viktigaste minnesmonument.",
@@ -564,6 +607,7 @@ export const cards: CityCard[] = [
     id: "addis-abeba",
     city: "Addis Abeba",
     country: "Etiopien",
+    difficulty: 3,
     clues: [
       "Stadens namn betyder 'ny blomma' på amhariska och grundades 1886 av kejsar Menelik II.",
       "Afrikanska unionens huvudkvarter är beläget här, och staden kallas ofta 'Afrikas politiska huvudstad'.",
@@ -577,6 +621,7 @@ export const cards: CityCard[] = [
     id: "casablanca",
     city: "Casablanca",
     country: "Marocko",
+    difficulty: 3,
     clues: [
       "Stadens namn är spanska för 'vitt hus', och den är känd för sin art deco-arkitektur.",
       "Hassan II-moskén, med sin 210 meter höga minaret, är delvis byggd ut över Atlanten.",
@@ -590,6 +635,7 @@ export const cards: CityCard[] = [
     id: "zanzibar",
     city: "Zanzibar",
     country: "Tanzania",
+    difficulty: 3,
     clues: [
       "Denna plats kallas 'Kryddornas ö' och var centrum för världshandeln med nejlikor och kanel.",
       "Ön kontrollerades av Sultanatet Oman under 1800-talet och var centrum för arabisk slavhandel.",
@@ -603,6 +649,7 @@ export const cards: CityCard[] = [
     id: "accra",
     city: "Accra",
     country: "Ghana",
+    difficulty: 3,
     clues: [
       "Stadens namn härstammar från akan-ordet 'nkran' som betyder myror.",
       "Landet var det första i subsahariska Afrika att uppnå självständighet, 1957 under Kwame Nkrumah.",
@@ -616,6 +663,7 @@ export const cards: CityCard[] = [
     id: "tunis",
     city: "Tunis",
     country: "Tunisien",
+    difficulty: 3,
     clues: [
       "Ruinerna av det antika Karthago, hemsätet för generalen Hannibal, ligger i stadens utkant.",
       "Stadens medina är ett av världens bäst bevarade islamiska stadscentrum och ett UNESCO-världsarv.",
@@ -629,6 +677,7 @@ export const cards: CityCard[] = [
     id: "maputo",
     city: "Maputo",
     country: "Moçambique",
+    difficulty: 3,
     clues: [
       "Staden hette Lourenço Marques under den portugisiska kolonialtiden och bytte namn 1976.",
       "Landet är en av världens ledande exportörer av cashewnötter.",
@@ -642,6 +691,7 @@ export const cards: CityCard[] = [
     id: "johannesburg",
     city: "Johannesburg",
     country: "Sydafrika",
+    difficulty: 3,
     clues: [
       "Staden grundades 1886 efter att en av världens rikaste guldådrorna upptäcktes, vilket utlöste en guldrush.",
       "Soweto var epicentrum för 1976 års studentuppror mot apartheid.",
@@ -655,6 +705,7 @@ export const cards: CityCard[] = [
     id: "oslo",
     city: "Oslo",
     country: "Norge",
+    difficulty: 1,
     clues: [
       "Denna stad huserar Nobels fredsprisceremoni varje december, till skillnad från övriga Nobelpris som delas ut i grannlandet.",
       "Från hamnen kan man ta en kort båttur till Bygdøy där vikingaskepp från 800-talet bevaras.",
@@ -668,6 +719,7 @@ export const cards: CityCard[] = [
     id: "kopenhamn",
     city: "Köpenhamn",
     country: "Danmark",
+    difficulty: 1,
     clues: [
       "Stadens nöjespark Tivoli inspirerade Walt Disney när han skapade Disneyland och öppnade redan 1843.",
       "H.C. Andersen skapade sina sagor här, och hans lille havsfru sitter staty på en klippa i hamnen sedan 1913.",
@@ -681,6 +733,7 @@ export const cards: CityCard[] = [
     id: "helsingfors",
     city: "Helsingfors",
     country: "Finland",
+    difficulty: 1,
     clues: [
       "Stadens centralstation pryds av fyra gigantiska stenmän som håller lyktor, ett mästerverk i nationalromantisk arkitektur.",
       "Designdistriktet är världsberömt och staden är hem för varumärken som Marimekko och Iittala.",
@@ -694,6 +747,7 @@ export const cards: CityCard[] = [
     id: "tallinn",
     city: "Tallinn",
     country: "Estland",
+    difficulty: 2,
     clues: [
       "Stadens medeltida stadskärna är en av Europas bäst bevarade, med murar och torn från 1200-talet.",
       "Landet var ett av de första i världen att erbjuda e-residency och nästan alla myndighetstjänster sköts digitalt.",
@@ -707,6 +761,7 @@ export const cards: CityCard[] = [
     id: "warszawa",
     city: "Warszawa",
     country: "Polen",
+    difficulty: 2,
     clues: [
       "Stadens gamla stad är en exakt rekonstruktion – den sprängdes sönder till 85% under kriget och återbyggdes sten för sten.",
       "Chopins hjärta är inmurad i en pelare i en kyrka i stadskärnan, medan hans kropp vilar i Paris.",
@@ -720,6 +775,7 @@ export const cards: CityCard[] = [
     id: "budapest",
     city: "Budapest",
     country: "Ungern",
+    difficulty: 2,
     clues: [
       "Under gatorna bubblar naturliga termalkällor och invånarna badar i magnifika badhus från ottoman- och habsburgtiden.",
       "Staden är egentligen två separata städer sammanlänkade av broar – en kuperad västra del och en flat östlig.",
@@ -733,6 +789,7 @@ export const cards: CityCard[] = [
     id: "bukarest",
     city: "Bukarest",
     country: "Rumänien",
+    difficulty: 3,
     clues: [
       "Diktatorn Ceaușescu lät riva hela stadsdelar för att bygga världens näst största byggnad efter Pentagon.",
       "Staden kallades en gång 'Balkanernas Paris' tack vare sina eleganta boulevarder.",
@@ -746,6 +803,7 @@ export const cards: CityCard[] = [
     id: "belgrad",
     city: "Belgrad",
     country: "Serbien",
+    difficulty: 3,
     clues: [
       "Kalemegdan-fästningen har erövrats och återerövrats över 40 gånger genom historien av kelter, romare och ottomaner.",
       "Två stora europeiska floder möts just här, en unik geografisk händelse.",
@@ -759,6 +817,7 @@ export const cards: CityCard[] = [
     id: "zagreb",
     city: "Zagreb",
     country: "Kroatien",
+    difficulty: 3,
     clues: [
       "Museum of Broken Relationships visar föremål donerade av människor från hela världen som symboliserar avslutade kärlekshistorier.",
       "Övre staden nås via en av världens kortaste funiculärer, bara 66 meter lång.",
@@ -772,6 +831,7 @@ export const cards: CityCard[] = [
     id: "sarajevo",
     city: "Sarajevo",
     country: "Bosnien",
+    difficulty: 3,
     clues: [
       "Mordet på ärkehertig Franz Ferdinand här 1914 utlöste en kedja som ledde till första världskriget.",
       "Staden var värd för vinter-OS 1984, men bobsleighbanorna står kvar som igenvuxna ruiner efter kriget på 90-talet.",
@@ -785,6 +845,7 @@ export const cards: CityCard[] = [
     id: "san-francisco",
     city: "San Francisco",
     country: "USA",
+    difficulty: 2,
     clues: [
       "Staden byggdes delvis på landfyllnad, vilket gjorde den extra sårbar under den stora jordbävningen 1906.",
       "Här grundades 1967 'Summer of Love' i stadsdelen Haight-Ashbury med över 100 000 hippies.",
@@ -798,6 +859,7 @@ export const cards: CityCard[] = [
     id: "los-angeles",
     city: "Los Angeles",
     country: "USA",
+    difficulty: 1,
     clues: [
       "Stadens La Brea-tjärgropar har bevarat ben från sabeltandade tigrar och mammuttar i över 10 000 år.",
       "Staden har fler bilar än invånare och var den första att bygga ett helt motorvägssystem på 1940-talet.",
@@ -811,6 +873,7 @@ export const cards: CityCard[] = [
     id: "chicago",
     city: "Chicago",
     country: "USA",
+    difficulty: 1,
     clues: [
       "Smeknamnet 'The Windy City' kom inte från vädret utan för att journalister ansåg stadens politiker vara skrytsamma.",
       "En stor brand 1871, enligt legenden orsakad av en ko som sparkade omkull en lykta, förstörde stadskärnan.",
@@ -824,6 +887,7 @@ export const cards: CityCard[] = [
     id: "toronto",
     city: "Toronto",
     country: "Kanada",
+    difficulty: 2,
     clues: [
       "Stadens underjordiska PATH sträcker sig 30 kilometer och är världens längsta underjordiska shoppinggalleria.",
       "Staden är en av världens mest mångkulturella, med över 200 språk talade dagligen.",
@@ -837,6 +901,7 @@ export const cards: CityCard[] = [
     id: "vancouver",
     city: "Vancouver",
     country: "Kanada",
+    difficulty: 2,
     clues: [
       "Stanley Park är 10% större än Central Park och innehåller gamla skogar och stränder.",
       "Staden valdes tre år i rad till världens mest levnadsvänliga stad av The Economist.",
@@ -850,6 +915,7 @@ export const cards: CityCard[] = [
     id: "honolulu",
     city: "Honolulu",
     country: "USA",
+    difficulty: 2,
     clues: [
       "Staden har Iolani Palace, det enda kungliga palatset på amerikansk mark.",
       "En attack här den 7 december 1941 fick USA att gå in i andra världskriget.",
@@ -863,6 +929,7 @@ export const cards: CityCard[] = [
     id: "new-orleans",
     city: "New Orleans",
     country: "USA",
+    difficulty: 2,
     clues: [
       "Staden grundades av fransmännen 1718 och har ett juridiskt system baserat på Napoleons lag.",
       "Här uppfanns cocktailen – en blandning av sprit, socker, vatten och bitters.",
@@ -876,6 +943,7 @@ export const cards: CityCard[] = [
     id: "nashville",
     city: "Nashville",
     country: "USA",
+    difficulty: 2,
     clues: [
       "Grand Ole Opry har sänts kontinuerligt sedan 1927, världens längst sändande livemusikprogram.",
       "Staden har en fullskalig replik av Parthenon-templet, komplett med en 13 meter hög Athena-staty.",
@@ -889,6 +957,7 @@ export const cards: CityCard[] = [
     id: "boston",
     city: "Boston",
     country: "USA",
+    difficulty: 2,
     clues: [
       "Staden har USA:s äldsta offentliga park från 1634 och det äldsta universitetet i landet.",
       "1773 tömde kolonister klädda som mohawkindaner te i hamnen – ett avgörande ögonblick i frihetskampen.",
@@ -902,6 +971,7 @@ export const cards: CityCard[] = [
     id: "miami",
     city: "Miami",
     country: "USA",
+    difficulty: 1,
     clues: [
       "Staden är den enda stora amerikanska stad som grundades av en kvinna – Julia Tuttle – 1896.",
       "Miami Beach har världens största samling Art Deco-arkitektur med över 800 bevarade byggnader.",
@@ -915,6 +985,7 @@ export const cards: CityCard[] = [
     id: "edinburgh",
     city: "Edinburgh",
     country: "Skottland",
+    difficulty: 2,
     clues: [
       "Stadens historia inspirerade romanerna om Dr Jekyll och Mr Hyde, tack vare en verklig dubbellevande brottsling på 1700-talet.",
       "Varje år i augusti förvandlas staden till världens största konstfestival med tusentals föreställningar.",
@@ -928,6 +999,7 @@ export const cards: CityCard[] = [
     id: "venedig",
     city: "Venedig",
     country: "Italien",
+    difficulty: 2,
     clues: [
       "Staden sjunker med 1–2 millimeter per år och har sjunkit nästan 25 centimeter under 1900-talet.",
       "Stadsplaneringen saknar helt bilar och bygger på 177 kanaler förbundna av över 400 broar.",
@@ -941,6 +1013,7 @@ export const cards: CityCard[] = [
     id: "florens",
     city: "Florens",
     country: "Italien",
+    difficulty: 2,
     clues: [
       "Familjen Medici uppfann härifrån 1400-talets finansiella system med kreditbrev som revolutionerade handel.",
       "Galileo Galilei är begravd i kyrkan Santa Croce, bredvid Michelangelo och Machiavelli.",
@@ -954,6 +1027,7 @@ export const cards: CityCard[] = [
     id: "dubrovnik",
     city: "Dubrovnik",
     country: "Kroatien",
+    difficulty: 2,
     clues: [
       "Under medeltiden var staden en handelsrepublik som avskaffade slavhandeln redan 1416.",
       "Stadsmuren, nästan 2 kilometer lång, är en av de bäst bevarade i Europa och kan promeneras runt.",
@@ -967,6 +1041,7 @@ export const cards: CityCard[] = [
     id: "santorini",
     city: "Santorini",
     country: "Grekland",
+    difficulty: 2,
     clues: [
       "Ön är resterna av ett enormt vulkanutbrott runt 1600 f.Kr. som kan ha inspirerat legenden om Atlantis.",
       "De ikoniska blåkupiga kyrkorna är en relativt modern turistfrämjande åtgärd från 1900-talet.",
@@ -980,6 +1055,7 @@ export const cards: CityCard[] = [
     id: "brygge",
     city: "Brygge",
     country: "Belgien",
+    difficulty: 2,
     clues: [
       "Under 1300-talet var detta Europas rikaste stad, men hamnade i kris när hamnkanalen siltade igen.",
       "Här uppfanns oljemålningstekniken av flamländska mästare som Jan van Eyck på 1400-talet.",
@@ -993,6 +1069,7 @@ export const cards: CityCard[] = [
     id: "zurich",
     city: "Zürich",
     country: "Schweiz",
+    difficulty: 2,
     clues: [
       "Staden rankades länge som världens dyraste stad att leva i och är ett av världens största finanscentra.",
       "James Joyce tillbringade stora delar av sitt liv här och är begravd på stadens Fluntern-kyrkogård.",
@@ -1006,6 +1083,7 @@ export const cards: CityCard[] = [
     id: "monaco",
     city: "Monaco",
     country: "Monaco",
+    difficulty: 2,
     clues: [
       "Landet är världens näst minsta stat efter Vatikanen och har högst befolkningstäthet i världen.",
       "Ungefär 30% av landets yta har vunnits från havet genom landfyllnad.",
@@ -1019,6 +1097,7 @@ export const cards: CityCard[] = [
     id: "reims",
     city: "Reims",
     country: "Frankrike",
+    difficulty: 3,
     clues: [
       "I tusen år kröntes franska kungar här – totalt 33 monarker genomgick ceremonin i stadens gotiska katedral.",
       "Jeanne d'Arc ledde Karl VII hit 1429 för hans kröning, en vändpunkt i hundraårskriget.",
@@ -1032,6 +1111,7 @@ export const cards: CityCard[] = [
     id: "sevilla",
     city: "Sevilla",
     country: "Spanien",
+    difficulty: 2,
     clues: [
       "Staden var det enda auktoriserade avresehamnen för kolonisationen av Amerika på 1500-talet.",
       "Världens näst största gotiska katedral ligger här och rymmer Christofer Columbus grav.",
@@ -1045,6 +1125,7 @@ export const cards: CityCard[] = [
     id: "kathmandu",
     city: "Kathmandu",
     country: "Nepal",
+    difficulty: 3,
     clues: [
       "Staden ligger i en dal omgiven av åtta av världens tio högsta berg på över 1 300 meters höjd.",
       "Pashupatinath är ett av hinduismens allra heligaste tempel, där kremationer äger rum öppet vid flodstranden.",
@@ -1058,6 +1139,7 @@ export const cards: CityCard[] = [
     id: "hongkong",
     city: "Hongkong",
     country: "Kina",
+    difficulty: 2,
     clues: [
       "Staden har en av världens högsta tätheter av skyskrapor och håller ceremoni varje kväll med laser- och ljusshow.",
       "Spårvagnar med dubbeldäck, kallade 'ding ding', har rullat längs stadens strandlinje sedan 1904.",
@@ -1071,6 +1153,7 @@ export const cards: CityCard[] = [
     id: "taipei",
     city: "Taipei",
     country: "Taiwan",
+    difficulty: 2,
     clues: [
       "Stadens ikoniska skyskrapa var världens högsta 2004–2010 och är utformad som ett bamburör med åtta segment.",
       "Staden är berömd för sina nattmarknader, varav Shilin är störst med stinktofu och bubbelte vid midnatt.",
@@ -1084,6 +1167,7 @@ export const cards: CityCard[] = [
     id: "jakarta",
     city: "Jakarta",
     country: "Indonesien",
+    difficulty: 3,
     clues: [
       "Staden sjunker med upp till 25 centimeter per år, vilket gjort att regeringen planerar en helt ny huvudstad.",
       "Monas, ett 132 meter högt torn med en förgylld spets, dominerar stadens centrala frihetstorg.",
@@ -1097,6 +1181,7 @@ export const cards: CityCard[] = [
     id: "kuala-lumpur",
     city: "Kuala Lumpur",
     country: "Malaysia",
+    difficulty: 2,
     clues: [
       "Stadens twin-torn var världens högsta byggnader 1998–2004 och förbinds av en luftbro på 41:a våningen.",
       "Stadens namn betyder 'lerig mynning' på malajiska efter sammanflödet av två grumliga floder.",
@@ -1110,6 +1195,7 @@ export const cards: CityCard[] = [
     id: "manila",
     city: "Manila",
     country: "Filippinerna",
+    difficulty: 3,
     clues: [
       "Intramuros är en bevarad muromgärdad stad byggd av spanjorerna på 1500-talet med bastioner och en katedral.",
       "Under andra världskriget var detta en av de mest förstörda huvudstäderna i världen.",
@@ -1123,6 +1209,7 @@ export const cards: CityCard[] = [
     id: "colombo",
     city: "Colombo",
     country: "Sri Lanka",
+    difficulty: 3,
     clues: [
       "Staden var känd som 'Indiska oceanens rika hamn' och arabiska köpmän handlade här med kanel i århundraden.",
       "Galle Face Green är stadens historiska promenadplats där invånarna flyger drakar vid solnedgången.",
@@ -1136,6 +1223,7 @@ export const cards: CityCard[] = [
     id: "ulaanbaatar",
     city: "Ulaanbaatar",
     country: "Mongoliet",
+    difficulty: 3,
     clues: [
       "Staden är världens kallaste huvudstad med en genomsnittlig årstemperatur på minus 1,3 grader.",
       "En tredjedel av hela landets befolkning bor i denna enda stad.",
@@ -1149,6 +1237,7 @@ export const cards: CityCard[] = [
     id: "tbilisi",
     city: "Tbilisi",
     country: "Georgien",
+    difficulty: 3,
     clues: [
       "Stadens namn kommer från ordet för 'varm' och syftar på naturliga svavelkällor i stadsdelen Abanotubani.",
       "Gamla stan kantas av balkonger med genombrutet trä över smala stenlagda gränder, en unik arkitekturstil.",
@@ -1162,6 +1251,7 @@ export const cards: CityCard[] = [
     id: "samarkand",
     city: "Samarkand",
     country: "Uzbekistan",
+    difficulty: 3,
     clues: [
       "Staden låg vid korsvägen av sidenvägen där kinesiskt siden mötte persiska kryddor och romerskt glas.",
       "Registan-platsen med tre majestätiska madrasor i turkos mosaik anses vara en av mänsklighetens vackraste ensembler.",
@@ -1175,6 +1265,7 @@ export const cards: CityCard[] = [
     id: "goteborg",
     city: "Göteborg",
     country: "Sverige",
+    difficulty: 1,
     clues: [
       "Staden är hem för Nordeuropas största nöjespark med en ikonisk träleksaksbjörn som maskot.",
       "Här grundades det musikföretag som gav världen ABBA och Ace of Base.",
@@ -1188,6 +1279,7 @@ export const cards: CityCard[] = [
     id: "malmo",
     city: "Malmö",
     country: "Sverige",
+    difficulty: 1,
     clues: [
       "Stadens mest ikoniska byggnad är ett 190 meter högt torn med skruvad form, ritat av en spansk arkitekt.",
       "En 8 kilometer lång bro förbinder denna stad med ett grannland, känd från en populär kriminalserie.",
@@ -1201,6 +1293,7 @@ export const cards: CityCard[] = [
     id: "kiruna",
     city: "Kiruna",
     country: "Sverige",
+    difficulty: 1,
     clues: [
       "Hela denna stad håller på att fysiskt förflyttas flera kilometer för att undvika att sjunka ner i marken.",
       "Här finns världens största underjordiska järnmalmsgruva.",
@@ -1214,6 +1307,7 @@ export const cards: CityCard[] = [
     id: "visby",
     city: "Visby",
     country: "Sverige",
+    difficulty: 1,
     clues: [
       "Stadens medeltida ringmur är en av de bäst bevarade i norra Europa och ett UNESCO-världsarv.",
       "Varje sommar kläs tusentals människor i medeltidsdräkter under en av Nordens mest besökta festivaler.",
@@ -1227,6 +1321,7 @@ export const cards: CityCard[] = [
     id: "tromso",
     city: "Tromsö",
     country: "Norge",
+    difficulty: 2,
     clues: [
       "Staden har fler studenter per capita än nästan någon annan stad i sitt land, trots sitt arktiska läge.",
       "Ishavskatedralen med sin triangelformade glasfasad är stadens mest fotograferade byggnad.",
@@ -1240,6 +1335,7 @@ export const cards: CityCard[] = [
     id: "bergen",
     city: "Bergen",
     country: "Norge",
+    difficulty: 2,
     clues: [
       "Bryggen, en rad färgglada trähus längs kajen, är ett UNESCO-världsarv.",
       "Edvard Grieg föddes här och hans hem Troldhaugen finns bevarat.",
@@ -1253,6 +1349,7 @@ export const cards: CityCard[] = [
     id: "abo",
     city: "Åbo",
     country: "Finland",
+    difficulty: 3,
     clues: [
       "Staden var Finlands huvudstad i mer än 600 år, tills den flyttades österut på 1800-talet.",
       "Åbo Akademi är det enda finska universitetet med svenska som undervisningsspråk.",
@@ -1266,6 +1363,7 @@ export const cards: CityCard[] = [
     id: "rovaniemi",
     city: "Rovaniemi",
     country: "Finland",
+    difficulty: 2,
     clues: [
       "Stadens fågelformade stadsplan ritades av Alvar Aalto efter att den totalförstördes i andra världskriget.",
       "En berömd temapark i stadens utkant besöks av hundratusentals turister varje år, särskilt i december.",
@@ -1279,6 +1377,7 @@ export const cards: CityCard[] = [
     id: "torshavn",
     city: "Tórshavn",
     country: "Färöarna",
+    difficulty: 3,
     clues: [
       "Denna stad är en av världens minsta huvudstäder med bara drygt 20 000 invånare.",
       "Tinganes, en udde med torvtaksbelagda trähus, anses vara en av Europas äldsta administrativa platser.",
@@ -1292,6 +1391,7 @@ export const cards: CityCard[] = [
     id: "nuuk",
     city: "Nuuk",
     country: "Grönland",
+    difficulty: 3,
     clues: [
       "Staden är hem för majoriteten av ett av världens glesast befolkade territorier.",
       "Koloniseringen påbörjades av den norske missionären Hans Egede 1728.",
@@ -1300,5 +1400,200 @@ export const cards: CityCard[] = [
       "Denna arktiska huvudstad omges av isfyllda fjordar och är porten till ett av jordens mest otillgängliga landskap.",
     ],
     imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Nuuk%2C_Greenland_skyline_aerial_view.jpg?width=600",
+  },
+  {
+    id: "uppsala",
+    city: "Uppsala",
+    country: "Sverige",
+    clues: [
+      "Tre vikingatida kungahögar reser sig i en lummig dal norr om stadskärnan — ett av Skandinaviens viktigaste hedniska kultplatser.",
+      "Botanikern Carl Linnaeus skapade här det system vi fortfarande använder för att namnge alla levande varelser på jorden.",
+      "Varje år störtar studenter nerför en snöig backe i vita mössor medan tusentals åskådare hejar — en tradition kallad Valborg.",
+      "Domkyrkan är den högsta i hela Norden, på 118 meter, och tjänade länge som kröningsplats för svenska monarker.",
+      "Stadens universitet, grundat 1477, är det äldsta i hela Skandinavien.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Uppsala_domkyrka_Sweden.jpg?width=600",
+  },
+  {
+    id: "lund",
+    city: "Lund",
+    country: "Sverige",
+    clues: [
+      "Staden var dansk i nästan 700 år och var under medeltiden den folkrikaste och viktigaste orten i hela Skandinavien.",
+      "Här finns Skandinaviens äldsta fortfarande aktiva skola, grundad redan 1085.",
+      "Vart fjärde år fylls gatorna av en enorm karneval med parader och maskerade studenter — en tradition sedan 1800-talets mitt.",
+      "Universitetsstaden i södra Skåne grundade sitt lärosäte 1666 och räknas idag till de hundra bästa i världen.",
+      "Domkyrkan i kalksten från 1100-talet, med sitt astronomiska ur som spelar två gånger om dagen, är stadens mest kända landmärke.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Lund_Cathedral_Scandinavia.jpg?width=600",
+  },
+  {
+    id: "linkoping",
+    city: "Linköping",
+    country: "Sverige",
+    clues: [
+      "Under andra världskriget sprängdes en hemlig fabrik ut djupt i berget — motsvarande fyra fotbollsplaner — för att skydda flygplanstillverkningen.",
+      "Var femte invånare försörjde sig en gång genom ett enda företag som byggde stridsflyg och formade hela stadens identitet.",
+      "Flygplanstyperna Draken, Viggen och Gripen designades och byggdes alla i denna östgötska stad.",
+      "Flygvapenmuseum med autentiska jaktplan, missiler och simulatorer lockar besökare till stadens utkant.",
+      "SAAB AB, ett av Sveriges mest kända försvars- och flygbolag, har sitt ursprung och fortfarande sin bas här.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Link%C3%B6ping_Cathedral_from_southeast.jpg?width=600",
+  },
+  {
+    id: "umea",
+    city: "Umeå",
+    country: "Sverige",
+    clues: [
+      "En förödande brand 1888 ledde till att staden planterade breda alléer av björkar som brandskydd — ett drag som gav staden dess smeknamn.",
+      "Stålbandet Meshuggah, kända världen över för sina polyrhytmiska kompositioner, kommer härifrån och satte staden på den internationella metalkartan.",
+      "Staden utsågs 2014 till Europas kulturhuvudstad — och var den nordligaste stad som någonsin fått den titeln.",
+      "Med ett av Norrlands största universitet och en ung befolkning kallas den ofta för 'norrländsk storstadsmetropol'.",
+      "Björkarnas stad — Norrlands största — ligger vid Umeälvens mynning och är känd för sina breda trädkantade boulevarder.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Ume%C3%A5_city_hall_2011.jpg?width=600",
+  },
+  {
+    id: "orebro",
+    city: "Örebro",
+    country: "Sverige",
+    clues: [
+      "Svampen — ett vattentorn format som en jättesvamp — är så ikoniskt att en saudiarabisk stad byggde en kopia av det.",
+      "Den beryktade förklädnadstjuven Lasse-Maja, som klädde ut sig till kvinna för att råna folk, hölls fången i stadens slott.",
+      "I denna stad valde riksdagen 1810 en fransk marskalk — Jean Bernadotte — till Sveriges nye kronprins.",
+      "Engelbrekt Engelbrektsson, bondeupprorsledaren mot danskarna på 1400-talet, bodde och verkade här.",
+      "Det medeltida renässansslottet på en ö i Svartån, mitt i stadskärnan, är stadens mest kända byggnad.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/%C3%96rebro_Castle.jpg?width=600",
+  },
+  {
+    id: "kalmar",
+    city: "Kalmar",
+    country: "Sverige",
+    clues: [
+      "Drottning Margareta samlade 1397 tre nordiska riken under en krona här — ett avtal som kom att forma Nordeuropas historia i över ett sekel.",
+      "Slottet kallades länge 'rikets nyckel' på grund av sin strategiska position vid den smalaste punkten mot ön öster om staden.",
+      "När freden i Roskilde 1658 flyttade gränsen söderut tappade staden sin militärstrategiska roll — och med den mycket av sin makt.",
+      "Det välbevarade renässansslottet från Vasatiden, byggt vid havet, är ett av Sveriges vackraste och bäst bevarade.",
+      "Staden vid Kalmarsund är grinden till Öland och känd för sitt slott, sin historiska union och sin långa historia.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Kalmar_slott_fran_vallgraven.jpg?width=600",
+  },
+  {
+    id: "helsingborg",
+    city: "Helsingborg",
+    country: "Sverige",
+    clues: [
+      "Tornet Kärnan, byggt på 1310-talet, är enda kvarstående delen av en dansk fästning som kontrollerade det smalaste sundet i Norden.",
+      "Från stadens strand ser man med blotta ögat en annan nations kust — och det tar bara 20 minuter med färja att nå dit.",
+      "Karl XI lät riva nästan hela fästningen av rädsla för danska attacker — men lät det medeltida tornet stå kvar.",
+      "Staden erövrades av Sverige i freden i Roskilde 1658 och var fram till dess en av Danmarks viktigaste städer.",
+      "Hamnstaden i nordvästra Skåne är knutpunkten för färjetrafiken till Helsingör i Danmark.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/K%C3%A4rnan_Helsingborg.jpg?width=600",
+  },
+  {
+    id: "sundsvall",
+    city: "Sundsvall",
+    country: "Sverige",
+    clues: [
+      "Stadens inofficiella symbol är en drake, och sedan 2003 gömmer sig drakfigurer på oväntade platser runt om i stadsmiljön.",
+      "En förödande brand 1888 — den värsta i svensk historia — förstörde hela innerstaden, som sedan återuppbyggdes helt i sten på bara sex år.",
+      "Sveriges ledande arkitekter ritade palatsliknande hus i renässansstil och jugend, vilket skapade en stadssilhuett unik i hela landet utanför Stockholm.",
+      "Massafabriken SCA Östrand utanför staden har världens största produktionslinje för blekt sulfatmassa.",
+      "Stenstaden — som innerstaden kallas — är ett av Sveriges mest välbevarade exempel på 1800-talets industriella stadsarkitektur.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Sundsvall_city_panorama.jpg?width=600",
+  },
+  {
+    id: "jonkoping",
+    city: "Jönköping",
+    country: "Sverige",
+    clues: [
+      "Bröderna Lundström började här på 1840-talet tillverka de första säkerhetständstickor som bara tändes mot en specifik yta — en uppfinning som spred sig till hela världen.",
+      "Ivar Kreuger, 'tändstickskungen', skapade härifrån ett globalt matchmonopol på 1920-talet som kontrollerade en tredjedel av världens produktion.",
+      "Det unika industriområdet med välbevarade fabriksbyggnader från 1800-talets tändsticksindustri är numera ett levande kulturkvarter.",
+      "Staden vid södra Vätterns strand är ett centrum för frikyrklig tradition och kallas ibland 'den svenska Bibelbältets huvudstad'.",
+      "Tändsticksmuseet — det enda i sitt slag i världen — berättar historien om hur en småstadsindustri tände en eld som aldrig slocknade.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/J%C3%B6nk%C3%B6ping_Munksjön.jpg?width=600",
+  },
+  {
+    id: "karlstad",
+    city: "Karlstad",
+    country: "Sverige",
+    clues: [
+      "Kafferosteriet Löfbergs har rostat sina bönor här sedan 1906 och är idag ett av Nordens mest kända kaffemärken.",
+      "I denna stad förhandlades 1905 de historiska avtal som upplöste unionen mellan Sverige och Norge — en process som tog 23 dagar.",
+      "Hockeyklubben Färjestad BK, med flera SM-guld, spelar sina matcher i denna värmländska stad vid Vänerns strand.",
+      "En leende sol är stadens symbol, och orten räknas till en av de solrikaste i hela Sverige.",
+      "Staden ligger där Klarälven mynnar ut i Vänern, mitt emellan Stockholm, Göteborg och Oslo.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Karlstad_cathedral_2009.jpg?width=600",
+  },
+  {
+    id: "boras",
+    city: "Borås",
+    country: "Sverige",
+    clues: [
+      "Inom en radie på en och en halv kilometer finns över hundra skulpturer, installationer och muralmålningar — ett av Europas tätaste utomhusgallerier.",
+      "En nio meter hög bronspinocchio anspelar på de gångande manufakturhandlare som en gång vandrade härifrån med textilier på ryggen och sålde dem runt om i landet.",
+      "Postorderföretag som Ellos växte upp just här eftersom textilhandlarnas tradition att sälja på distans satt djupt i stadens DNA.",
+      "Svenska Textilhögskolan, som forskar på allt från smart tyg till hållbart mode, ligger i denna västsvenska stad.",
+      "Textilindustrins gamla svenska huvudstad är känd för sina fabriker, sin postorderhistoria och numera ett livaktigt skulpturbiennale.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Bor%C3%A5s_city_hall.jpg?width=600",
+  },
+  {
+    id: "vasteras",
+    city: "Västerås",
+    country: "Sverige",
+    clues: [
+      "Utanför staden reser sig Anundshög — Sveriges största gravhög, 68 meter bred och nio meter hög, omgiven av skeppssättningar från vikingatiden.",
+      "Staden fick smeknamnet 'Gurkstaden' på 1800-talet när gurkodling slog igenom och folk sålde gurkor längs vägarna.",
+      "Det var här 1947 som Erling Persson öppnade sin första klädbutik — som sedermera växte till ett av världens mest kända modeföretag.",
+      "Vid riksdagen här 1527 beslutade Gustav Vasa att Sverige formellt övergick till protestantism och bröt med Rom.",
+      "Industristadens starkaste varumärke är den elektrotekniska jätten ABB, vars svenska rötter — då kallat ASEA — har sitt ursprung just här.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/V%C3%A4ster%C3%A5s_Cathedral_2010.jpg?width=600",
+  },
+  {
+    id: "norrkoping",
+    city: "Norrköping",
+    country: "Sverige",
+    clues: [
+      "Staden har fler hällristningar än någon annan stad i världen — över 7 000 — med bronsåldersmotiv synliga mitt i urbant landskap.",
+      "Det gröna marmor som pryder Stockholms stadshus och Rockefeller Center i New York bröts i ett stenbrott strax utanför staden.",
+      "På 1800-talets mitt vävdes 70 procent av alla svenska textilier just här, vilket gav staden smeknamnet 'Sveriges Manchester'.",
+      "Det flamländska affärsgeniet Louis De Geer drev på 1600-talet upp stadens befolkning till 6 000 — då landets näst största stad.",
+      "Industrilandskapet längs Motalaström, med välbevarade textilfabriker, är idag ett levande kulturkvarter med museer och restauranger.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Norrk%C3%B6ping_-_Industrilandskapet_2.jpg?width=600",
+  },
+  {
+    id: "lulea",
+    city: "Luleå",
+    country: "Sverige",
+    clues: [
+      "Facebook valde just denna nordliga stad för sitt första europeiska datacenter — det kalla klimatet och den rena energin var avgörande.",
+      "Staden fick på 1600-talet flytta hela sin bebyggelse flera kilometer när havsbottnen reste sig ur vattnet och hamnen blev för grund för fartyg.",
+      "Gammelstad kyrkstad, en mil utanför centrum, är en UNESCO-listad by med 400-åriga röda stugor som bönder övernattade i under kyrkhelger.",
+      "På vintern förvandlas skärgårdens 1 300 öar till ett sammanhängande landskap — och man kan köra bil, cykla eller gå på isen mellan dem.",
+      "Stålverket SSAB och Luleå tekniska universitet gör denna stad vid Bottenvikens kust till Norrlands industriella och akademiska nav.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Gammelstads_kyrkstad.jpg?width=600",
+  },
+  {
+    id: "falun",
+    city: "Falun",
+    country: "Sverige",
+    clues: [
+      "Den biprodukt som uppstod vid kopparsmältningen här på 1600-talet färgar fortfarande miljontals svenska trähus röda — och är en av Sveriges mest igenkännliga kulturella exportvaror.",
+      "Den 25 juni 1687 rasade gruvan samman och skapade ett gigantiskt hål — men eftersom alla gruvarbetare råkade ha ledigt den dagen dog ingen.",
+      "Gruvan här finansierade en stor del av Sveriges krig på 1600-talet och levererade upp till två tredjedelar av hela Europas koppar.",
+      "Taket på Versaillespalatset i Frankrike är belagt med koppar som bröts i denna dalslänts underjordiska labyrint.",
+      "Gruvan, som drevs i nästan tusen år och nu är ett UNESCO-världsarv, och den röda färgen som bär stadens namn är ortens mest kända bidrag till Sverige.",
+    ],
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Falun_mine_2009.jpg?width=600",
   },
 ];

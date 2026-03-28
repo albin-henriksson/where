@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
-import type { CityCard } from "../data/types";
+import type { CityCard, Difficulty } from "../data/types";
 import { cards } from "../data/cards";
 
 function shuffle<T>(array: T[]): T[] {
@@ -25,7 +25,8 @@ export interface GameActions {
   correct: () => void;
   skip: () => void;
   nextCard: () => void;
-  restoreSession: (seenIds: string[]) => void;
+  restoreSession: (seenIds: string[], difficulties?: Difficulty[]) => void;
+  filterByDifficulty: (difficulties: Difficulty[]) => void;
 }
 
 function initDeck() {
@@ -88,9 +89,11 @@ export function useGameSession(): GameState & GameActions {
     drawNext(remaining);
   }, [remaining, drawNext]);
 
-  const restoreSession = useCallback((seenIds: string[]) => {
+  const restoreSession = useCallback((seenIds: string[], difficulties?: Difficulty[]) => {
     const seenSet = new Set(seenIds);
-    const unseen = shuffle(cards.filter((c) => !seenSet.has(c.id)));
+    const diffSet = difficulties ? new Set(difficulties) : null;
+    const pool = cards.filter((c) => !seenSet.has(c.id) && (!diffSet || diffSet.has(c.difficulty)));
+    const unseen = shuffle(pool);
     setSeenCardIds(seenIds);
     if (unseen.length === 0) {
       setCurrentCard(null);
@@ -98,6 +101,22 @@ export function useGameSession(): GameState & GameActions {
     } else {
       setCurrentCard(unseen[0]);
       setRemaining(unseen.slice(1));
+    }
+    setClueIndex(0);
+    setRevealed(false);
+    setEarnedPoints(null);
+  }, []);
+
+  const filterByDifficulty = useCallback((difficulties: Difficulty[]) => {
+    const diffSet = new Set(difficulties);
+    const pool = shuffle(cards.filter((c) => diffSet.has(c.difficulty)));
+    setSeenCardIds([]);
+    if (pool.length === 0) {
+      setCurrentCard(null);
+      setRemaining([]);
+    } else {
+      setCurrentCard(pool[0]);
+      setRemaining(pool.slice(1));
     }
     setClueIndex(0);
     setRevealed(false);
@@ -121,5 +140,6 @@ export function useGameSession(): GameState & GameActions {
     skip,
     nextCard,
     restoreSession,
+    filterByDifficulty,
   };
 }
