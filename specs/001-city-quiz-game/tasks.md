@@ -32,7 +32,7 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T006 Implement useGameSession hook in src/hooks/useGameSession.ts with Fisher-Yates shuffle, card draw, clue progression, reveal, skip, and next-card logic
+- [x] T006 Implement useGameSession hook in src/hooks/useGameSession.ts with Fisher-Yates shuffle, card draw, clue progression, reveal, skip, and next-card logic
 
 **Checkpoint**: Game state logic ready — UI implementation can begin
 
