@@ -15,33 +15,39 @@ test.describe("Game Modes (US5)", () => {
     await expect(page.getByTestId("scoreboard")).not.toBeVisible();
   });
 
-  test("competition: add players, play round, assign points, verify scoreboard", async ({
+  test("competition: add players, play round, assign points, verify score summary", async ({
     page,
   }) => {
     await page.goto("/");
     await page.getByTestId("mode-competition").click();
 
-    // Fill in two players
     await page.getByTestId("player-input-0").fill("Anna");
     await page.getByTestId("player-input-1").fill("Erik");
     await page.getByTestId("start-competition").click();
 
-    // Verify scoreboard is visible
     await expect(page.getByTestId("scoreboard")).toBeVisible();
 
     // Guess correct on clue 1 (5 points)
     await page.getByTestId("correct").click();
-
-    // Award to Anna
     await page.getByTestId("award-Anna").click();
 
-    // Verify scoreboard updated — Anna should have 5
+    // Score summary should appear with Anna's points
+    await expect(page.getByTestId("summary-next")).toBeVisible();
+    await expect(page.getByText("+5")).toBeVisible();
+
+    // Click through to next card
+    await page.getByTestId("summary-next").click();
+    await expect(page.getByTestId("clue-text")).toBeVisible();
+
+    // Scoreboard should now show Anna with 5
     const scoreboard = page.getByTestId("scoreboard");
     await expect(scoreboard).toContainText("5");
     await expect(scoreboard).toContainText("Anna");
   });
 
-  test("competition: nobody guessed awards no points", async ({ page }) => {
+  test("competition: nobody guessed shows score summary with no changes", async ({
+    page,
+  }) => {
     await page.goto("/");
     await page.getByTestId("mode-competition").click();
 
@@ -54,11 +60,17 @@ test.describe("Game Modes (US5)", () => {
       await page.getByTestId("next-clue").click();
     }
 
-    // Should show next-card button (0 points, no player assignment)
+    // 0 points — next-card goes to summary
     await expect(page.getByTestId("next-card")).toBeVisible();
     await page.getByTestId("next-card").click();
 
-    // Scoreboard should still show 0 for both
+    // Score summary should appear
+    await expect(page.getByTestId("summary-next")).toBeVisible();
+
+    // Click through
+    await page.getByTestId("summary-next").click();
+
+    // Back to game with scoreboard showing 0
     const scoreboard = page.getByTestId("scoreboard");
     await expect(scoreboard).toContainText("0");
   });

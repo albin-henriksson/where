@@ -37,7 +37,11 @@ interface JoinMessage {
   playerName: string;
 }
 
-type HostMessage = GameSync | { type: "buzz-result"; winnerId: string; winnerName: string } | { type: "buzz-reset" };
+type HostMessage =
+  | GameSync
+  | { type: "buzz-result"; winnerId: string; winnerName: string }
+  | { type: "buzz-reset" }
+  | { type: "buzz-wrong"; lockedPlayerId: string };
 type PlayerMessage = BuzzMessage | JoinMessage;
 
 function generateRoomCode(): string {
@@ -56,7 +60,10 @@ export function useMultiplayer() {
   const [peers, setPeers] = useState<PeerInfo[]>([]);
   const [gameSync, setGameSync] = useState<GameSync | null>(null);
   const [buzzWinner, setBuzzWinner] = useState<string | null>(null);
+  const [buzzWinnerId, setBuzzWinnerId] = useState<string | null>(null);
   const [hasBuzzed, setHasBuzzed] = useState(false);
+  const [isLockedOut, setIsLockedOut] = useState(false);
+  const lockedOutRef = useRef<Set<string>>(new Set());
 
   const roomRef = useRef<Room | null>(null);
   const sendHostRef = useRef<((data: HostMessage, peerId?: string) => void) | null>(null);
@@ -74,7 +81,10 @@ export function useMultiplayer() {
     setPeers([]);
     setGameSync(null);
     setBuzzWinner(null);
+    setBuzzWinnerId(null);
     setHasBuzzed(false);
+    setIsLockedOut(false);
+    lockedOutRef.current = new Set();
   }, []);
 
   const hostGame = useCallback(() => {
@@ -104,10 +114,11 @@ export function useMultiplayer() {
         peersRef.current = [...peersRef.current.filter((p) => p.id !== peerId), newPeer];
         setPeers([...peersRef.current]);
       } else if (data.type === "buzz") {
-        // First buzz wins
+        // Check if already have a winner or player is locked out
+        if (lockedOutRef.current.has(data.playerId)) return;
         setBuzzWinner((prev) => {
-          if (prev) return prev; // already have a winner
-          // Notify all players
+          if (prev) return prev;
+          setBuzzWinnerId(data.playerId);
           sendHostRef.current?.({ type: "buzz-result", winnerId: data.playerId, winnerName: data.playerName });
           return data.playerName;
         });
@@ -142,6 +153,16 @@ export function useMultiplayer() {
         setBuzzWinner(data.winnerName);
       } else if (data.type === "buzz-reset") {
         setBuzzWinner(null);
+        setBuzzWinnerId(null);
+        setHasBuzzed(false);
+        // Don't reset lockout — that persists per card. Only resetBuzz (new clue) clears hasBuzzed.
+      } else if (data.type === "buzz-wrong") {
+        // If I was the one who buzzed wrong, lock me out
+        if (data.lockedPlayerId === selfId) {
+          setIsLockedOut(true);
+        }
+        setBuzzWinner(null);
+        setBuzzWinnerId(null);
         setHasBuzzed(false);
       }
     });
@@ -153,18 +174,37 @@ export function useMultiplayer() {
   }, []);
 
   const buzz = useCallback(() => {
-    if (hasBuzzed) return;
+    if (hasBuzzed || isLockedOut) return;
     setHasBuzzed(true);
     sendPlayerRef.current?.({
       type: "buzz",
       playerId: selfId,
       playerName: playerNameRef.current,
     });
-  }, [hasBuzzed]);
+  }, [hasBuzzed, isLockedOut]);
+
+  const wrongBuzz = useCallback(() => {
+    if (!buzzWinnerId) return;
+    lockedOutRef.current.add(buzzWinnerId);
+    sendHostRef.current?.({ type: "buzz-wrong", lockedPlayerId: buzzWinnerId });
+    setBuzzWinner(null);
+    setBuzzWinnerId(null);
+  }, [buzzWinnerId]);
 
   const resetBuzz = useCallback(() => {
     setBuzzWinner(null);
+    setBuzzWinnerId(null);
     setHasBuzzed(false);
+    // Don't clear lockedOut — that persists per card
+    sendHostRef.current?.({ type: "buzz-reset" });
+  }, []);
+
+  const resetBuzzFull = useCallback(() => {
+    setBuzzWinner(null);
+    setBuzzWinnerId(null);
+    setHasBuzzed(false);
+    setIsLockedOut(false);
+    lockedOutRef.current = new Set();
     sendHostRef.current?.({ type: "buzz-reset" });
   }, []);
 
@@ -182,12 +222,16 @@ export function useMultiplayer() {
     peers,
     gameSync,
     buzzWinner,
+    buzzWinnerId,
     hasBuzzed,
+    isLockedOut,
     hostGame,
     joinGame,
     syncGameState,
     buzz,
+    wrongBuzz,
     resetBuzz,
+    resetBuzzFull,
     cleanup,
     selfId,
   };

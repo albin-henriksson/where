@@ -182,6 +182,32 @@
 
 ---
 
+## Phase 10: User Story 7 - Buzzer Mechanics & Score Summary (Priority: P1)
+
+**Goal**: Fair buzzer with lockout on wrong answer, reset per clue, score summary between rounds, flashier animations with accent colors
+
+**Independent Test**: Player buzzes wrong → locked out, another buzzes on next clue → correct. Score summary shown between cards.
+
+### Implementation for User Story 7
+
+- [ ] T051 [US7] Add lockout tracking to useMultiplayer hook — lockedOutPlayers set, wrongBuzz handler, reset on clue change
+- [ ] T052 [US7] Add "Rätt"/"Fel" buttons to host view when someone buzzes (instead of auto-awarding)
+- [ ] T053 [US7] Create ScoreSummary component in src/components/ScoreSummary.tsx — ranked players with round delta, animated
+- [ ] T054 [US7] Wire score summary between card rounds in App.tsx — show after reveal+award, before next card
+- [ ] T055 [US7] Sync buzz reset on clue advance from host to players via trystero
+- [ ] T056 [US7] Update BuzzerView to show lockout state and disable buzz for locked-out players
+- [ ] T057 [US7] Add flashier animations and accent colors — pulse on buzz, glow effects, gradient accents, confetti on correct
+
+### E2E Tests for User Story 7
+
+- [ ] T058 [US7] Write Playwright test in e2e/buzzer-mechanics.spec.ts: wrong buzz locks out player, others can still buzz
+- [ ] T059 [US7] Write Playwright test in e2e/buzzer-mechanics.spec.ts: buzz resets on next clue
+- [ ] T060 [US7] Write Playwright test in e2e/buzzer-mechanics.spec.ts: score summary appears between rounds
+
+**Checkpoint**: Buzzer is fair with risk, score summary flows between rounds, flashy animations
+
+---
+
 ## Dependencies & Execution Order
 
 ### Phase Dependencies
@@ -246,6 +272,7 @@ Task: "T027 [US4] Create Claude skill"
 6. Polish → Dockerfile, styling, cleanup
 7. Add US5 + e2e tests → Game modes with competition scoring
 8. Add US6 + e2e tests → Command bar for game management
+9. Add US7 + e2e tests → Buzzer mechanics, score summary, flashy animations
 
 ---
 

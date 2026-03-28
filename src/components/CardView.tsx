@@ -51,7 +51,7 @@ export function CardView({
 
             <div
               data-testid="points"
-              className="text-6xl font-black tabular-nums animate-slide-up"
+              className="text-6xl font-black tabular-nums animate-score-pop"
               style={{ color: earnedPoints ? "#4ade80" : "#f87171" }}
             >
               {earnedPoints === 0 ? "0" : earnedPoints}
@@ -156,7 +156,7 @@ export function CardView({
             <button
               data-testid="correct"
               onClick={onCorrect}
-              className="flex-1 py-4 px-6 bg-white text-black rounded-2xl text-base font-semibold active:scale-95 transition-all hover:bg-white/90"
+              className="flex-1 py-4 px-6 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-2xl text-base font-semibold active:scale-90 transition-all shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40"
             >
               Rätt!
             </button>

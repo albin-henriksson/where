@@ -8,6 +8,7 @@ interface BuzzerViewProps {
   earnedPoints?: number | null;
   buzzWinner: string | null;
   hasBuzzed: boolean;
+  isLockedOut: boolean;
   playerName: string;
   players: { id: string; name: string; score: number }[];
   onBuzz: () => void;
@@ -23,6 +24,7 @@ export function BuzzerView({
   earnedPoints,
   buzzWinner,
   hasBuzzed,
+  isLockedOut,
   playerName,
   players,
   onBuzz,
@@ -44,19 +46,18 @@ export function BuzzerView({
             </p>
           )}
           {buzzWinner && (
-            <p className="text-success text-sm mt-2 animate-fade-in">
-              {buzzWinner} buzzade först!
+            <p className="text-emerald-400 text-sm mt-2 animate-fade-in">
+              {buzzWinner} buzzade rätt!
             </p>
           )}
         </div>
 
-        {/* Scoreboard */}
         <div className="flex gap-4 justify-center">
-          {sorted.map((p, i) => (
+          {sorted.map((p) => (
             <div
               key={p.id}
               className={`flex flex-col items-center gap-0.5 ${
-                i === 0 && p.score > 0 ? "text-white" : "text-muted"
+                p.name === playerName ? "text-white" : "text-muted"
               }`}
             >
               <span className="text-lg font-bold tabular-nums">{p.score}</span>
@@ -69,6 +70,8 @@ export function BuzzerView({
       </div>
     );
   }
+
+  const canBuzz = !hasBuzzed && !isLockedOut && !buzzWinner;
 
   return (
     <div className="min-h-svh flex flex-col items-center justify-between bg-surface px-6 py-12">
@@ -90,14 +93,21 @@ export function BuzzerView({
           </span>
         </div>
 
-        <p className="text-lg leading-relaxed text-white text-center">
+        <p className="text-lg leading-relaxed text-white text-center animate-fade-in">
           {clueText}
         </p>
       </div>
 
       {/* Center: buzzer */}
       <div className="flex flex-col items-center gap-4">
-        {buzzWinner ? (
+        {isLockedOut ? (
+          <div className="animate-fade-in text-center">
+            <div className="w-40 h-40 rounded-full bg-card-border/30 flex items-center justify-center border border-card-border">
+              <span className="text-xl text-muted">Utslagen</span>
+            </div>
+            <p className="text-xs text-muted mt-3">Du kan inte buzza fler gånger detta kort</p>
+          </div>
+        ) : buzzWinner ? (
           <div className="animate-scale-in text-center">
             <p className="text-2xl font-bold text-white">{buzzWinner}</p>
             <p className="text-sm text-muted mt-1">buzzade först!</p>
@@ -106,11 +116,13 @@ export function BuzzerView({
           <button
             data-testid="buzz-button"
             onClick={onBuzz}
-            disabled={hasBuzzed}
-            className={`w-40 h-40 rounded-full text-2xl font-black uppercase tracking-wider transition-all active:scale-90 ${
+            disabled={!canBuzz}
+            className={`w-44 h-44 rounded-full text-2xl font-black uppercase tracking-wider transition-all ${
               hasBuzzed
-                ? "bg-card-border text-muted"
-                : "bg-white text-black shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_60px_rgba(255,255,255,0.25)]"
+                ? "bg-card-border text-muted scale-95"
+                : canBuzz
+                  ? "bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-[0_0_50px_rgba(139,92,246,0.3)] hover:shadow-[0_0_70px_rgba(139,92,246,0.5)] active:scale-90"
+                  : "bg-card-border text-muted"
             }`}
           >
             {hasBuzzed ? "Väntar..." : "BUZZ"}
