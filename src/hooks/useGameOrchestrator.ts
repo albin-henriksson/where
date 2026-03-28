@@ -227,7 +227,6 @@ export function useGameOrchestrator(): Orchestrator {
             setLastRound({ points, winnerName: player.name, cityName: session.currentCard?.city ?? null, country: session.currentCard?.country ?? null });
             mp.resetBuzzFull();
             mp.clearHintVotes();
-            setReaderIndex((i) => i + 1);
             setShowSummary(true);
           }, 50);
         }
@@ -388,7 +387,6 @@ export function useGameOrchestrator(): Orchestrator {
         game.awardPoints(player.id, points);
         setLastRound({ points, winnerName: player.name, cityName: session.currentCard?.city ?? null, country: session.currentCard?.country ?? null });
         mp.resetBuzzFull();
-        setReaderIndex((i) => i + 1);
         setShowSummary(true);
       }, 50);
     }
