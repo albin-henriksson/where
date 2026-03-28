@@ -140,19 +140,19 @@
 
 ### Implementation for User Story 5
 
-- [ ] T033 [US5] Add Player and GameMode types to src/data/types.ts
-- [ ] T034 [US5] Create useGameState hook in src/hooks/useGameState.ts — manages game mode, player list, scores, reset, add/remove players, adjust scores
-- [ ] T035 [US5] Create StartScreen component in src/components/StartScreen.tsx — mode selection (Frilek/Tävling) + player name input for competition
-- [ ] T036 [US5] Create Scoreboard component in src/components/Scoreboard.tsx — compact sorted player scores display
-- [ ] T037 [US5] Update CardView reveal to show player assignment buttons in competition mode in src/components/CardView.tsx
-- [ ] T038 [US5] Wire up game state, start screen, and scoreboard in src/App.tsx — screen routing between start/game
+- [x] T033 [US5] Add Player and GameMode types to src/data/types.ts
+- [x] T034 [US5] Create useGameState hook in src/hooks/useGameState.ts — manages game mode, player list, scores, reset, add/remove players, adjust scores
+- [x] T035 [US5] Create StartScreen component in src/components/StartScreen.tsx — mode selection (Frilek/Tävling) + player name input for competition
+- [x] T036 [US5] Create Scoreboard component in src/components/Scoreboard.tsx — compact sorted player scores display
+- [x] T037 [US5] Update CardView reveal to show player assignment buttons in competition mode in src/components/CardView.tsx
+- [x] T038 [US5] Wire up game state, start screen, and scoreboard in src/App.tsx — screen routing between start/game
 
 ### E2E Tests for User Story 5
 
-- [ ] T039 [US5] Write Playwright test in e2e/game-modes.spec.ts: verify start screen shows two mode options
-- [ ] T040 [US5] Write Playwright test in e2e/game-modes.spec.ts: select Frilek, verify game starts without player setup
-- [ ] T041 [US5] Write Playwright test in e2e/game-modes.spec.ts: select Tävling, add 2 players, start game, guess correct, assign points to player, verify scoreboard updates
-- [ ] T042 [US5] Write Playwright test in e2e/game-modes.spec.ts: verify nobody-guessed scenario awards no points in competition mode
+- [x] T039 [US5] Write Playwright test in e2e/game-modes.spec.ts: verify start screen shows two mode options
+- [x] T040 [US5] Write Playwright test in e2e/game-modes.spec.ts: select Frilek, verify game starts without player setup
+- [x] T041 [US5] Write Playwright test in e2e/game-modes.spec.ts: select Tävling, add 2 players, start game, guess correct, assign points to player, verify scoreboard updates
+- [x] T042 [US5] Write Playwright test in e2e/game-modes.spec.ts: verify nobody-guessed scenario awards no points in competition mode
 
 **Checkpoint**: Both game modes fully functional with score tracking in competition mode
 
@@ -166,17 +166,17 @@
 
 ### Implementation for User Story 6
 
-- [ ] T043 [US6] Install cmdk package (pnpm add cmdk)
-- [ ] T044 [US6] Create CommandBar component in src/components/CommandBar.tsx using cmdk — styled dark overlay with search input, filtered command list, keyboard navigation
-- [ ] T045 [US6] Define command registry in src/hooks/useGameState.ts — commands: reset scores, correct scores, skip card, new game, add player
-- [ ] T046 [US6] Wire CommandBar into App.tsx with Cmd+K / Ctrl+K keyboard shortcut
-- [ ] T047 [US6] Implement "Korrigera poäng" flow — selecting player then adjusting score via nested cmdk group
+- [x] T043 [US6] Install cmdk package (pnpm add cmdk)
+- [x] T044 [US6] Create CommandBar component in src/components/CommandBar.tsx using cmdk — styled dark overlay with search input, filtered command list, keyboard navigation
+- [x] T045 [US6] Define command registry in src/hooks/useGameState.ts — commands: reset scores, correct scores, skip card, new game, add player
+- [x] T046 [US6] Wire CommandBar into App.tsx with Cmd+K / Ctrl+K keyboard shortcut
+- [x] T047 [US6] Implement "Korrigera poäng" flow — selecting player then adjusting score via nested cmdk group
 
 ### E2E Tests for User Story 6
 
-- [ ] T048 [US6] Write Playwright test in e2e/command-bar.spec.ts: Cmd+K opens bar, Escape closes it
-- [ ] T049 [US6] Write Playwright test in e2e/command-bar.spec.ts: type to filter commands, Enter executes
-- [ ] T050 [US6] Write Playwright test in e2e/command-bar.spec.ts: execute "Nollställ poäng" and verify all scores reset to 0
+- [x] T048 [US6] Write Playwright test in e2e/command-bar.spec.ts: Cmd+K opens bar, Escape closes it
+- [x] T049 [US6] Write Playwright test in e2e/command-bar.spec.ts: type to filter commands, Enter executes
+- [x] T050 [US6] Write Playwright test in e2e/command-bar.spec.ts: execute "Nollställ poäng" and verify all scores reset to 0
 
 **Checkpoint**: Command bar fully functional with all game management commands
 

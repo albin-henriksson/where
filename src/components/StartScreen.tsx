@@ -3,9 +3,10 @@ import type { GameMode } from "../data/types";
 
 interface StartScreenProps {
   onStart: (mode: GameMode, playerNames?: string[]) => void;
+  onMultiplayer?: () => void;
 }
 
-export function StartScreen({ onStart }: StartScreenProps) {
+export function StartScreen({ onStart, onMultiplayer }: StartScreenProps) {
   const [step, setStep] = useState<"mode" | "players">("mode");
   const [playerNames, setPlayerNames] = useState<string[]>(["", ""]);
   const [newName, setNewName] = useState("");
@@ -123,6 +124,17 @@ export function StartScreen({ onStart }: StartScreenProps) {
           <h3 className="text-lg font-semibold text-white">Tävling</h3>
           <p className="text-sm text-muted mt-0.5">
             Med poäng — den som gissar rätt får poängen.
+          </p>
+        </button>
+
+        <button
+          data-testid="mode-multiplayer"
+          onClick={onMultiplayer}
+          className="group bg-card border border-card-border rounded-2xl p-5 text-left hover:border-text-dim/30 transition-all active:scale-[0.98]"
+        >
+          <h3 className="text-lg font-semibold text-white">Multiplayer</h3>
+          <p className="text-sm text-muted mt-0.5">
+            Varje spelare har en egen enhet med buzzer.
           </p>
         </button>
       </div>

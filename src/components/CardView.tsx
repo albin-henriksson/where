@@ -6,6 +6,7 @@ interface CardViewProps {
   revealed: boolean;
   earnedPoints: number | null;
   players?: Player[];
+  showAnswer?: boolean;
   onNextClue: () => void;
   onCorrect: () => void;
   onNextCard: () => void;
@@ -18,6 +19,7 @@ export function CardView({
   revealed,
   earnedPoints,
   players,
+  showAnswer,
   onNextClue,
   onCorrect,
   onNextCard,
@@ -105,6 +107,15 @@ export function CardView({
       {/* Main card */}
       <div className="relative bg-card border border-card-border rounded-3xl p-8">
         <div className="flex flex-col gap-6">
+          {/* Reader answer (competition mode) */}
+          {showAnswer && (
+            <div data-testid="reader-answer" className="text-center -mt-1 mb--2">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-muted/60">
+                {card.city}, {card.country}
+              </p>
+            </div>
+          )}
+
           {/* Progress dots + points */}
           <div className="flex items-center justify-between">
             <div className="flex gap-2">
