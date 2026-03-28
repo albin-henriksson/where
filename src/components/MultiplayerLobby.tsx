@@ -37,6 +37,8 @@ export function MultiplayerLobby({
   onBack,
 }: MultiplayerLobbyProps) {
   const [joinCode, setJoinCode] = useState(initialRoomCode ?? "");
+  const [joinError, setJoinError] = useState<string | null>(null);
+  const [joining, setJoining] = useState(false);
   const [playerName, setPlayerName] = useState("");
   const [hostPlayerName, setHostPlayerName] = useState("");
   const [step, setStep] = useState<"choose" | "host-name" | "hosting" | "joining">(
@@ -214,10 +216,16 @@ export function MultiplayerLobby({
         {connected && (
           <p className="text-success text-sm animate-fade-in">Ansluten! Väntar på att spelet ska börja...</p>
         )}
+        {joinError && (
+          <p className="text-danger text-sm animate-fade-in">{joinError}</p>
+        )}
+        {joining && !connected && !joinError && (
+          <p className="text-muted text-sm animate-fade-in">Ansluter...</p>
+        )}
 
         <div className="flex gap-3 w-full mt-2">
           <button
-            onClick={() => { setStep("choose"); onBack(); }}
+            onClick={() => { setJoinError(null); setJoining(false); setStep("choose"); onBack(); }}
             className="flex-1 py-4 bg-card-border/50 text-text-dim rounded-2xl text-base font-medium border border-card-border"
           >
             Tillbaka
@@ -226,13 +234,24 @@ export function MultiplayerLobby({
             data-testid="join-submit"
             onClick={() => {
               if (joinCode.length === 4 && playerName.trim()) {
+                setJoinError(null);
+                setJoining(true);
                 onJoin(joinCode, playerName.trim());
+                // Timeout: if not connected within 10s, show error
+                setTimeout(() => {
+                  setJoining((j) => {
+                    if (j && !connected) {
+                      setJoinError("Kunde inte ansluta. Kontrollera rumskoden och försök igen.");
+                    }
+                    return false;
+                  });
+                }, 10000);
               }
             }}
-            disabled={joinCode.length !== 4 || !playerName.trim() || connected}
+            disabled={joinCode.length !== 4 || !playerName.trim() || connected || joining}
             className="flex-1 py-4 bg-white text-black rounded-2xl text-base font-semibold disabled:opacity-20 disabled:cursor-not-allowed transition-all active:scale-95"
           >
-            {connected ? "Ansluten" : "Anslut"}
+            {connected ? "Ansluten" : joining ? "Ansluter..." : "Anslut"}
           </button>
         </div>
       </div>

@@ -92,6 +92,8 @@ function renderScreen(o: Orchestrator) {
         <StartScreen
           onStart={(mode, names) => mode === "freeplay" ? o.startFreeplay() : o.startCompetition(names ?? [])}
           onMultiplayer={o.openMultiplayer}
+          availableGames={o.availableGames}
+          onJoinGame={o.joinDiscoveredGame}
         />
       </div>
     );

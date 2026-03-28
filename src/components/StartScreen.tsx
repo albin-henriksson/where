@@ -1,12 +1,20 @@
 import { useState } from "react";
 import type { GameMode } from "../data/types";
 
+interface AvailableGame {
+  roomCode: string;
+  hostName: string;
+  playerCount: number;
+}
+
 interface StartScreenProps {
   onStart: (mode: GameMode, playerNames?: string[]) => void;
   onMultiplayer?: () => void;
+  availableGames?: AvailableGame[];
+  onJoinGame?: (code: string) => void;
 }
 
-export function StartScreen({ onStart, onMultiplayer }: StartScreenProps) {
+export function StartScreen({ onStart, onMultiplayer, availableGames = [], onJoinGame }: StartScreenProps) {
   const [step, setStep] = useState<"mode" | "players">("mode");
   const [playerNames, setPlayerNames] = useState<string[]>(["", ""]);
   const [newName, setNewName] = useState("");
@@ -138,6 +146,33 @@ export function StartScreen({ onStart, onMultiplayer }: StartScreenProps) {
           </p>
         </button>
       </div>
+
+      {/* Discovered games on network */}
+      {availableGames.length > 0 && onJoinGame && (
+        <div className="w-full max-w-sm mt-2 animate-fade-in">
+          <p className="text-xs text-muted uppercase tracking-widest mb-2 text-center">
+            Spel på nätverket
+          </p>
+          <div className="flex flex-col gap-2">
+            {availableGames.map((game) => (
+              <button
+                key={game.roomCode}
+                data-testid={`start-discovered-${game.roomCode}`}
+                onClick={() => onJoinGame(game.roomCode)}
+                className="w-full bg-card border border-violet-500/20 rounded-2xl px-5 py-3 text-left hover:border-violet-500/40 transition-all active:scale-[0.98]"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="text-white font-medium">Gå med</span>
+                    <span className="text-muted text-sm ml-2">{game.roomCode}</span>
+                  </div>
+                  <span className="text-xs text-muted">{game.playerCount} spelare</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

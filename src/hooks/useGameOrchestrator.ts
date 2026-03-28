@@ -82,6 +82,7 @@ export interface Orchestrator {
   startFreeplay: () => void;
   startCompetition: (names: string[]) => void;
   openMultiplayer: () => void;
+  joinDiscoveredGame: (code: string) => void;
   hostGame: (name: string) => void;
   joinGame: (code: string, name: string) => void;
   startMultiplayer: () => void;
@@ -207,6 +208,8 @@ export function useGameOrchestrator(): Orchestrator {
       session.restoreSession(saved.seenCardIds);
       setReaderIndex(saved.readerIndex);
     }
+    // Always scan for games on the network
+    lobby.startScanning();
   }, []);
 
   // Auto-save local game state (not multiplayer)
@@ -336,6 +339,11 @@ export function useGameOrchestrator(): Orchestrator {
     setMpScreen("lobby");
     lobby.startScanning();
   }, [lobby]);
+
+  const joinDiscoveredGame = useCallback((code: string) => {
+    setMpScreen("lobby");
+    setInitialRoomCode(code);
+  }, []);
 
   const hostGame = useCallback((name: string) => {
     setPlayerName(name);
@@ -488,6 +496,7 @@ export function useGameOrchestrator(): Orchestrator {
     startFreeplay,
     startCompetition,
     openMultiplayer,
+    joinDiscoveredGame,
     hostGame,
     joinGame,
     startMultiplayer,
