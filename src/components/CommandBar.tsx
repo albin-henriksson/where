@@ -12,6 +12,8 @@ interface CommandBarProps {
   onAddPlayer: (name: string) => void;
   onSkipCard: () => void;
   onNewGame: () => void;
+  onToggleDevMode?: () => void;
+  devMode?: boolean;
 }
 
 export function CommandBar({
@@ -24,6 +26,8 @@ export function CommandBar({
   onAddPlayer,
   onSkipCard,
   onNewGame,
+  onToggleDevMode,
+  devMode,
 }: CommandBarProps) {
   const [subMenu, setSubMenu] = useState<
     null | "adjust-player" | "adjust-amount"
@@ -175,6 +179,19 @@ export function CommandBar({
                       >
                         Ny omgång
                       </Command.Item>
+                      {onToggleDevMode && (
+                        <Command.Item
+                          data-testid="cmd-dev-mode"
+                          value="Dev mode diagnostik"
+                          onSelect={() => {
+                            onToggleDevMode();
+                            close();
+                          }}
+                          className="px-3 py-2.5 rounded-xl text-sm text-text-dim cursor-pointer data-[selected=true]:bg-card-border data-[selected=true]:text-white transition-colors"
+                        >
+                          {devMode ? "Stäng dev mode" : "Dev mode"}
+                        </Command.Item>
+                      )}
                     </Command.Group>
 
                     {isCompetition && (

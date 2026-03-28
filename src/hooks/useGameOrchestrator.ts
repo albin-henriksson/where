@@ -99,6 +99,9 @@ export interface Orchestrator {
   sendReaderAction: (action: "next-clue" | "correct" | "skip" | "buzz-correct" | "buzz-wrong") => void;
   voteNextHint: () => void;
 
+  devMode: boolean;
+  toggleDevMode: () => void;
+
   toggleCmdBar: () => void;
   closeCmdBar: () => void;
   resetScores: () => void;
@@ -120,6 +123,7 @@ export function useGameOrchestrator(): Orchestrator {
   const [cmdBarOpen, setCmdBarOpen] = useState(false);
   const [initialRoomCode, setInitialRoomCode] = useState<string | null>(null);
   const [readerIndex, setReaderIndex] = useState(0);
+  const [devMode, setDevMode] = useState(false);
 
   const prevClueIndex = useRef(session.clueIndex);
   const hasCheckedUrl = useRef(false);
@@ -391,6 +395,7 @@ export function useGameOrchestrator(): Orchestrator {
   }, [mp.buzzWinner, game, session, mp]);
 
   const buzzWrong = useCallback(() => mp.wrongBuzz(), [mp]);
+  const toggleDevMode = useCallback(() => setDevMode((p) => !p), []);
 
   const buzz = useCallback(() => mp.buzz(), [mp]);
 
@@ -455,6 +460,8 @@ export function useGameOrchestrator(): Orchestrator {
     buzz,
     sendReaderAction: mp.sendReaderAction,
     voteNextHint: mp.voteNextHint,
+    devMode,
+    toggleDevMode,
     toggleCmdBar,
     closeCmdBar,
     resetScores,
