@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 
 test.describe("Quiz Round (US1)", () => {
   test.beforeEach(async ({ page }) => {

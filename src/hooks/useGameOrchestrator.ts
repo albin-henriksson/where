@@ -3,10 +3,11 @@ import { useGameSession } from "./useGameSession";
 import { useGameState } from "./useGameState";
 import { useMultiplayer } from "./useMultiplayer";
 import { useLobbyDiscovery } from "./useLobbyDiscovery";
-import { saveGameState, loadGameState, clearGameState } from "./usePersistence";
+import { saveGameState, loadGameState, clearGameState, isIntroDismissed, dismissIntro } from "./usePersistence";
 import type { CityCard, Player } from "../data/types";
 
 export type AppScreen =
+  | "intro"
   | "start"
   | "mp-lobby"
   | "mp-waiting"
@@ -79,6 +80,8 @@ export interface Orchestrator {
   cmdBarOpen: boolean;
 
   // Actions
+  dismissIntroScreen: () => void;
+  dismissIntroForever: () => void;
   startFreeplay: () => void;
   startCompetition: (names: string[]) => void;
   openMultiplayer: () => void;
@@ -127,6 +130,7 @@ export function useGameOrchestrator(): Orchestrator {
   const [initialRoomCode, setInitialRoomCode] = useState<string | null>(null);
   const [readerIndex, setReaderIndex] = useState(0);
   const [devMode, setDevMode] = useState(false);
+  const [showIntro, setShowIntro] = useState(() => !isIntroDismissed());
 
   const prevClueIndex = useRef(session.clueIndex);
   const hasCheckedUrl = useRef(false);
@@ -175,6 +179,8 @@ export function useGameOrchestrator(): Orchestrator {
     screen = "mp-lobby";
   } else if (showSummary && isCompetition) {
     screen = "summary";
+  } else if (showIntro && game.screen === "start" && !mpScreen) {
+    screen = "intro";
   } else if (game.screen === "start" && !mpScreen) {
     screen = "start";
   } else {
@@ -320,6 +326,12 @@ export function useGameOrchestrator(): Orchestrator {
   }, [session, cmdBarOpen, game.screen, isMultiplayerPlayer]);
 
   // --- Actions ---
+
+  const dismissIntroScreen = useCallback(() => setShowIntro(false), []);
+  const dismissIntroForever = useCallback(() => {
+    setShowIntro(false);
+    dismissIntro();
+  }, []);
 
   const startFreeplay = useCallback(() => game.startGame("freeplay"), [game]);
 
@@ -486,6 +498,8 @@ export function useGameOrchestrator(): Orchestrator {
     playerName,
     lastRound,
     cmdBarOpen,
+    dismissIntroScreen,
+    dismissIntroForever,
     startFreeplay,
     startCompetition,
     openMultiplayer,

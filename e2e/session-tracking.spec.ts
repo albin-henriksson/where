@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 
 test.describe("Session Tracking (US3)", () => {
   test("shows empty deck message after skipping all cards", async ({

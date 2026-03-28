@@ -10,6 +10,7 @@ import { CommandBar } from "./components/CommandBar";
 import { EmptyDeck } from "./components/EmptyDeck";
 import { SkipButton } from "./components/SkipButton";
 import { DevOverlay } from "./components/DevOverlay";
+import { IntroScreen } from "./components/IntroScreen";
 
 function buildSync(o: Orchestrator) {
   return o.gameSync ?? (o.currentCard ? {
@@ -83,6 +84,15 @@ function renderScreen(o: Orchestrator) {
           onStart={o.startMultiplayer} onBack={o.backToStart}
         />
       </div>
+    );
+  }
+
+  if (o.screen === "intro") {
+    return (
+      <IntroScreen
+        onContinue={o.dismissIntroScreen}
+        onDontShowAgain={o.dismissIntroForever}
+      />
     );
   }
 

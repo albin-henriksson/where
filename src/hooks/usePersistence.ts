@@ -39,3 +39,21 @@ export function clearGameState() {
     // ignore
   }
 }
+
+const INTRO_KEY = "where-intro-dismissed";
+
+export function isIntroDismissed(): boolean {
+  try {
+    return localStorage.getItem(INTRO_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
+export function dismissIntro() {
+  try {
+    localStorage.setItem(INTRO_KEY, "true");
+  } catch {
+    // ignore
+  }
+}

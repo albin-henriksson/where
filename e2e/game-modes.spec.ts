@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 
 test.describe("Game Modes (US5)", () => {
   test("start screen shows two mode options", async ({ page }) => {

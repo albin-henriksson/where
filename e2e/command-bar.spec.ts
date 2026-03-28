@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 
 test.describe("Command Bar (US6)", () => {
   test("Cmd+K opens bar, Escape closes it", async ({ page }) => {

@@ -1,4 +1,9 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
+import type { Page } from "@playwright/test";
+
+async function dismissIntro(page: Page) {
+  await page.addInitScript(() => localStorage.setItem("where-intro-dismissed", "true"));
+}
 
 test.describe("Multiplayer UI (US7)", () => {
   test("start screen shows multiplayer option", async ({ page }) => {
@@ -70,7 +75,9 @@ test.describe("Multiplayer P2P", () => {
     const hostContext = await browser.newContext();
     const playerContext = await browser.newContext();
     const hostPage = await hostContext.newPage();
+    await dismissIntro(hostPage);
     const playerPage = await playerContext.newPage();
+    await dismissIntro(playerPage);
 
     // Host creates a game
     await hostPage.goto("http://localhost:5173");
@@ -101,8 +108,11 @@ test.describe("Multiplayer P2P", () => {
     const player1Context = await browser.newContext();
     const player2Context = await browser.newContext();
     const hostPage = await hostContext.newPage();
+    await dismissIntro(hostPage);
     const player1Page = await player1Context.newPage();
+    await dismissIntro(player1Page);
     const player2Page = await player2Context.newPage();
+    await dismissIntro(player2Page);
 
     // Host creates a game with their name
     await hostPage.goto("http://localhost:5173");
