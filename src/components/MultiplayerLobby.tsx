@@ -18,7 +18,7 @@ interface MultiplayerLobbyProps {
   peers: PeerInfo[];
   initialRoomCode?: string | null;
   availableGames?: AvailableGame[];
-  onHost: () => void;
+  onHost: (name: string) => void;
   onJoin: (code: string, name: string) => void;
   onStart: () => void;
   onBack: () => void;
@@ -38,7 +38,8 @@ export function MultiplayerLobby({
 }: MultiplayerLobbyProps) {
   const [joinCode, setJoinCode] = useState(initialRoomCode ?? "");
   const [playerName, setPlayerName] = useState("");
-  const [step, setStep] = useState<"choose" | "hosting" | "joining">(
+  const [hostPlayerName, setHostPlayerName] = useState("");
+  const [step, setStep] = useState<"choose" | "host-name" | "hosting" | "joining">(
     initialRoomCode
       ? "joining"
       : mode === "host"
@@ -47,6 +48,44 @@ export function MultiplayerLobby({
           ? "joining"
           : "choose",
   );
+
+  if (step === "host-name") {
+    return (
+      <div className="flex flex-col items-center gap-6 p-8 w-full max-w-sm mx-auto animate-slide-up">
+        <h2 className="text-2xl font-bold text-white">Ditt namn</h2>
+        <input
+          data-testid="host-name-input"
+          type="text"
+          value={hostPlayerName}
+          onChange={(e) => setHostPlayerName(e.target.value)}
+          placeholder="Ange ditt namn"
+          className="w-full bg-card border border-card-border rounded-xl px-4 py-3 text-white placeholder:text-muted focus:outline-none focus:border-text-dim transition-colors text-center"
+          autoFocus
+        />
+        <div className="flex gap-3 w-full">
+          <button
+            onClick={() => setStep("choose")}
+            className="flex-1 py-4 bg-card-border/50 text-text-dim rounded-2xl text-base font-medium border border-card-border"
+          >
+            Tillbaka
+          </button>
+          <button
+            data-testid="host-name-submit"
+            onClick={() => {
+              if (hostPlayerName.trim()) {
+                onHost(hostPlayerName.trim());
+                setStep("hosting");
+              }
+            }}
+            disabled={!hostPlayerName.trim()}
+            className="flex-1 py-4 bg-white text-black rounded-2xl text-base font-semibold disabled:opacity-20 disabled:cursor-not-allowed transition-all active:scale-95"
+          >
+            Skapa rum
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (step === "hosting") {
     return (
@@ -209,10 +248,7 @@ export function MultiplayerLobby({
       <div className="flex flex-col gap-3 w-full">
         <button
           data-testid="mp-host"
-          onClick={() => {
-            onHost();
-            setStep("hosting");
-          }}
+          onClick={() => setStep("host-name")}
           className="bg-card border border-card-border rounded-2xl p-5 text-left hover:border-text-dim/30 transition-all active:scale-[0.98]"
         >
           <h3 className="text-lg font-semibold text-white">Skapa spel</h3>

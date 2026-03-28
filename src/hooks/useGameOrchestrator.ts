@@ -58,8 +58,11 @@ export interface Orchestrator {
     players: { id: string; name: string; score: number }[];
     currentReader?: string;
     imageUrl?: string;
+    hintVoteCount?: number;
+    totalNonReaders?: number;
   } | null;
   playerName: string;
+  isMultiplayer: boolean;
 
   // Round result (for summary)
   lastRound: RoundResult;
@@ -71,7 +74,7 @@ export interface Orchestrator {
   startFreeplay: () => void;
   startCompetition: (names: string[]) => void;
   openMultiplayer: () => void;
-  hostGame: () => void;
+  hostGame: (name: string) => void;
   joinGame: (code: string, name: string) => void;
   startMultiplayer: () => void;
   backToStart: () => void;
@@ -86,6 +89,8 @@ export interface Orchestrator {
   buzzCorrect: () => void;
   buzzWrong: () => void;
   buzz: () => void;
+  sendReaderAction: (action: "next-clue" | "correct" | "skip" | "buzz-correct" | "buzz-wrong") => void;
+  voteNextHint: () => void;
 
   toggleCmdBar: () => void;
   closeCmdBar: () => void;
@@ -115,19 +120,39 @@ export function useGameOrchestrator(): Orchestrator {
   const isCompetition = game.mode === "competition";
   const isMultiplayerHost = mp.role === "host" && mpScreen === "playing";
   const isMultiplayerPlayer = mp.role === "player";
+  const isMultiplayer = isMultiplayerHost || isMultiplayerPlayer;
 
-  // Current reader rotates among peers
-  const currentReader = isMultiplayerHost && mp.peers.length > 0
-    ? mp.peers[readerIndex % mp.peers.length]?.name ?? null
+  // All participants: host + peers (host is included in rotation)
+  const allParticipants = isMultiplayerHost
+    ? [mp.hostName, ...mp.peers.map((p) => p.name)]
+    : [];
+
+  // Current reader rotates among ALL participants (host included)
+  const currentReader = isMultiplayerHost && allParticipants.length > 0
+    ? allParticipants[readerIndex % allParticipants.length] ?? null
     : null;
 
-  // Player is the reader if their name matches currentReader from the sync
-  const isReader = isMultiplayerPlayer && !!mp.gameSync?.currentReader && mp.gameSync.currentReader === playerName;
+  // Am I the reader? (works for both host and player devices)
+  const isHostReader = isMultiplayerHost && currentReader === mp.hostName;
+  const isPlayerReader = isMultiplayerPlayer && !!mp.gameSync?.currentReader && mp.gameSync.currentReader === playerName;
+  const isReader = isHostReader || isPlayerReader;
 
   // Derive screen
   let screen: AppScreen;
-  if (isMultiplayerPlayer && mp.gameSync) {
-    screen = isReader ? "mp-reader" : "mp-buzzer";
+  if (isMultiplayerHost && mpScreen === "playing") {
+    if (showSummary) {
+      screen = "summary";
+    } else if (isHostReader) {
+      screen = "mp-reader";
+    } else {
+      screen = "mp-buzzer";
+    }
+  } else if (isMultiplayerPlayer && mp.gameSync) {
+    if (isPlayerReader) {
+      screen = "mp-reader";
+    } else {
+      screen = "mp-buzzer";
+    }
   } else if (isMultiplayerPlayer && !mp.gameSync) {
     screen = "mp-waiting";
   } else if (mpScreen === "lobby") {
@@ -170,6 +195,45 @@ export function useGameOrchestrator(): Orchestrator {
     }
   }, [isMultiplayerHost, session.clueIndex, mp]);
 
+  // Handle pending reader actions from remote reader (host executes)
+  useEffect(() => {
+    if (!isMultiplayerHost || !mp.pendingReaderAction) return;
+    const action = mp.consumeReaderAction();
+    if (!action) return;
+    switch (action) {
+      case "next-clue": session.nextClue(); mp.clearHintVotes(); break;
+      case "correct": session.correct(); break;
+      case "skip": mp.resetBuzzFull(); session.skip(); mp.clearHintVotes(); break;
+      case "buzz-correct": {
+        const player = game.players.find((p) => p.name === mp.buzzWinner);
+        if (player) {
+          session.correct();
+          setTimeout(() => {
+            const points = 5 - session.clueIndex;
+            game.awardPoints(player.id, points);
+            setLastRound({ points, winnerName: player.name });
+            mp.resetBuzzFull();
+            mp.clearHintVotes();
+            setReaderIndex((i) => i + 1);
+            setShowSummary(true);
+          }, 50);
+        }
+        break;
+      }
+      case "buzz-wrong": mp.wrongBuzz(); break;
+    }
+  }, [isMultiplayerHost, mp.pendingReaderAction]);
+
+  // Handle hint vote majority (host auto-advances)
+  useEffect(() => {
+    if (!isMultiplayerHost) return;
+    const nonReaderCount = allParticipants.length - 1;
+    if (nonReaderCount > 0 && mp.hintVotes.size > nonReaderCount / 2) {
+      session.nextClue();
+      mp.clearHintVotes();
+    }
+  }, [isMultiplayerHost, mp.hintVotes.size, allParticipants.length]);
+
   // Sync game state to peers (host)
   useEffect(() => {
     if (!isMultiplayerHost || !session.currentCard) return;
@@ -186,8 +250,10 @@ export function useGameOrchestrator(): Orchestrator {
       players: game.players,
       currentReader: currentReader ?? undefined,
       imageUrl: session.clueIndex === 2 ? session.currentCard.imageUrl : undefined,
+      hintVoteCount: mp.hintVotes.size,
+      totalNonReaders: allParticipants.length - 1,
     });
-  }, [isMultiplayerHost, session.currentCard, session.clueIndex, session.revealed, session.earnedPoints, mp.buzzWinner, game.players, currentReader]);
+  }, [isMultiplayerHost, session.currentCard, session.clueIndex, session.revealed, session.earnedPoints, mp.buzzWinner, game.players, currentReader, mp.hintVotes.size, allParticipants.length]);
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -218,9 +284,10 @@ export function useGameOrchestrator(): Orchestrator {
     lobby.startScanning();
   }, [lobby]);
 
-  const hostGame = useCallback(() => {
+  const hostGame = useCallback((name: string) => {
     lobby.stopScanning();
-    mp.hostGame();
+    setPlayerName(name);
+    mp.hostGame(name);
   }, [mp, lobby]);
 
   const joinGame = useCallback(
@@ -233,12 +300,13 @@ export function useGameOrchestrator(): Orchestrator {
   );
 
   const startMultiplayer = useCallback(() => {
-    const names = mp.peers.map((p) => p.name);
+    // Include host as a player
+    const names = [mp.hostName, ...mp.peers.map((p) => p.name)];
     game.startGame("competition", names);
     setReaderIndex(0);
     setMpScreen("playing");
     lobby.stopAdvertising();
-  }, [mp.peers, game, lobby]);
+  }, [mp.hostName, mp.peers, game, lobby]);
 
   const backToStart = useCallback(() => {
     mp.cleanup();
@@ -338,7 +406,8 @@ export function useGameOrchestrator(): Orchestrator {
     cardsRemaining: session.cardsRemaining,
     isCompetition,
     players: game.players,
-    showAnswer: isCompetition || isMultiplayerHost,
+    showAnswer: isCompetition || isMultiplayer,
+    isMultiplayer,
     mpRole: mp.role,
     roomCode: mp.roomCode,
     mpConnected: mp.connected,
@@ -370,6 +439,8 @@ export function useGameOrchestrator(): Orchestrator {
     buzzCorrect,
     buzzWrong,
     buzz,
+    sendReaderAction: mp.sendReaderAction,
+    voteNextHint: mp.voteNextHint,
     toggleCmdBar,
     closeCmdBar,
     resetScores,

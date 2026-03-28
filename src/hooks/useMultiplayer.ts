@@ -25,6 +25,8 @@ interface GameSync {
   players: { id: string; name: string; score: number }[];
   currentReader?: string;
   imageUrl?: string;
+  hintVoteCount?: number;
+  totalNonReaders?: number;
 }
 
 // Messages from player → host
@@ -45,7 +47,17 @@ type HostMessage =
   | { type: "buzz-reset" }
   | { type: "buzz-reset-full" }
   | { type: "buzz-wrong"; lockedPlayerId: string };
-type PlayerMessage = BuzzMessage | JoinMessage;
+interface ReaderActionMessage {
+  type: "reader-action";
+  action: "next-clue" | "correct" | "skip" | "buzz-correct" | "buzz-wrong";
+}
+
+interface VoteNextHintMessage {
+  type: "vote-next-hint";
+  playerName: string;
+}
+
+type PlayerMessage = BuzzMessage | JoinMessage | ReaderActionMessage | VoteNextHintMessage;
 
 function generateRoomCode(): string {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -66,6 +78,9 @@ export function useMultiplayer() {
   const [buzzWinnerId, setBuzzWinnerId] = useState<string | null>(null);
   const [hasBuzzed, setHasBuzzed] = useState(false);
   const [isLockedOut, setIsLockedOut] = useState(false);
+  const [hostName, setHostName] = useState<string>("");
+  const [hintVotes, setHintVotes] = useState<Set<string>>(new Set());
+  const [pendingReaderAction, setPendingReaderAction] = useState<ReaderActionMessage["action"] | null>(null);
   const lockedOutRef = useRef<Set<string>>(new Set());
 
   const roomRef = useRef<Room | null>(null);
@@ -87,13 +102,18 @@ export function useMultiplayer() {
     setBuzzWinnerId(null);
     setHasBuzzed(false);
     setIsLockedOut(false);
+    setHostName("");
+    setHintVotes(new Set());
+    setPendingReaderAction(null);
     lockedOutRef.current = new Set();
   }, []);
 
-  const hostGame = useCallback(() => {
+  const hostGame = useCallback((name: string) => {
     const code = generateRoomCode();
     setRoomCode(code);
     setRole("host");
+    setHostName(name);
+    playerNameRef.current = name;
 
     const room = joinRoom({ appId: APP_ID }, code.toLowerCase());
     roomRef.current = room;
@@ -125,6 +145,10 @@ export function useMultiplayer() {
           sendHostRef.current?.({ type: "buzz-result", winnerId: data.playerId, winnerName: data.playerName });
           return data.playerName;
         });
+      } else if (data.type === "reader-action") {
+        setPendingReaderAction(data.action);
+      } else if (data.type === "vote-next-hint") {
+        setHintVotes((prev) => new Set([...prev, data.playerName]));
       }
     });
   }, []);
@@ -215,6 +239,31 @@ export function useMultiplayer() {
     sendHostRef.current?.({ type: "buzz-reset-full" });
   }, []);
 
+  // Reader sends an action to the host
+  const sendReaderAction = useCallback((action: ReaderActionMessage["action"]) => {
+    sendPlayerRef.current?.({ type: "reader-action", action });
+  }, []);
+
+  // Consume pending reader action (host calls this)
+  const consumeReaderAction = useCallback(() => {
+    const action = pendingReaderAction;
+    setPendingReaderAction(null);
+    return action;
+  }, [pendingReaderAction]);
+
+  // Vote for next hint
+  const voteNextHint = useCallback(() => {
+    sendPlayerRef.current?.({ type: "vote-next-hint", playerName: playerNameRef.current });
+    // If host is voting, add locally too
+    if (role === "host") {
+      setHintVotes((prev) => new Set([...prev, playerNameRef.current]));
+    }
+  }, [role]);
+
+  const clearHintVotes = useCallback(() => {
+    setHintVotes(new Set());
+  }, []);
+
   // Cleanup on unmount
   useEffect(() => {
     return () => {
@@ -232,6 +281,9 @@ export function useMultiplayer() {
     buzzWinnerId,
     hasBuzzed,
     isLockedOut,
+    hostName,
+    hintVotes,
+    pendingReaderAction,
     hostGame,
     joinGame,
     syncGameState,
@@ -239,6 +291,10 @@ export function useMultiplayer() {
     wrongBuzz,
     resetBuzz,
     resetBuzzFull,
+    sendReaderAction,
+    consumeReaderAction,
+    voteNextHint,
+    clearHintVotes,
     cleanup,
     selfId,
   };

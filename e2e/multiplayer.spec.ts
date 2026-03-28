@@ -18,6 +18,8 @@ test.describe("Multiplayer UI (US7)", () => {
     await page.goto("/");
     await page.getByTestId("mode-multiplayer").click();
     await page.getByTestId("mp-host").click();
+    await page.getByTestId("host-name-input").fill("TestHost");
+    await page.getByTestId("host-name-submit").click();
 
     const roomCode = page.getByTestId("room-code");
     await expect(roomCode).toBeVisible();
@@ -53,8 +55,9 @@ test.describe("Multiplayer UI (US7)", () => {
     await page.goto("/");
     await page.getByTestId("mode-multiplayer").click();
     await page.getByTestId("mp-host").click();
+    await page.getByTestId("host-name-input").fill("TestHost");
+    await page.getByTestId("host-name-submit").click();
 
-    // Click Avbryt (cancel)
     await page.getByText("Avbryt").click();
     await expect(page.getByTestId("mode-freeplay")).toBeVisible();
   });
@@ -71,10 +74,12 @@ test.describe("Multiplayer P2P", () => {
     const player1Page = await player1Context.newPage();
     const player2Page = await player2Context.newPage();
 
-    // Host creates a game
+    // Host creates a game with their name
     await hostPage.goto("http://localhost:5173");
     await hostPage.getByTestId("mode-multiplayer").click();
     await hostPage.getByTestId("mp-host").click();
+    await hostPage.getByTestId("host-name-input").fill("HostPlayer");
+    await hostPage.getByTestId("host-name-submit").click();
 
     const roomCode = await hostPage.getByTestId("room-code").textContent();
     expect(roomCode).toBeTruthy();
@@ -104,17 +109,18 @@ test.describe("Multiplayer P2P", () => {
     // Host starts the game
     await hostPage.getByTestId("start-multiplayer").click();
 
-    // Host should see the card view
-    await expect(hostPage.getByTestId("clue-text")).toBeVisible({ timeout: 5000 });
+    // Host (HostPlayer) is first reader — sees ReaderView with next clue button
+    await expect(hostPage.getByTestId("reader-next-clue")).toBeVisible({ timeout: 5000 });
 
-    // Player 2 (not reader) should see the buzzer
+    // Alice and Bob should see the buzzer
+    await expect(player1Page.getByTestId("buzz-button")).toBeVisible({ timeout: 10000 });
     await expect(player2Page.getByTestId("buzz-button")).toBeVisible({ timeout: 10000 });
 
-    // Player 2 buzzes
+    // Bob buzzes
     await player2Page.getByTestId("buzz-button").click();
 
-    // Host should see buzz notification
-    await expect(hostPage.getByText("Bob buzzade")).toBeVisible({ timeout: 5000 });
+    // Host (reader) should see Rätt/Fel buttons
+    await expect(hostPage.getByTestId("reader-buzz-correct")).toBeVisible({ timeout: 5000 });
 
     await hostContext.close();
     await player1Context.close();

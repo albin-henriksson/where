@@ -12,7 +12,10 @@ interface BuzzerViewProps {
   playerName: string;
   players: { id: string; name: string; score: number }[];
   imageUrl?: string;
+  hintVoteCount?: number;
+  totalNonReaders?: number;
   onBuzz: () => void;
+  onVoteNextHint?: () => void;
 }
 
 export function BuzzerView({
@@ -29,7 +32,10 @@ export function BuzzerView({
   playerName,
   players,
   imageUrl,
+  hintVoteCount = 0,
+  totalNonReaders = 0,
   onBuzz,
+  onVoteNextHint,
 }: BuzzerViewProps) {
   const sorted = [...players].sort((a, b) => b.score - a.score);
 
@@ -101,6 +107,17 @@ export function BuzzerView({
           <p className="text-lg leading-relaxed text-white text-center animate-fade-in">
             {clueText}
           </p>
+        )}
+
+        {/* Vote for next hint */}
+        {onVoteNextHint && !revealed && totalNonReaders > 0 && (
+          <button
+            data-testid="vote-next-hint"
+            onClick={onVoteNextHint}
+            className="mt-2 text-xs text-muted hover:text-text-dim transition-colors"
+          >
+            Nästa ledtråd {hintVoteCount > 0 && `(${hintVoteCount}/${totalNonReaders})`}
+          </button>
         )}
       </div>
 
