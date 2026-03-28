@@ -135,15 +135,23 @@ function App() {
   }
 
   if (o.screen === "summary") {
+    // Use gameSync data for remote players, local data for host/local
+    const syncPlayers = o.gameSync?.players?.map((p) => ({ ...p })) ?? o.players;
+    const pts = o.gameSync?.lastRoundPoints ?? o.lastRound.points;
+    const winner = o.gameSync?.lastRoundWinner ?? o.lastRound.winnerName;
+    const city = o.gameSync?.summaryCityName ?? o.lastRound.cityName ?? undefined;
+    const country = o.gameSync?.summaryCountry ?? o.lastRound.country ?? undefined;
+    const isHost = o.mpRole === "host";
+
     return (
       <div className="min-h-svh flex flex-col items-center justify-center bg-surface relative px-6">
         <ScoreSummary
-          players={o.players}
-          lastRoundPoints={o.lastRound.points}
-          lastRoundWinner={o.lastRound.winnerName}
-          cityName={o.lastRound.cityName ?? undefined}
-          country={o.lastRound.country ?? undefined}
-          onNextCard={o.nextCardFromSummary}
+          players={syncPlayers}
+          lastRoundPoints={pts}
+          lastRoundWinner={winner}
+          cityName={city}
+          country={country}
+          onNextCard={isHost || !o.isMultiplayer ? o.nextCardFromSummary : undefined}
         />
       </div>
     );

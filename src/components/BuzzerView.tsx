@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface BuzzerViewProps {
   clueText: string;
   clueIndex: number;
@@ -38,6 +40,7 @@ export function BuzzerView({
   onVoteNextHint,
 }: BuzzerViewProps) {
   const sorted = [...players].sort((a, b) => b.score - a.score);
+  const [imgError, setImgError] = useState(false);
 
   if (revealed && cityName) {
     return (
@@ -101,8 +104,8 @@ export function BuzzerView({
           </span>
         </div>
 
-        {clueIndex === 2 && imageUrl ? (
-          <img src={imageUrl} alt="Bildledtråd" className="max-h-36 w-full object-cover rounded-xl animate-fade-in" />
+        {clueIndex === 2 && imageUrl && !imgError ? (
+          <img src={imageUrl} alt="Bildledtråd" className="max-h-36 w-full object-cover rounded-xl animate-fade-in" onError={() => setImgError(true)} />
         ) : (
           <p className="text-lg leading-relaxed text-white text-center animate-fade-in">
             {clueText}

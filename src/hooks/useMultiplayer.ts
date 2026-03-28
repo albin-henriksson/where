@@ -27,6 +27,11 @@ interface GameSync {
   imageUrl?: string;
   hintVoteCount?: number;
   totalNonReaders?: number;
+  showSummary?: boolean;
+  lastRoundPoints?: number;
+  lastRoundWinner?: string | null;
+  summaryCityName?: string;
+  summaryCountry?: string;
 }
 
 // Messages from player → host

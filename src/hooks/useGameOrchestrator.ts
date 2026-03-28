@@ -62,6 +62,11 @@ export interface Orchestrator {
     imageUrl?: string;
     hintVoteCount?: number;
     totalNonReaders?: number;
+    showSummary?: boolean;
+    lastRoundPoints?: number;
+    lastRoundWinner?: string | null;
+    summaryCityName?: string;
+    summaryCountry?: string;
   } | null;
   playerName: string;
   isMultiplayer: boolean;
@@ -150,7 +155,9 @@ export function useGameOrchestrator(): Orchestrator {
       screen = "mp-buzzer";
     }
   } else if (isMultiplayerPlayer && mp.gameSync) {
-    if (isPlayerReader) {
+    if (mp.gameSync.showSummary) {
+      screen = "summary";
+    } else if (isPlayerReader) {
       screen = "mp-reader";
     } else {
       screen = "mp-buzzer";
@@ -254,8 +261,13 @@ export function useGameOrchestrator(): Orchestrator {
       imageUrl: session.clueIndex === 2 ? session.currentCard.imageUrl : undefined,
       hintVoteCount: mp.hintVotes.size,
       totalNonReaders: allParticipants.length - 1,
+      showSummary,
+      lastRoundPoints: lastRound.points,
+      lastRoundWinner: lastRound.winnerName,
+      summaryCityName: lastRound.cityName ?? undefined,
+      summaryCountry: lastRound.country ?? undefined,
     });
-  }, [isMultiplayerHost, session.currentCard, session.clueIndex, session.revealed, session.earnedPoints, mp.buzzWinner, game.players, currentReader, mp.hintVotes.size, allParticipants.length]);
+  }, [isMultiplayerHost, session.currentCard, session.clueIndex, session.revealed, session.earnedPoints, mp.buzzWinner, game.players, currentReader, mp.hintVotes.size, allParticipants.length, showSummary, lastRound]);
 
   // Keyboard shortcuts
   useEffect(() => {

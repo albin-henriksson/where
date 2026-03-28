@@ -30,6 +30,7 @@ export function CardView({
 }: CardViewProps) {
   const isCompetition = players && players.length > 0;
   const [imgLoaded, setImgLoaded] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   if (revealed) {
     return (
@@ -141,7 +142,7 @@ export function CardView({
           </div>
 
           {/* Clue: image or text */}
-          {clueIndex === 2 && card.imageUrl ? (
+          {clueIndex === 2 && card.imageUrl && !imgError ? (
             <div className="w-full min-h-[10rem] flex items-center justify-center animate-fade-in relative">
               {!imgLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -154,6 +155,7 @@ export function CardView({
                 alt="Bildledtråd"
                 className={`max-h-48 w-full object-cover rounded-xl transition-opacity duration-300 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
                 onLoad={() => setImgLoaded(true)}
+                onError={() => setImgError(true)}
               />
               <span data-testid="clue-text" className="hidden">{card.clues[clueIndex]}</span>
             </div>

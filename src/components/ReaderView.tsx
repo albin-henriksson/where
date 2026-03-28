@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface ReaderViewProps {
   clueText: string;
   clueIndex: number;
@@ -36,6 +38,7 @@ export function ReaderView({
   onBuzzWrong,
 }: ReaderViewProps) {
   const sorted = [...players].sort((a, b) => b.score - a.score);
+  const [imgError, setImgError] = useState(false);
 
   if (revealed) {
     return (
@@ -92,8 +95,8 @@ export function ReaderView({
             </span>
           </div>
 
-          {clueIndex === 2 && imageUrl ? (
-            <img src={imageUrl} alt="Bildledtråd" className="max-h-48 w-full object-cover rounded-xl animate-fade-in" />
+          {clueIndex === 2 && imageUrl && !imgError ? (
+            <img src={imageUrl} alt="Bildledtråd" className="max-h-48 w-full object-cover rounded-xl animate-fade-in" onError={() => setImgError(true)} />
           ) : (
             <p className="text-xl leading-relaxed text-white text-center min-h-[5rem] flex items-center justify-center animate-fade-in">
               {clueText}

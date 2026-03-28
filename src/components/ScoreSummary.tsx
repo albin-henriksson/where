@@ -6,7 +6,7 @@ interface ScoreSummaryProps {
   lastRoundWinner: string | null;
   cityName?: string;
   country?: string;
-  onNextCard: () => void;
+  onNextCard?: () => void;
 }
 
 export function ScoreSummary({
@@ -90,13 +90,17 @@ export function ScoreSummary({
         })}
       </div>
 
-      <button
-        data-testid="summary-next"
-        onClick={onNextCard}
-        className="w-full py-4 px-6 bg-white text-black rounded-2xl text-lg font-semibold active:scale-95 transition-all hover:bg-white/90 mt-2"
-      >
-        Nästa kort
-      </button>
+      {onNextCard ? (
+        <button
+          data-testid="summary-next"
+          onClick={onNextCard}
+          className="w-full py-4 px-6 bg-white text-black rounded-2xl text-lg font-semibold active:scale-95 transition-all hover:bg-white/90 mt-2"
+        >
+          Nästa kort
+        </button>
+      ) : (
+        <p className="text-xs text-muted mt-4">Väntar på nästa kort...</p>
+      )}
     </div>
   );
 }
