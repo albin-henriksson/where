@@ -146,6 +146,7 @@ function App() {
             earnedPoints={o.earnedPoints}
             players={o.isCompetition ? o.players : undefined}
             showAnswer={o.showAnswer}
+            isMultiplayerHost={isMultiplayerHost}
             onNextClue={o.nextClue}
             onCorrect={o.markCorrect}
             onNextCard={o.isCompetition ? o.noOneGuessed : o.skipCard}

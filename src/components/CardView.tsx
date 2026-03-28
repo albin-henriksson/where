@@ -7,6 +7,7 @@ interface CardViewProps {
   earnedPoints: number | null;
   players?: Player[];
   showAnswer?: boolean;
+  isMultiplayerHost?: boolean;
   onNextClue: () => void;
   onCorrect: () => void;
   onNextCard: () => void;
@@ -20,6 +21,7 @@ export function CardView({
   earnedPoints,
   players,
   showAnswer,
+  isMultiplayerHost,
   onNextClue,
   onCorrect,
   onNextCard,
@@ -58,7 +60,7 @@ export function CardView({
               <span className="text-base font-medium ml-2 opacity-60">p</span>
             </div>
 
-            {isCompetition && earnedPoints && earnedPoints > 0 ? (
+            {isCompetition && !isMultiplayerHost && earnedPoints && earnedPoints > 0 ? (
               <div className="w-full flex flex-col gap-2 animate-slide-up">
                 <p className="text-xs text-muted text-center uppercase tracking-widest mb-1">
                   Vem gissade rätt?
@@ -149,17 +151,19 @@ export function CardView({
             <button
               data-testid="next-clue"
               onClick={onNextClue}
-              className="flex-1 py-4 px-6 bg-card-border/50 text-text-dim rounded-2xl text-base font-medium active:scale-95 transition-all hover:bg-card-border border border-card-border"
+              className={`py-4 px-6 bg-card-border/50 text-text-dim rounded-2xl text-base font-medium active:scale-95 transition-all hover:bg-card-border border border-card-border ${isMultiplayerHost ? "w-full" : "flex-1"}`}
             >
               {clueIndex < 4 ? "Nästa" : "Visa svar"}
             </button>
-            <button
-              data-testid="correct"
-              onClick={onCorrect}
-              className="flex-1 py-4 px-6 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white rounded-2xl text-base font-semibold active:scale-90 transition-all shadow-lg shadow-violet-500/20 hover:shadow-violet-500/40"
-            >
-              Rätt!
-            </button>
+            {!isMultiplayerHost && (
+              <button
+                data-testid="correct"
+                onClick={onCorrect}
+                className="flex-1 py-4 px-6 bg-white text-black rounded-2xl text-base font-semibold active:scale-95 transition-all hover:bg-white/90"
+              >
+                Rätt!
+              </button>
+            )}
           </div>
         </div>
       </div>
