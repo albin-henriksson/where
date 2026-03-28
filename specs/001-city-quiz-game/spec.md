@@ -128,6 +128,42 @@ In multiplayer mode, buzzing must be fair and carry risk. When a player buzzes i
 
 ---
 
+### User Story 8 - Host as Participant (Priority: P1)
+
+In multiplayer mode, the person who creates the room is also a participant — not a passive game master. When creating a game, the host enters their name. All players (including the host) see the same UI: either BuzzerView or ReaderView depending on whose turn it is to read. The reader role rotates each card. The current reader sees the card with the answer and controls clue advancement + Rätt/Fel. Everyone else sees the buzzer. There is no separate "host device" view — the host's device behaves identically to any other player's device.
+
+**Why this priority**: Without this, the host can't play — they're stuck being the game master. Everyone should be able to participate.
+
+**Independent Test**: Create a 3-player multiplayer game. Round 1: Player A reads (sees card + answer + Rätt/Fel), Players B and C see buzzers. Round 2: Player B reads, Players A and C see buzzers. Verify the host's device shows the buzzer when it's not their turn.
+
+**Acceptance Scenarios**:
+
+1. **Given** a player creates a multiplayer game, **When** the lobby screen appears, **Then** they MUST enter their own name before starting.
+2. **Given** the game starts with 3 players (including host), **When** round 1 begins, **Then** one player sees the ReaderView with card + answer + Rätt/Fel controls, and the other two see BuzzerView.
+3. **Given** a round is completed, **When** the next card is drawn, **Then** the reader role rotates to the next player.
+4. **Given** the host is not the current reader, **When** they view the game, **Then** they see the same BuzzerView as any other non-reader player.
+5. **Given** the current reader's device, **When** someone buzzes, **Then** the reader sees Rätt/Fel buttons to judge the answer.
+6. **Given** all players have been reader once, **When** the next rotation happens, **Then** it wraps back to the first player.
+
+---
+
+### User Story 9 - Hint Voting (Priority: P2)
+
+In multiplayer mode, non-reader players can vote to advance to the next hint by tapping a "Nästa ledtråd" button on their buzzer screen. A vote counter shows how many have voted. When a majority of non-reader players vote, the clue auto-advances. Votes reset when the clue changes or a new card is drawn. The reader can see the vote count on their screen.
+
+**Why this priority**: Keeps the game pace collaborative — prevents one reader from dragging or rushing.
+
+**Independent Test**: 3-player game, 2 non-readers vote → clue auto-advances.
+
+**Acceptance Scenarios**:
+
+1. **Given** a non-reader player, **When** they tap "Nästa ledtråd", **Then** their vote is counted and the vote count updates on all screens.
+2. **Given** a majority of non-readers have voted, **When** the threshold is reached, **Then** the clue auto-advances to the next hint.
+3. **Given** votes have been cast, **When** the clue advances (by vote or reader), **Then** all votes reset to 0.
+4. **Given** the reader's view, **When** players vote, **Then** the reader sees the current vote count.
+
+---
+
 ### Edge Cases
 
 - What happens when there is only 1 card left and it gets hidden? → Show "No more cards" message.
@@ -168,6 +204,12 @@ In multiplayer mode, buzzing must be fair and carry risk. When a player buzzes i
 - **FR-022**: In multiplayer, a wrong buzz MUST lock the player out from buzzing again on the current card only.
 - **FR-023**: Host MUST be able to mark a buzz as "Rätt" (correct) or "Fel" (wrong).
 - **FR-024**: A score summary screen MUST appear between cards showing ranked players with round point changes.
+- **FR-025**: In multiplayer, the host MUST enter their own name and participate as a regular player.
+- **FR-026**: In multiplayer, all players (including host) MUST see BuzzerView when not reading and ReaderView when reading.
+- **FR-027**: The current reader MUST control clue advancement and Rätt/Fel from their device.
+- **FR-028**: The reader role MUST rotate to the next player after each card.
+- **FR-029**: Non-reader players MUST be able to vote to advance to the next hint.
+- **FR-030**: When a majority of non-readers vote, the clue MUST auto-advance.
 
 ### Key Entities
 

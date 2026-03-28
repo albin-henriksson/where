@@ -208,6 +208,54 @@
 
 ---
 
+## Phase 11: User Story 8 - Host as Participant (Priority: P1)
+
+**Goal**: Host enters their name and plays like everyone else. No separate host device — reader role rotates, reader controls the game from their phone.
+
+**Independent Test**: 3-player game. Round 1: Alice reads (card+answer+controls), Bob and Charlie buzz. Round 2: Bob reads, Alice and Charlie buzz. Verify host device shows buzzer when not reading.
+
+### Implementation for User Story 8
+
+- [ ] T061 [US8] Add host name input to MultiplayerLobby hosting screen
+- [ ] T062 [US8] Include host as a player in the game state (add host to peers/players list)
+- [ ] T063 [US8] Refactor orchestrator: host device shows BuzzerView or ReaderView based on rotation (not always CardView)
+- [ ] T064 [US8] Move game control (next clue, Rätt/Fel, skip) to ReaderView — reader controls the game via trystero messages to host
+- [ ] T065 [US8] Add "reader-action" message type in useMultiplayer: reader sends nextClue/correct/wrong/skip to host, host executes
+- [ ] T066 [US8] Remove separate host CardView rendering — all players use same BuzzerView/ReaderView flow
+
+### E2E Tests for User Story 8
+
+- [ ] T067 [US8] Write Playwright test in e2e/host-as-player.spec.ts: 3 players connect, first player sees ReaderView, others see BuzzerView
+- [ ] T068 [US8] Write Playwright test in e2e/host-as-player.spec.ts: after round completes, reader rotates to next player
+- [ ] T069 [US8] Write Playwright test in e2e/host-as-player.spec.ts: host device shows BuzzerView when not their turn to read
+
+**Checkpoint**: All players have identical experience, reader rotates, no separate host view
+
+---
+
+## Phase 12: User Story 9 - Hint Voting (Priority: P2)
+
+**Goal**: Non-reader players can vote to advance to the next hint. When a majority votes, the reader is notified (or it auto-advances). This keeps the game flowing without one person controlling the pace.
+
+**Independent Test**: 3 players, 2 non-readers vote for next hint → hint advances automatically.
+
+### Implementation for User Story 9
+
+- [ ] T070 [US9] Add "vote-next-hint" message type in useMultiplayer
+- [ ] T071 [US9] Add vote button to BuzzerView — "Nästa ledtråd" with vote count indicator
+- [ ] T072 [US9] Track votes in orchestrator — when majority of non-reader players vote, auto-advance to next clue
+- [ ] T073 [US9] Reset votes when clue advances or card changes
+- [ ] T074 [US9] Show vote count on reader's ReaderView so they can see demand
+
+### E2E Tests for User Story 9
+
+- [ ] T075 [US9] Write Playwright test in e2e/hint-voting.spec.ts: player votes for next hint, vote count updates
+- [ ] T076 [US9] Write Playwright test in e2e/hint-voting.spec.ts: majority vote auto-advances the clue
+
+**Checkpoint**: Game pace is collaborative, not just reader-controlled
+
+---
+
 ## Dependencies & Execution Order
 
 ### Phase Dependencies
