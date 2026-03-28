@@ -111,7 +111,7 @@ function App() {
       {/* Header */}
       <div className="absolute top-5 left-0 right-0 flex flex-col items-center gap-1">
         <h1 className="text-[10px] font-medium tracking-[0.3em] text-muted/40 uppercase">
-          Where
+          where
         </h1>
         {o.isCompetition && o.players.length > 0 && (
           <Scoreboard players={o.players} />

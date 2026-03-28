@@ -99,7 +99,7 @@ export function StartScreen({ onStart, onMultiplayer }: StartScreenProps) {
     <div className="flex flex-col items-center gap-10 p-8 animate-fade-in">
       <div className="text-center">
         <h1 className="text-5xl font-black text-white tracking-tight">
-          Where
+          where
         </h1>
         <p className="text-muted mt-3 text-sm">Välj spelläge</p>
       </div>
