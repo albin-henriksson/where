@@ -114,7 +114,7 @@
 
 ### Implementation for User Story 4
 
-- [ ] T027 [US4] Create Claude skill file at .claude/commands/add-city-card.md with instructions to research city, generate 5 Swedish clues (hardest→easiest), check for duplicates, and append to src/data/cards.ts
+- [x] T027 [US4] Create Claude skill file at .claude/commands/add-city-card.md with instructions to research city, generate 5 Swedish clues (hardest→easiest), check for duplicates, and append to src/data/cards.ts
 
 **Checkpoint**: New city cards can be generated via Claude Code skill (manual validation — no e2e for developer tooling)
 
@@ -124,11 +124,11 @@
 
 **Purpose**: Deployment, styling refinement, mobile optimization
 
-- [ ] T028 [P] Create Dockerfile with multi-stage build (node build → nginx serve) at project root
-- [ ] T029 [P] Add .dockerignore at project root
-- [ ] T030 Style mobile-first card layout with Tailwind in src/components/CardView.tsx — large readable text, centered card, touch-friendly buttons
-- [ ] T031 Add Swedish game title and minimal header to src/App.tsx
-- [ ] T032 Clean up unused Vite scaffold files (src/assets/, public/vite.svg)
+- [x] T028 [P] Create Dockerfile with multi-stage build (node build → nginx serve) at project root
+- [x] T029 [P] Add .dockerignore at project root
+- [x] T030 Style mobile-first card layout with Tailwind in src/components/CardView.tsx — large readable text, centered card, touch-friendly buttons
+- [x] T031 Add Swedish game title and minimal header to src/App.tsx
+- [x] T032 Clean up unused Vite scaffold files (src/assets/, public/vite.svg)
 
 ---
 
