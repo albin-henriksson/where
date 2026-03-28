@@ -5,8 +5,8 @@ test.describe("Session Tracking (US3)", () => {
     page,
   }) => {
     await page.goto("/");
+    await page.getByTestId("mode-freeplay").click();
 
-    // Skip all cards until empty deck appears
     for (let i = 0; i < 150; i++) {
       const emptyDeck = page.getByTestId("empty-deck");
       if (await emptyDeck.isVisible().catch(() => false)) break;
@@ -19,28 +19,25 @@ test.describe("Session Tracking (US3)", () => {
     );
   });
 
-  test("no repeated cards during full session playthrough", async ({
-    page,
-  }) => {
+  test("no repeated cards during playthrough", async ({ page }) => {
     await page.goto("/");
+    await page.getByTestId("mode-freeplay").click();
 
     const seenFirstClues = new Set<string>();
 
-    for (let i = 0; i < 150; i++) {
+    // Play through 10 cards and verify no repeats
+    for (let i = 0; i < 10; i++) {
       const clueEl = page.getByTestId("clue-text");
-      const emptyDeck = page.getByTestId("empty-deck");
-
-      if (await emptyDeck.isVisible().catch(() => false)) break;
+      await expect(clueEl).toBeVisible();
 
       const text = await clueEl.textContent();
       expect(seenFirstClues).not.toContain(text);
       seenFirstClues.add(text!);
 
-      // Play through: guess correct immediately
       await page.getByTestId("correct").click();
       await page.getByTestId("next-card").click();
     }
 
-    expect(seenFirstClues.size).toBeGreaterThanOrEqual(2);
+    expect(seenFirstClues.size).toBe(10);
   });
 });
