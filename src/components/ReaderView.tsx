@@ -17,6 +17,7 @@ interface ReaderViewProps {
   onSkip: () => void;
   onBuzzCorrect: () => void;
   onBuzzWrong: () => void;
+  onNoOneGuessed: () => void;
 }
 
 export function ReaderView({
@@ -36,6 +37,7 @@ export function ReaderView({
   onSkip,
   onBuzzCorrect,
   onBuzzWrong,
+  onNoOneGuessed,
 }: ReaderViewProps) {
   const sorted = [...players].sort((a, b) => b.score - a.score);
   const [imgError, setImgError] = useState(false);
@@ -55,7 +57,13 @@ export function ReaderView({
             </p>
           )}
         </div>
-        <p className="text-xs text-muted mb-4">Väntar på värd...</p>
+        <button
+          data-testid="reader-next-card"
+          onClick={onNoOneGuessed}
+          className="w-64 py-4 px-6 bg-white text-black rounded-2xl text-lg font-semibold active:scale-95 transition-all hover:bg-white/90 mb-6"
+        >
+          Nästa kort
+        </button>
         <div className="flex gap-4 justify-center">
           {sorted.map((p) => (
             <div key={p.id} className="flex flex-col items-center gap-0.5 text-muted">

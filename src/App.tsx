@@ -59,6 +59,7 @@ function renderScreen(o: Orchestrator) {
         onSkip={() => isHostReader ? o.skipCard() : o.sendReaderAction("skip")}
         onBuzzCorrect={() => isHostReader ? o.buzzCorrect() : o.sendReaderAction("buzz-correct")}
         onBuzzWrong={() => isHostReader ? o.buzzWrong() : o.sendReaderAction("buzz-wrong")}
+        onNoOneGuessed={() => isHostReader ? o.noOneGuessed() : o.sendReaderAction("no-one-guessed")}
       />
     );
   }
@@ -155,7 +156,8 @@ function App() {
         isCompetition={o.isCompetition} onResetScores={o.resetScores}
         onAdjustScore={o.adjustScore} onAddPlayer={o.addPlayer}
         onSkipCard={() => { o.skipCard(); o.closeCmdBar(); }}
-        onNewGame={o.newGame} onToggleDevMode={o.toggleDevMode} devMode={o.devMode}
+        onNewGame={o.newGame} onQuitGame={o.quitGame}
+        onToggleDevMode={o.toggleDevMode} devMode={o.devMode}
       />
     </>
   );

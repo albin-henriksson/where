@@ -56,7 +56,7 @@ type HostMessage =
   | { type: "buzz-wrong"; lockedPlayerId: string };
 interface ReaderActionMessage {
   type: "reader-action";
-  action: "next-clue" | "correct" | "skip" | "buzz-correct" | "buzz-wrong";
+  action: "next-clue" | "correct" | "skip" | "buzz-correct" | "buzz-wrong" | "no-one-guessed";
 }
 
 interface VoteNextHintMessage {

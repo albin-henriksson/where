@@ -3,6 +3,7 @@ import { useGameSession } from "./useGameSession";
 import { useGameState } from "./useGameState";
 import { useMultiplayer } from "./useMultiplayer";
 import { useLobbyDiscovery } from "./useLobbyDiscovery";
+import { saveGameState, loadGameState, clearGameState } from "./usePersistence";
 import type { CityCard, Player } from "../data/types";
 
 export type AppScreen =
@@ -96,7 +97,7 @@ export interface Orchestrator {
   buzzCorrect: () => void;
   buzzWrong: () => void;
   buzz: () => void;
-  sendReaderAction: (action: "next-clue" | "correct" | "skip" | "buzz-correct" | "buzz-wrong") => void;
+  sendReaderAction: (action: "next-clue" | "correct" | "skip" | "buzz-correct" | "buzz-wrong" | "no-one-guessed") => void;
   voteNextHint: () => void;
 
   devMode: boolean;
@@ -108,6 +109,7 @@ export interface Orchestrator {
   adjustScore: (playerId: string, delta: number) => void;
   addPlayer: (name: string) => void;
   newGame: () => void;
+  quitGame: () => void;
 }
 
 export function useGameOrchestrator(): Orchestrator {
@@ -180,7 +182,7 @@ export function useGameOrchestrator(): Orchestrator {
 
   // --- Effects ---
 
-  // URL room code on mount
+  // URL room code + restore on mount
   useEffect(() => {
     if (hasCheckedUrl.current) return;
     hasCheckedUrl.current = true;
@@ -189,8 +191,35 @@ export function useGameOrchestrator(): Orchestrator {
     if (room && room.length === 4) {
       setMpScreen("lobby");
       setInitialRoomCode(room.toUpperCase());
+      return;
+    }
+    // Restore persisted local game (not multiplayer)
+    const saved = loadGameState();
+    if (saved) {
+      game.startGame(saved.mode, saved.players.map((p) => p.name));
+      // Restore scores
+      for (const p of saved.players) {
+        const match = game.players.find((gp) => gp.name === p.name);
+        if (match && p.score > 0) {
+          game.awardPoints(match.id, p.score);
+        }
+      }
+      session.restoreSession(saved.seenCardIds);
+      setReaderIndex(saved.readerIndex);
     }
   }, []);
+
+  // Auto-save local game state (not multiplayer)
+  useEffect(() => {
+    if (game.screen !== "playing" || isMultiplayer) return;
+    saveGameState({
+      mode: game.mode,
+      players: game.players,
+      seenCardIds: session.seenCardIds,
+      readerIndex,
+      timestamp: Date.now(),
+    });
+  }, [game.screen, game.mode, game.players, session.seenCardIds, readerIndex, isMultiplayer]);
 
   // Update URL and start advertising when host creates room
   useEffect(() => {
@@ -233,6 +262,13 @@ export function useGameOrchestrator(): Orchestrator {
         break;
       }
       case "buzz-wrong": mp.wrongBuzz(); break;
+      case "no-one-guessed": {
+        setLastRound({ points: 0, winnerName: null, cityName: session.currentCard?.city ?? null, country: session.currentCard?.country ?? null });
+        mp.resetBuzzFull();
+        mp.clearHintVotes();
+        setShowSummary(true);
+        break;
+      }
     }
   }, [isMultiplayerHost, mp.pendingReaderAction]);
 
@@ -414,6 +450,15 @@ export function useGameOrchestrator(): Orchestrator {
     setCmdBarOpen(false);
   }, [mp, game]);
 
+  const quitGame = useCallback(() => {
+    clearGameState();
+    mp.cleanup();
+    setMpScreen(null);
+    game.resetGame();
+    setCmdBarOpen(false);
+    window.history.replaceState({}, "", "/");
+  }, [mp, game]);
+
   return {
     screen,
     currentCard: session.currentCard,
@@ -466,5 +511,6 @@ export function useGameOrchestrator(): Orchestrator {
     adjustScore,
     addPlayer,
     newGame,
+    quitGame,
   };
 }

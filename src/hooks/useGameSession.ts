@@ -17,6 +17,7 @@ export interface GameState {
   revealed: boolean;
   earnedPoints: number | null;
   cardsRemaining: number;
+  seenCardIds: string[];
 }
 
 export interface GameActions {
@@ -24,6 +25,7 @@ export interface GameActions {
   correct: () => void;
   skip: () => void;
   nextCard: () => void;
+  restoreSession: (seenIds: string[]) => void;
 }
 
 function initDeck() {
@@ -38,6 +40,7 @@ export function useGameSession(): GameState & GameActions {
   const [clueIndex, setClueIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [earnedPoints, setEarnedPoints] = useState<number | null>(null);
+  const [seenCardIds, setSeenCardIds] = useState<string[]>([]);
 
   const nextClue = useCallback(() => {
     if (revealed) return;
@@ -56,7 +59,13 @@ export function useGameSession(): GameState & GameActions {
   }, [clueIndex, revealed]);
 
   const drawNext = useCallback(
-    (pool: CityCard[]) => {
+    (pool: CityCard[], markCurrentSeen = true) => {
+      if (markCurrentSeen) {
+        setSeenCardIds((prev) => {
+          const cur = currentCard?.id;
+          return cur && !prev.includes(cur) ? [...prev, cur] : prev;
+        });
+      }
       if (pool.length === 0) {
         setCurrentCard(null);
         setRemaining([]);
@@ -68,7 +77,7 @@ export function useGameSession(): GameState & GameActions {
       setRevealed(false);
       setEarnedPoints(null);
     },
-    [],
+    [currentCard],
   );
 
   const skip = useCallback(() => {
@@ -78,6 +87,22 @@ export function useGameSession(): GameState & GameActions {
   const nextCard = useCallback(() => {
     drawNext(remaining);
   }, [remaining, drawNext]);
+
+  const restoreSession = useCallback((seenIds: string[]) => {
+    const seenSet = new Set(seenIds);
+    const unseen = shuffle(cards.filter((c) => !seenSet.has(c.id)));
+    setSeenCardIds(seenIds);
+    if (unseen.length === 0) {
+      setCurrentCard(null);
+      setRemaining([]);
+    } else {
+      setCurrentCard(unseen[0]);
+      setRemaining(unseen.slice(1));
+    }
+    setClueIndex(0);
+    setRevealed(false);
+    setEarnedPoints(null);
+  }, []);
 
   const cardsRemaining = useMemo(
     () => remaining.length + (currentCard ? 1 : 0),
@@ -90,9 +115,11 @@ export function useGameSession(): GameState & GameActions {
     revealed,
     earnedPoints,
     cardsRemaining,
+    seenCardIds,
     nextClue,
     correct,
     skip,
     nextCard,
+    restoreSession,
   };
 }

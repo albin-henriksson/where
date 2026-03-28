@@ -14,9 +14,6 @@ importers:
       '@trystero-p2p/mqtt':
         specifier: ^0.23.0
         version: 0.23.0
-      '@trystero-p2p/torrent':
-        specifier: ^0.23.0
-        version: 0.23.0
       cmdk:
         specifier: ^1.1.1
         version: 1.1.1(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -29,9 +26,6 @@ importers:
       tailwindcss:
         specifier: ^4.2.2
         version: 4.2.2
-      trystero:
-        specifier: ^0.23.0
-        version: 0.23.0
     devDependencies:
       '@eslint/js':
         specifier: ^9.39.4
@@ -227,9 +221,6 @@ packages:
 
   '@napi-rs/wasm-runtime@1.1.1':
     resolution: {integrity: sha512-p64ah1M1ld8xjWv3qbvFwHiFVWrq1yFvV4f7w+mzaqiR4IlSgkqhcRdHwsGgomwzBH51sRY4NEowLxnaBjcW/A==}
-
-  '@noble/secp256k1@3.0.0':
-    resolution: {integrity: sha512-NJBaR352KyIvj3t6sgT/+7xrNyF9Xk9QlLSIqUGVUYlsnDTAUqY8LOmwpcgEx4AMJXRITQ5XEVHD+mMaPfr3mg==}
 
   '@oxc-project/types@0.122.0':
     resolution: {integrity: sha512-oLAl5kBpV4w69UtFZ9xqcmTi+GENWOcPF7FCrczTiBbmC0ibXxCwyvZGbO39rCVEuLGAZM84DH0pUIyyv/YJzA==}
@@ -622,12 +613,6 @@ packages:
 
   '@trystero-p2p/mqtt@0.23.0':
     resolution: {integrity: sha512-9Lq0oK2nOknc7QU9eCzwkt+quUqDwai6t4AqmpWkfSGx4YpS2AkiEx3Ri0mRV3FgPa+0rUgI6yU5z+gvxOLgwA==}
-
-  '@trystero-p2p/nostr@0.23.0':
-    resolution: {integrity: sha512-KSqUR2c1KVfv4zeErcntuegtyKzFTzNNiitIKGD0LiKA/4H3CeTF81ROk2h+X/PNvP4mv7Gp5eVxFYwfMu4Nrg==}
-
-  '@trystero-p2p/torrent@0.23.0':
-    resolution: {integrity: sha512-EVy3NBRfLz+c9NRcFax+XA3q7P7gOpsZbHpTBAAaNBZXXu2ltm3k3/6jaJfIoMidiMIIG+cIV1G+tUzrjUBwVg==}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -1398,9 +1383,6 @@ packages:
     resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
     engines: {node: '>=12.0.0'}
 
-  trystero@0.23.0:
-    resolution: {integrity: sha512-HsM0FT0w41XW9bhXmYAfxr7PT+F6KwMzOxfJK2MbfipnMk/XrAIsV8lMTgU8NwWQqwCiS/b0b1qDsOf6IGxTmg==}
-
   ts-api-utils@2.5.0:
     resolution: {integrity: sha512-OJ/ibxhPlqrMM0UiNHJ/0CKQkoKF243/AEmplt3qpRgkW8VG7IfOS41h7V8TjITqdByHzrjcS/2si+y4lIh8NA==}
     engines: {node: '>=18.12'}
@@ -1759,8 +1741,6 @@ snapshots:
       '@tybys/wasm-util': 0.10.1
     optional: true
 
-  '@noble/secp256k1@3.0.0': {}
-
   '@oxc-project/types@0.122.0': {}
 
   '@playwright/test@1.58.2':
@@ -2055,15 +2035,6 @@ snapshots:
       - bufferutil
       - supports-color
       - utf-8-validate
-
-  '@trystero-p2p/nostr@0.23.0':
-    dependencies:
-      '@noble/secp256k1': 3.0.0
-      '@trystero-p2p/core': 0.23.0
-
-  '@trystero-p2p/torrent@0.23.0':
-    dependencies:
-      '@trystero-p2p/core': 0.23.0
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
@@ -2824,10 +2795,6 @@ snapshots:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
-
-  trystero@0.23.0:
-    dependencies:
-      '@trystero-p2p/nostr': 0.23.0
 
   ts-api-utils@2.5.0(typescript@5.9.3):
     dependencies:

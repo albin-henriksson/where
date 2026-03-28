@@ -12,6 +12,7 @@ interface CommandBarProps {
   onAddPlayer: (name: string) => void;
   onSkipCard: () => void;
   onNewGame: () => void;
+  onQuitGame?: () => void;
   onToggleDevMode?: () => void;
   devMode?: boolean;
 }
@@ -26,6 +27,7 @@ export function CommandBar({
   onAddPlayer,
   onSkipCard,
   onNewGame,
+  onQuitGame,
   onToggleDevMode,
   devMode,
 }: CommandBarProps) {
@@ -190,6 +192,19 @@ export function CommandBar({
                           className="px-3 py-2.5 rounded-xl text-sm text-text-dim cursor-pointer data-[selected=true]:bg-card-border data-[selected=true]:text-white transition-colors"
                         >
                           {devMode ? "Stäng dev mode" : "Dev mode"}
+                        </Command.Item>
+                      )}
+                      {onQuitGame && (
+                        <Command.Item
+                          data-testid="cmd-quit"
+                          value="Avsluta spel"
+                          onSelect={() => {
+                            onQuitGame();
+                            close();
+                          }}
+                          className="px-3 py-2.5 rounded-xl text-sm text-danger cursor-pointer data-[selected=true]:bg-card-border data-[selected=true]:text-danger transition-colors"
+                        >
+                          Avsluta spel
                         </Command.Item>
                       )}
                     </Command.Group>
