@@ -10,6 +10,7 @@ function App() {
     clueIndex,
     revealed,
     earnedPoints,
+    cardsRemaining,
     nextClue,
     correct,
     skip,
@@ -27,10 +28,16 @@ function App() {
   }, [skip]);
 
   return (
-    <div className="min-h-svh flex flex-col items-center justify-center bg-gray-50 relative">
-      <h1 className="absolute top-6 left-0 right-0 text-center text-sm font-medium tracking-widest text-gray-300 uppercase">
+    <div className="min-h-svh flex flex-col items-center justify-center bg-surface relative px-6">
+      <h1 className="absolute top-6 left-0 right-0 text-center text-xs font-semibold tracking-[0.3em] text-muted/50 uppercase">
         Var är vi?
       </h1>
+
+      {currentCard && (
+        <p className="absolute bottom-6 text-xs text-muted/30 tabular-nums">
+          {cardsRemaining} kort kvar
+        </p>
+      )}
 
       {currentCard ? (
         <>

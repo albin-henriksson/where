@@ -21,34 +21,44 @@ export function CardView({
 }: CardViewProps) {
   if (revealed) {
     return (
-      <div className="flex flex-col items-center gap-6 p-8 max-w-md mx-auto">
-        <div className="text-center">
-          <h2
-            data-testid="city-name"
-            className="text-3xl font-bold text-gray-900"
-          >
-            {card.city}
-          </h2>
-          <p data-testid="country" className="text-lg text-gray-500 mt-1">
-            {card.country}
-          </p>
-        </div>
+      <div className="relative w-full max-w-sm mx-auto">
+        {/* Stack shadows */}
+        <div className="absolute -bottom-2 left-3 right-3 h-full rounded-3xl bg-card-border/30" />
+        <div className="absolute -bottom-4 left-6 right-6 h-full rounded-3xl bg-card-border/15" />
 
-        <div
-          data-testid="points"
-          className="text-5xl font-bold tabular-nums"
-          style={{ color: earnedPoints ? "#22c55e" : "#ef4444" }}
-        >
-          {earnedPoints === 0 ? "0" : earnedPoints} poäng
-        </div>
+        {/* Main card */}
+        <div className="relative bg-card border border-card-border rounded-3xl p-8 shadow-2xl">
+          <div className="flex flex-col items-center gap-6">
+            <div className="text-center">
+              <h2
+                data-testid="city-name"
+                className="text-3xl font-bold text-text"
+              >
+                {card.city}
+              </h2>
+              <p data-testid="country" className="text-lg text-text-dim mt-1">
+                {card.country}
+              </p>
+            </div>
 
-        <button
-          data-testid="next-card"
-          onClick={onNextCard}
-          className="w-full py-4 px-6 bg-gray-900 text-white rounded-2xl text-lg font-medium active:scale-95 transition-transform"
-        >
-          Nästa kort
-        </button>
+            <div
+              data-testid="points"
+              className="text-6xl font-black tabular-nums"
+              style={{ color: earnedPoints ? "#34d399" : "#f87171" }}
+            >
+              {earnedPoints === 0 ? "0" : earnedPoints}
+              <span className="text-lg font-medium ml-2 opacity-70">poäng</span>
+            </div>
+
+            <button
+              data-testid="next-card"
+              onClick={onNextCard}
+              className="w-full py-4 px-6 bg-accent text-white rounded-2xl text-lg font-semibold active:scale-95 transition-all hover:brightness-110 shadow-lg shadow-accent/25"
+            >
+              Nästa kort
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -56,48 +66,67 @@ export function CardView({
   const pointValue = 5 - clueIndex;
 
   return (
-    <div className="flex flex-col items-center gap-6 p-8 max-w-md mx-auto">
-      <div className="flex items-center justify-between w-full">
-        <div className="flex gap-1.5">
-          {[0, 1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className={`w-2.5 h-2.5 rounded-full ${
-                i <= clueIndex ? "bg-gray-900" : "bg-gray-200"
-              }`}
-            />
-          ))}
+    <div className="relative w-full max-w-sm mx-auto">
+      {/* Stack shadows */}
+      <div className="absolute -bottom-2 left-3 right-3 h-full rounded-3xl bg-card-border/30" />
+      <div className="absolute -bottom-4 left-6 right-6 h-full rounded-3xl bg-card-border/15" />
+
+      {/* Main card */}
+      <div className="relative bg-card border border-card-border rounded-3xl p-8 shadow-2xl">
+        <div className="flex flex-col gap-6">
+          {/* Progress dots + points */}
+          <div className="flex items-center justify-between">
+            <div className="flex gap-2">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                    i <= clueIndex
+                      ? "bg-accent shadow-sm shadow-accent/50"
+                      : "bg-card-border"
+                  }`}
+                />
+              ))}
+            </div>
+            <span
+              data-testid="point-value"
+              className="text-sm font-semibold text-accent tabular-nums"
+            >
+              {pointValue} poäng
+            </span>
+          </div>
+
+          {/* Clue text */}
+          <p
+            data-testid="clue-text"
+            className="text-xl leading-relaxed text-text text-center min-h-[5rem] flex items-center justify-center"
+          >
+            {card.clues[clueIndex]}
+          </p>
+
+          {/* Clue number */}
+          <p className="text-center text-xs text-muted uppercase tracking-widest">
+            Ledtråd {clueIndex + 1} av 5
+          </p>
+
+          {/* Action buttons */}
+          <div className="flex gap-3">
+            <button
+              data-testid="next-clue"
+              onClick={onNextClue}
+              className="flex-1 py-4 px-6 bg-card-border/50 text-text-dim rounded-2xl text-lg font-medium active:scale-95 transition-all hover:bg-card-border/80 border border-card-border"
+            >
+              {clueIndex < 4 ? "Nästa ledtråd" : "Visa svar"}
+            </button>
+            <button
+              data-testid="correct"
+              onClick={onCorrect}
+              className="flex-1 py-4 px-6 bg-success/15 text-success rounded-2xl text-lg font-semibold active:scale-95 transition-all hover:bg-success/25 border border-success/30"
+            >
+              Rätt!
+            </button>
+          </div>
         </div>
-        <span
-          data-testid="point-value"
-          className="text-sm font-medium text-gray-500"
-        >
-          {pointValue} {pointValue === 1 ? "poäng" : "poäng"}
-        </span>
-      </div>
-
-      <p
-        data-testid="clue-text"
-        className="text-xl leading-relaxed text-gray-800 text-center min-h-[4rem]"
-      >
-        {card.clues[clueIndex]}
-      </p>
-
-      <div className="flex gap-3 w-full">
-        <button
-          data-testid="next-clue"
-          onClick={onNextClue}
-          className="flex-1 py-4 px-6 bg-gray-100 text-gray-700 rounded-2xl text-lg font-medium active:scale-95 transition-transform"
-        >
-          {clueIndex < 4 ? "Nästa ledtråd" : "Visa svar"}
-        </button>
-        <button
-          data-testid="correct"
-          onClick={onCorrect}
-          className="flex-1 py-4 px-6 bg-green-600 text-white rounded-2xl text-lg font-medium active:scale-95 transition-transform"
-        >
-          Rätt!
-        </button>
       </div>
     </div>
   );
