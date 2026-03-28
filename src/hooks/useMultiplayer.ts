@@ -2,7 +2,14 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { joinRoom, selfId } from "trystero";
 import type { Room } from "trystero";
 
-const APP_ID = "where-city-quiz-game";
+export const TRYSTERO_CONFIG = {
+  appId: "where-city-quiz-game",
+  relayUrls: [
+    "wss://relay.damus.io",
+    "wss://nos.lol",
+    "wss://relay.snort.social",
+  ],
+};
 
 export type MultiplayerRole = "host" | "player";
 
@@ -120,7 +127,7 @@ export function useMultiplayer() {
     setHostName(name);
     playerNameRef.current = name;
 
-    const room = joinRoom({ appId: APP_ID }, code.toLowerCase());
+    const room = joinRoom(TRYSTERO_CONFIG, code.toLowerCase());
     roomRef.current = room;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -163,7 +170,7 @@ export function useMultiplayer() {
     setRole("player");
     playerNameRef.current = playerName;
 
-    const room = joinRoom({ appId: APP_ID }, code.toLowerCase());
+    const room = joinRoom(TRYSTERO_CONFIG, code.toLowerCase());
     roomRef.current = room;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

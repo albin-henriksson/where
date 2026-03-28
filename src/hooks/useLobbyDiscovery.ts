@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { joinRoom } from "trystero";
 import type { Room } from "trystero";
+import { TRYSTERO_CONFIG } from "./useMultiplayer";
 
-const APP_ID = "where-city-quiz-game";
 const LOBBY_ROOM = "lobby";
 
 interface AdvertisedGame {
@@ -24,7 +24,7 @@ export function useLobbyDiscovery() {
   const ensureLobby = useCallback(() => {
     if (lobbyRef.current) return;
 
-    const lobby = joinRoom({ appId: APP_ID }, LOBBY_ROOM);
+    const lobby = joinRoom(TRYSTERO_CONFIG, LOBBY_ROOM);
     lobbyRef.current = lobby;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
