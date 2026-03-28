@@ -192,7 +192,8 @@ export function useGameOrchestrator(): Orchestrator {
 
   // --- Effects ---
 
-  // URL room code + restore on mount
+  // URL room code + restore on mount (intentionally runs once)
+   
   useEffect(() => {
     if (hasCheckedUrl.current) return;
     hasCheckedUrl.current = true;
@@ -215,6 +216,7 @@ export function useGameOrchestrator(): Orchestrator {
   }, []);
 
   // Auto-save local game state (not multiplayer)
+   
   useEffect(() => {
     if (game.screen !== "playing" || isMultiplayer) return;
     saveGameState({
@@ -243,6 +245,7 @@ export function useGameOrchestrator(): Orchestrator {
   }, [isMultiplayerHost, session.clueIndex, mp]);
 
   // Handle pending reader actions from remote reader (host executes)
+   
   useEffect(() => {
     if (!isMultiplayerHost || !mp.pendingReaderAction) return;
     const action = mp.consumeReaderAction();
@@ -278,6 +281,7 @@ export function useGameOrchestrator(): Orchestrator {
   }, [isMultiplayerHost, mp.pendingReaderAction]);
 
   // Handle hint vote majority (host auto-advances)
+   
   useEffect(() => {
     if (!isMultiplayerHost) return;
     const nonReaderCount = allParticipants.length - 1;
@@ -285,6 +289,7 @@ export function useGameOrchestrator(): Orchestrator {
       session.nextClue();
       mp.clearHintVotes();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMultiplayerHost, mp.hintVotes.size, allParticipants.length]);
 
   // Sync game state to peers (host)
@@ -311,9 +316,11 @@ export function useGameOrchestrator(): Orchestrator {
       summaryCityName: lastRound.cityName ?? undefined,
       summaryCountry: lastRound.country ?? undefined,
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMultiplayerHost, session.currentCard, session.clueIndex, session.revealed, session.earnedPoints, mp.buzzWinner, game.players, currentReader, mp.hintVotes.size, allParticipants.length, showSummary, lastRound]);
 
   // Keyboard shortcuts
+   
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -448,7 +455,8 @@ export function useGameOrchestrator(): Orchestrator {
         setShowSummary(true);
       }, 50);
     }
-  }, [mp.buzzWinner, game, session, mp]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mp.buzzWinner, game, session]);
 
   const buzzWrong = useCallback(() => mp.wrongBuzz(), [mp]);
   const toggleDevMode = useCallback(() => setDevMode((p) => !p), []);
