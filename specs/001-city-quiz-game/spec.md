@@ -110,6 +110,24 @@ At any time during gameplay, the player can press `Cmd+K` (or `Ctrl+K`) to open 
 
 ---
 
+### User Story 7 - Buzzer Mechanics & Score Summary (Priority: P1)
+
+In multiplayer mode, buzzing must be fair and carry risk. When a player buzzes in, the host sees who buzzed and can mark them "Rätt" (correct) or "Fel" (wrong). If wrong, that player is locked out from buzzing again on the current card — but other players can still buzz. Buzz state resets when the host advances to the next clue (not just next card), giving players fresh chances each clue. After each card is completed (reveal + point assignment), a score summary screen is shown before the next card, displaying all players ranked by score with the round's point change highlighted.
+
+**Why this priority**: Core to making multiplayer feel like a real quiz show with tension and strategy.
+
+**Independent Test**: Start multiplayer, player buzzes wrong on clue 1 → locked out, another player buzzes on clue 2 → correct. Score summary appears between cards.
+
+**Acceptance Scenarios**:
+
+1. **Given** a player buzzes in multiplayer, **When** the host taps "Fel" (wrong), **Then** that player is locked out from buzzing on the current card and other players can still buzz.
+2. **Given** a player is locked out, **When** the host advances to the next clue, **Then** all buzz states reset and all players (including locked-out ones) can buzz again.
+3. **Given** a card round is completed, **When** points are assigned (or nobody guessed), **Then** a score summary screen appears showing all players ranked by score.
+4. **Given** the score summary is displayed, **When** the host taps "Nästa kort", **Then** the next card is drawn.
+5. **Given** multiplayer mode, **When** nobody buzzes on a clue, **Then** the host can still advance to the next clue or reveal the answer normally.
+
+---
+
 ### Edge Cases
 
 - What happens when there is only 1 card left and it gets hidden? → Show "No more cards" message.
@@ -119,6 +137,8 @@ At any time during gameplay, the player can press `Cmd+K` (or `Ctrl+K`) to open 
 - What happens if a player is added mid-game via command bar? → They start with 0 points.
 - What happens if command bar is opened during the reveal phase? → Commands still work normally.
 - What if only 1 player name is entered in competition mode? → Require minimum 2 players to start.
+- What if all players are locked out on a card? → Host can still advance clues or reveal answer; no buzzes possible.
+- What if a player disconnects during a round? → Their lockout state is irrelevant; they simply can't buzz.
 
 ## Requirements *(mandatory)*
 
@@ -144,6 +164,10 @@ At any time during gameplay, the player can press `Cmd+K` (or `Ctrl+K`) to open 
 - **FR-018**: System MUST provide a command bar (Cmd+K / Ctrl+K) with searchable game commands.
 - **FR-019**: Command bar MUST support: reset scores, correct scores, skip card, new game, add player.
 - **FR-020**: Command bar MUST filter commands as the user types and execute on Enter.
+- **FR-021**: In multiplayer, buzz state MUST reset when the host advances to a new clue.
+- **FR-022**: In multiplayer, a wrong buzz MUST lock the player out from buzzing again on the current card only.
+- **FR-023**: Host MUST be able to mark a buzz as "Rätt" (correct) or "Fel" (wrong).
+- **FR-024**: A score summary screen MUST appear between cards showing ranked players with round point changes.
 
 ### Key Entities
 

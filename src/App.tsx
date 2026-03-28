@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useGameSession } from "./hooks/useGameSession";
 import { useGameState } from "./hooks/useGameState";
 import { useMultiplayer } from "./hooks/useMultiplayer";
@@ -7,6 +7,7 @@ import { MultiplayerLobby } from "./components/MultiplayerLobby";
 import { BuzzerView } from "./components/BuzzerView";
 import { CardView } from "./components/CardView";
 import { Scoreboard } from "./components/Scoreboard";
+import { ScoreSummary } from "./components/ScoreSummary";
 import { CommandBar } from "./components/CommandBar";
 import { EmptyDeck } from "./components/EmptyDeck";
 import { SkipButton } from "./components/SkipButton";
@@ -18,10 +19,22 @@ function App() {
   const [cmdBarOpen, setCmdBarOpen] = useState(false);
   const [mpScreen, setMpScreen] = useState<"lobby" | "playing" | null>(null);
   const [playerName, setPlayerName] = useState("");
+  const [showSummary, setShowSummary] = useState(false);
+  const [lastRoundPoints, setLastRoundPoints] = useState(0);
+  const [lastRoundWinner, setLastRoundWinner] = useState<string | null>(null);
+  const prevClueIndex = useRef(session.clueIndex);
 
   const isCompetition = gameState.mode === "competition";
   const isMultiplayerHost = mp.role === "host" && mpScreen === "playing";
   const isMultiplayerPlayer = mp.role === "player";
+
+  // Reset buzz when clue advances (host side)
+  useEffect(() => {
+    if (isMultiplayerHost && session.clueIndex !== prevClueIndex.current) {
+      mp.resetBuzz();
+      prevClueIndex.current = session.clueIndex;
+    }
+  }, [isMultiplayerHost, session.clueIndex, mp]);
 
   // Sync game state to multiplayer peers when host
   useEffect(() => {
@@ -53,15 +66,62 @@ function App() {
     (playerId: string) => {
       if (session.earnedPoints && session.earnedPoints > 0) {
         gameState.awardPoints(playerId, session.earnedPoints);
+        setLastRoundPoints(session.earnedPoints);
+        const player = gameState.players.find((p) => p.id === playerId);
+        setLastRoundWinner(player?.name ?? null);
       }
-      mp.resetBuzz();
-      session.nextCard();
+      mp.resetBuzzFull();
+      if (isCompetition) {
+        setShowSummary(true);
+      } else {
+        session.nextCard();
+      }
     },
-    [session, gameState, mp],
+    [session, gameState, mp, isCompetition],
   );
 
+  const handleNextCardFromSummary = useCallback(() => {
+    setShowSummary(false);
+    setLastRoundPoints(0);
+    setLastRoundWinner(null);
+    session.nextCard();
+  }, [session]);
+
+  const handleNoOneGuessed = useCallback(() => {
+    setLastRoundPoints(0);
+    setLastRoundWinner(null);
+    mp.resetBuzzFull();
+    if (isCompetition) {
+      setShowSummary(true);
+    } else {
+      session.nextCard();
+    }
+  }, [session, mp, isCompetition]);
+
+  // Host: correct buzz
+  const handleBuzzCorrect = useCallback(() => {
+    if (!mp.buzzWinner) return;
+    const player = gameState.players.find((p) => p.name === mp.buzzWinner);
+    if (player) {
+      session.correct();
+      // Slight delay to let earnedPoints update, then award
+      setTimeout(() => {
+        const points = 5 - session.clueIndex;
+        gameState.awardPoints(player.id, points);
+        setLastRoundPoints(points);
+        setLastRoundWinner(player.name);
+        mp.resetBuzzFull();
+        setShowSummary(true);
+      }, 50);
+    }
+  }, [mp.buzzWinner, gameState, session, mp]);
+
+  // Host: wrong buzz
+  const handleBuzzWrong = useCallback(() => {
+    mp.wrongBuzz();
+  }, [mp]);
+
   const handleMultiplayerStart = useCallback(() => {
-    // Convert peers to players
     const playerNames = mp.peers.map((p) => p.name);
     gameState.startGame("competition", playerNames);
     setMpScreen("playing");
@@ -94,6 +154,7 @@ function App() {
         earnedPoints={mp.gameSync.earnedPoints}
         buzzWinner={mp.buzzWinner}
         hasBuzzed={mp.hasBuzzed}
+        isLockedOut={mp.isLockedOut}
         playerName={playerName}
         players={mp.gameSync.players}
         onBuzz={mp.buzz}
@@ -111,7 +172,7 @@ function App() {
     );
   }
 
-  // Multiplayer lobby (host or join)
+  // Multiplayer lobby
   if (mpScreen === "lobby") {
     return (
       <div className="min-h-svh flex flex-col items-center justify-center bg-surface">
@@ -147,6 +208,20 @@ function App() {
     );
   }
 
+  // Score summary between rounds
+  if (showSummary && isCompetition) {
+    return (
+      <div className="min-h-svh flex flex-col items-center justify-center bg-surface relative px-6">
+        <ScoreSummary
+          players={gameState.players}
+          lastRoundPoints={lastRoundPoints}
+          lastRoundWinner={lastRoundWinner}
+          onNextCard={handleNextCardFromSummary}
+        />
+      </div>
+    );
+  }
+
   // Main game (host or local)
   return (
     <div className="min-h-svh flex flex-col items-center justify-center bg-surface relative px-6">
@@ -160,10 +235,26 @@ function App() {
         )}
       </div>
 
-      {/* Buzz winner indicator for host */}
+      {/* Buzz notification for host with Rätt/Fel */}
       {isMultiplayerHost && mp.buzzWinner && !session.revealed && (
-        <div className="absolute top-24 left-0 right-0 text-center animate-scale-in">
+        <div className="absolute top-24 left-0 right-0 flex flex-col items-center gap-3 animate-score-pop z-10">
           <p className="text-white font-bold text-lg">{mp.buzzWinner} buzzade!</p>
+          <div className="flex gap-3">
+            <button
+              data-testid="buzz-correct"
+              onClick={handleBuzzCorrect}
+              className="px-8 py-3 bg-emerald-500 text-white rounded-2xl text-base font-semibold active:scale-95 transition-all shadow-lg shadow-emerald-500/20"
+            >
+              Rätt ✓
+            </button>
+            <button
+              data-testid="buzz-wrong"
+              onClick={handleBuzzWrong}
+              className="px-8 py-3 bg-red-500/80 text-white rounded-2xl text-base font-semibold active:scale-95 transition-all"
+            >
+              Fel ✗
+            </button>
+          </div>
         </div>
       )}
 
@@ -177,7 +268,7 @@ function App() {
       {/* Main content */}
       {session.currentCard ? (
         <>
-          <SkipButton onClick={() => { mp.resetBuzz(); session.skip(); }} />
+          <SkipButton onClick={() => { mp.resetBuzzFull(); session.skip(); }} />
           <CardView
             card={session.currentCard}
             clueIndex={session.clueIndex}
@@ -186,8 +277,8 @@ function App() {
             players={isCompetition ? gameState.players : undefined}
             showAnswer={isCompetition || isMultiplayerHost}
             onNextClue={session.nextClue}
-            onCorrect={() => { session.correct(); }}
-            onNextCard={() => { mp.resetBuzz(); session.nextCard(); }}
+            onCorrect={session.correct}
+            onNextCard={isCompetition ? handleNoOneGuessed : () => { mp.resetBuzzFull(); session.nextCard(); }}
             onAwardPoints={handleAwardPoints}
           />
         </>
@@ -205,7 +296,7 @@ function App() {
         onAdjustScore={gameState.adjustScore}
         onAddPlayer={gameState.addPlayer}
         onSkipCard={() => {
-          mp.resetBuzz();
+          mp.resetBuzzFull();
           session.skip();
           setCmdBarOpen(false);
         }}

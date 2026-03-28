@@ -39,6 +39,9 @@ test.describe("Command Bar (US6)", () => {
     await page.getByTestId("correct").click();
     await page.getByTestId("award-Anna").click();
 
+    // Click through score summary
+    await page.getByTestId("summary-next").click();
+
     // Verify score is 5
     await expect(page.getByTestId("scoreboard")).toContainText("5");
 
