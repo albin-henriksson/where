@@ -11,6 +11,7 @@ export interface GameStateValue {
 
 export interface GameStateActions {
   startGame: (mode: GameMode, playerNames?: string[]) => void;
+  restoreGame: (mode: GameMode, players: Player[]) => void;
   resetGame: () => void;
   awardPoints: (playerId: string, points: number) => void;
   resetScores: () => void;
@@ -39,6 +40,15 @@ export function useGameState(): GameStateValue & GameStateActions {
       } else {
         setPlayers([]);
       }
+      setScreen("playing");
+    },
+    [],
+  );
+
+  const restoreGame = useCallback(
+    (gameMode: GameMode, savedPlayers: Player[]) => {
+      setMode(gameMode);
+      setPlayers(savedPlayers.map((p) => ({ ...p, id: makeId() })));
       setScreen("playing");
     },
     [],
@@ -82,6 +92,7 @@ export function useGameState(): GameStateValue & GameStateActions {
     mode,
     players,
     startGame,
+    restoreGame,
     resetGame,
     awardPoints,
     resetScores,

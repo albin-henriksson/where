@@ -197,14 +197,7 @@ export function useGameOrchestrator(): Orchestrator {
     // Restore persisted local game (not multiplayer)
     const saved = loadGameState();
     if (saved) {
-      game.startGame(saved.mode, saved.players.map((p) => p.name));
-      // Restore scores
-      for (const p of saved.players) {
-        const match = game.players.find((gp) => gp.name === p.name);
-        if (match && p.score > 0) {
-          game.awardPoints(match.id, p.score);
-        }
-      }
+      game.restoreGame(saved.mode, saved.players);
       session.restoreSession(saved.seenCardIds);
       setReaderIndex(saved.readerIndex);
     }
