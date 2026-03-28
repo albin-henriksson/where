@@ -24,6 +24,7 @@ interface GameSync {
   buzzWinner?: string | null;
   players: { id: string; name: string; score: number }[];
   currentReader?: string;
+  imageUrl?: string;
 }
 
 // Messages from player → host

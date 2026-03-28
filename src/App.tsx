@@ -27,6 +27,7 @@ function App() {
         isLockedOut={o.isLockedOut}
         playerName={o.playerName}
         players={o.gameSync.players}
+        imageUrl={o.gameSync.imageUrl}
         onBuzz={o.buzz}
       />
     );

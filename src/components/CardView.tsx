@@ -138,13 +138,25 @@ export function CardView({
             </span>
           </div>
 
-          {/* Clue text */}
-          <p
-            data-testid="clue-text"
-            className="text-xl leading-relaxed text-white text-center min-h-[5rem] flex items-center justify-center animate-fade-in"
-          >
-            {card.clues[clueIndex]}
-          </p>
+          {/* Clue: image or text */}
+          {clueIndex === 2 && card.imageUrl ? (
+            <div className="w-full min-h-[10rem] flex items-center justify-center animate-fade-in">
+              <img
+                data-testid="clue-image"
+                src={card.imageUrl}
+                alt="Bildledtråd"
+                className="max-h-48 w-full object-cover rounded-xl"
+              />
+              <span data-testid="clue-text" className="hidden">{card.clues[clueIndex]}</span>
+            </div>
+          ) : (
+            <p
+              data-testid="clue-text"
+              className="text-xl leading-relaxed text-white text-center min-h-[5rem] flex items-center justify-center animate-fade-in"
+            >
+              {card.clues[clueIndex]}
+            </p>
+          )}
 
           {/* Action buttons */}
           <div className="flex gap-3">

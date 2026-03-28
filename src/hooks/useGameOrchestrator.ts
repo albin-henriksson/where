@@ -54,6 +54,7 @@ export interface Orchestrator {
     earnedPoints?: number | null;
     players: { id: string; name: string; score: number }[];
     currentReader?: string;
+    imageUrl?: string;
   } | null;
   playerName: string;
 
@@ -179,6 +180,7 @@ export function useGameOrchestrator(): Orchestrator {
       buzzWinner: mp.buzzWinner,
       players: game.players,
       currentReader: currentReader ?? undefined,
+      imageUrl: session.clueIndex === 2 ? session.currentCard.imageUrl : undefined,
     });
   }, [isMultiplayerHost, session.currentCard, session.clueIndex, session.revealed, session.earnedPoints, mp.buzzWinner, game.players, currentReader]);
 

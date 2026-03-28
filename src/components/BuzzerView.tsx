@@ -11,6 +11,7 @@ interface BuzzerViewProps {
   isLockedOut: boolean;
   playerName: string;
   players: { id: string; name: string; score: number }[];
+  imageUrl?: string;
   onBuzz: () => void;
 }
 
@@ -27,6 +28,7 @@ export function BuzzerView({
   isLockedOut,
   playerName,
   players,
+  imageUrl,
   onBuzz,
 }: BuzzerViewProps) {
   const sorted = [...players].sort((a, b) => b.score - a.score);
@@ -93,9 +95,13 @@ export function BuzzerView({
           </span>
         </div>
 
-        <p className="text-lg leading-relaxed text-white text-center animate-fade-in">
-          {clueText}
-        </p>
+        {clueIndex === 2 && imageUrl ? (
+          <img src={imageUrl} alt="Bildledtråd" className="max-h-36 w-full object-cover rounded-xl animate-fade-in" />
+        ) : (
+          <p className="text-lg leading-relaxed text-white text-center animate-fade-in">
+            {clueText}
+          </p>
+        )}
       </div>
 
       {/* Center: buzzer */}

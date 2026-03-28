@@ -7,6 +7,8 @@ export interface CityCard {
   country: string;
   /** 5 clues ordered hardest → easiest. Clue 1 is vague, clue 5 is a giveaway. */
   clues: [string, string, string, string, string];
+  /** URL to an image shown as the 3rd clue (replaces text clue at index 2). */
+  imageUrl?: string;
 }
 
 export type GameMode = "freeplay" | "competition";
