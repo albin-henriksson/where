@@ -26,13 +26,15 @@ export interface GameActions {
   nextCard: () => void;
 }
 
+function initDeck() {
+  const shuffled = shuffle(cards);
+  return { first: shuffled[0] ?? null, rest: shuffled.slice(1) };
+}
+
 export function useGameSession(): GameState & GameActions {
-  const [remaining, setRemaining] = useState<CityCard[]>(() => shuffle(cards));
-  const [currentCard, setCurrentCard] = useState<CityCard | null>(() => {
-    const shuffled = shuffle(cards);
-    setRemaining(shuffled.slice(1));
-    return shuffled[0] ?? null;
-  });
+  const [{ first, rest }] = useState(initDeck);
+  const [remaining, setRemaining] = useState<CityCard[]>(rest);
+  const [currentCard, setCurrentCard] = useState<CityCard | null>(first);
   const [clueIndex, setClueIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [earnedPoints, setEarnedPoints] = useState<number | null>(null);

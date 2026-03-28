@@ -46,19 +46,19 @@
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] Create CardView component in src/components/CardView.tsx — displays current clue, clue number indicator (1-5), and point value
-- [ ] T008 [US1] Add "Next Clue" and "Correct" action buttons to CardView in src/components/CardView.tsx
-- [ ] T009 [US1] Create RevealView in src/components/CardView.tsx — shows city name, country, and earned points after round ends
-- [ ] T010 [US1] Add "Next Card" button to RevealView that draws the next unseen card
-- [ ] T011 [US1] Wire up CardView and game hook in src/App.tsx as the main game screen
+- [x] T007 [US1] Create CardView component in src/components/CardView.tsx — displays current clue, clue number indicator (1-5), and point value
+- [x] T008 [US1] Add "Next Clue" and "Correct" action buttons to CardView in src/components/CardView.tsx
+- [x] T009 [US1] Create RevealView in src/components/CardView.tsx — shows city name, country, and earned points after round ends
+- [x] T010 [US1] Add "Next Card" button to RevealView that draws the next unseen card
+- [x] T011 [US1] Wire up CardView and game hook in src/App.tsx as the main game screen
 
 ### E2E Tests for User Story 1
 
-- [ ] T012 [US1] Write Playwright test in e2e/quiz-round.spec.ts: verify first clue is displayed on load
-- [ ] T013 [US1] Write Playwright test in e2e/quiz-round.spec.ts: click "Next Clue" 4 times, verify all 5 clues revealed progressively and point value decreases
-- [ ] T014 [US1] Write Playwright test in e2e/quiz-round.spec.ts: click "Correct" on clue 2, verify city name revealed with 4 points
-- [ ] T015 [US1] Write Playwright test in e2e/quiz-round.spec.ts: exhaust all clues without guessing, verify city revealed with 0 points
-- [ ] T016 [US1] Write Playwright test in e2e/quiz-round.spec.ts: complete a card and click "Next Card", verify a new card is drawn
+- [x] T012 [US1] Write Playwright test in e2e/quiz-round.spec.ts: verify first clue is displayed on load
+- [x] T013 [US1] Write Playwright test in e2e/quiz-round.spec.ts: click "Next Clue" 4 times, verify all 5 clues revealed progressively and point value decreases
+- [x] T014 [US1] Write Playwright test in e2e/quiz-round.spec.ts: click "Correct" on clue 2, verify city name revealed with 4 points
+- [x] T015 [US1] Write Playwright test in e2e/quiz-round.spec.ts: exhaust all clues without guessing, verify city revealed with 0 points
+- [x] T016 [US1] Write Playwright test in e2e/quiz-round.spec.ts: complete a card and click "Next Card", verify a new card is drawn
 
 **Checkpoint**: Full quiz round playable and validated by e2e tests
 
@@ -72,15 +72,15 @@
 
 ### Implementation for User Story 2
 
-- [ ] T017 [US2] Create SkipButton component in src/components/SkipButton.tsx — subtle, low-opacity button positioned in corner
-- [ ] T018 [US2] Add keyboard listener for Escape key to trigger skip in src/App.tsx
-- [ ] T019 [US2] Integrate SkipButton into the card view layout in src/App.tsx
+- [x] T017 [US2] Create SkipButton component in src/components/SkipButton.tsx — subtle, low-opacity button positioned in corner
+- [x] T018 [US2] Add keyboard listener for Escape key to trigger skip in src/App.tsx
+- [x] T019 [US2] Integrate SkipButton into the card view layout in src/App.tsx
 
 ### E2E Tests for User Story 2
 
-- [ ] T020 [US2] Write Playwright test in e2e/skip-card.spec.ts: press Escape key, verify new card is drawn (different clue text)
-- [ ] T021 [US2] Write Playwright test in e2e/skip-card.spec.ts: click skip button, verify new card is drawn
-- [ ] T022 [US2] Write Playwright test in e2e/skip-card.spec.ts: skip a card and play through remaining, verify skipped card never reappears
+- [x] T020 [US2] Write Playwright test in e2e/skip-card.spec.ts: press Escape key, verify new card is drawn (different clue text)
+- [x] T021 [US2] Write Playwright test in e2e/skip-card.spec.ts: click skip button, verify new card is drawn
+- [x] T022 [US2] Write Playwright test in e2e/skip-card.spec.ts: skip a card and play through remaining, verify skipped card never reappears
 
 **Checkpoint**: Cards can be skipped via tap or keyboard, validated by e2e tests
 
@@ -94,13 +94,13 @@
 
 ### Implementation for User Story 3
 
-- [ ] T023 [US3] Create EmptyDeck component in src/components/EmptyDeck.tsx — displays "Inga fler kort!" message
-- [ ] T024 [US3] Conditionally render EmptyDeck when no cards remain in src/App.tsx
+- [x] T023 [US3] Create EmptyDeck component in src/components/EmptyDeck.tsx — displays "Inga fler kort!" message
+- [x] T024 [US3] Conditionally render EmptyDeck when no cards remain in src/App.tsx
 
 ### E2E Tests for User Story 3
 
-- [ ] T025 [US3] Write Playwright test in e2e/session-tracking.spec.ts: skip all cards rapidly, verify "Inga fler kort!" message is displayed
-- [ ] T026 [US3] Write Playwright test in e2e/session-tracking.spec.ts: verify no repeated cards appear during a full session playthrough
+- [x] T025 [US3] Write Playwright test in e2e/session-tracking.spec.ts: skip all cards rapidly, verify "Inga fler kort!" message is displayed
+- [x] T026 [US3] Write Playwright test in e2e/session-tracking.spec.ts: verify no repeated cards appear during a full session playthrough
 
 **Checkpoint**: Session gracefully handles deck exhaustion, validated by e2e tests
 
