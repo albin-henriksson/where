@@ -23,10 +23,33 @@ function App() {
   const [lastRoundPoints, setLastRoundPoints] = useState(0);
   const [lastRoundWinner, setLastRoundWinner] = useState<string | null>(null);
   const prevClueIndex = useRef(session.clueIndex);
+  const hasCheckedUrl = useRef(false);
 
   const isCompetition = gameState.mode === "competition";
   const isMultiplayerHost = mp.role === "host" && mpScreen === "playing";
   const isMultiplayerPlayer = mp.role === "player";
+
+  // Check URL for room code on mount — auto-open join screen
+  useEffect(() => {
+    if (hasCheckedUrl.current) return;
+    hasCheckedUrl.current = true;
+    const params = new URLSearchParams(window.location.search);
+    const room = params.get("room");
+    if (room && room.length === 4) {
+      setMpScreen("lobby");
+      // The lobby will see the prefilled code via initialRoomCode
+      setUrlRoomCode(room.toUpperCase());
+    }
+  }, []);
+
+  const [urlRoomCode, setUrlRoomCode] = useState<string | null>(null);
+
+  // Update URL when host creates a room
+  useEffect(() => {
+    if (mp.role === "host" && mp.roomCode) {
+      window.history.replaceState({}, "", `/?room=${mp.roomCode}`);
+    }
+  }, [mp.role, mp.roomCode]);
 
   // Reset buzz when clue advances (host side)
   useEffect(() => {
@@ -181,15 +204,22 @@ function App() {
           roomCode={mp.roomCode}
           connected={mp.connected}
           peers={mp.peers}
-          onHost={mp.hostGame}
+          initialRoomCode={urlRoomCode}
+          onHost={() => {
+            mp.hostGame();
+            // URL will be updated once roomCode is set (via effect below)
+          }}
           onJoin={(code, name) => {
             setPlayerName(name);
             mp.joinGame(code, name);
+            window.history.replaceState({}, "", `/?room=${code}`);
           }}
           onStart={handleMultiplayerStart}
           onBack={() => {
             mp.cleanup();
             setMpScreen(null);
+            setUrlRoomCode(null);
+            window.history.replaceState({}, "", "/");
           }}
         />
       </div>

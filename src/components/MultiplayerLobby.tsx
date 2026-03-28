@@ -10,6 +10,7 @@ interface MultiplayerLobbyProps {
   roomCode: string;
   connected: boolean;
   peers: PeerInfo[];
+  initialRoomCode?: string | null;
   onHost: () => void;
   onJoin: (code: string, name: string) => void;
   onStart: () => void;
@@ -21,15 +22,22 @@ export function MultiplayerLobby({
   roomCode,
   connected,
   peers,
+  initialRoomCode,
   onHost,
   onJoin,
   onStart,
   onBack,
 }: MultiplayerLobbyProps) {
-  const [joinCode, setJoinCode] = useState("");
+  const [joinCode, setJoinCode] = useState(initialRoomCode ?? "");
   const [playerName, setPlayerName] = useState("");
   const [step, setStep] = useState<"choose" | "hosting" | "joining">(
-    mode === "host" ? "hosting" : mode === "player" ? "joining" : "choose",
+    initialRoomCode
+      ? "joining"
+      : mode === "host"
+        ? "hosting"
+        : mode === "player"
+          ? "joining"
+          : "choose",
   );
 
   if (step === "hosting") {
@@ -47,6 +55,17 @@ export function MultiplayerLobby({
           >
             {roomCode}
           </p>
+          {roomCode && (
+            <button
+              onClick={() => {
+                const url = `${window.location.origin}/?room=${roomCode}`;
+                navigator.clipboard?.writeText(url);
+              }}
+              className="mt-3 text-xs text-muted hover:text-text-dim transition-colors"
+            >
+              Kopiera länk
+            </button>
+          )}
         </div>
 
         <div className="w-full">
