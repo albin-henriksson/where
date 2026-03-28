@@ -43,6 +43,7 @@ type HostMessage =
   | GameSync
   | { type: "buzz-result"; winnerId: string; winnerName: string }
   | { type: "buzz-reset" }
+  | { type: "buzz-reset-full" }
   | { type: "buzz-wrong"; lockedPlayerId: string };
 type PlayerMessage = BuzzMessage | JoinMessage;
 
@@ -157,7 +158,11 @@ export function useMultiplayer() {
         setBuzzWinner(null);
         setBuzzWinnerId(null);
         setHasBuzzed(false);
-        // Don't reset lockout — that persists per card. Only resetBuzz (new clue) clears hasBuzzed.
+      } else if (data.type === "buzz-reset-full") {
+        setBuzzWinner(null);
+        setBuzzWinnerId(null);
+        setHasBuzzed(false);
+        setIsLockedOut(false);
       } else if (data.type === "buzz-wrong") {
         // If I was the one who buzzed wrong, lock me out
         if (data.lockedPlayerId === selfId) {
@@ -207,7 +212,7 @@ export function useMultiplayer() {
     setHasBuzzed(false);
     setIsLockedOut(false);
     lockedOutRef.current = new Set();
-    sendHostRef.current?.({ type: "buzz-reset" });
+    sendHostRef.current?.({ type: "buzz-reset-full" });
   }, []);
 
   // Cleanup on unmount

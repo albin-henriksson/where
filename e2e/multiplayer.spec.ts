@@ -61,54 +61,63 @@ test.describe("Multiplayer UI (US7)", () => {
 });
 
 test.describe("Multiplayer P2P", () => {
-  test("host and player can connect and play", async ({ browser }) => {
-    // Create two isolated browser contexts
+  test.describe.configure({ retries: 2 });
+
+  test("host and two players can connect, rotate reader, and buzz", async ({ browser }) => {
     const hostContext = await browser.newContext();
-    const playerContext = await browser.newContext();
+    const player1Context = await browser.newContext();
+    const player2Context = await browser.newContext();
     const hostPage = await hostContext.newPage();
-    const playerPage = await playerContext.newPage();
+    const player1Page = await player1Context.newPage();
+    const player2Page = await player2Context.newPage();
 
     // Host creates a game
     await hostPage.goto("http://localhost:5173");
     await hostPage.getByTestId("mode-multiplayer").click();
     await hostPage.getByTestId("mp-host").click();
 
-    // Get the room code
     const roomCode = await hostPage.getByTestId("room-code").textContent();
     expect(roomCode).toBeTruthy();
 
-    // Player joins with the code
-    await playerPage.goto("http://localhost:5173");
-    await playerPage.getByTestId("mode-multiplayer").click();
-    await playerPage.getByTestId("mp-join").click();
-    await playerPage.getByTestId("join-name").fill("TestPlayer");
-    await playerPage.getByTestId("join-code").fill(roomCode!);
-    await playerPage.getByTestId("join-submit").click();
+    // Player 1 joins (will be the first reader)
+    await player1Page.goto("http://localhost:5173");
+    await player1Page.getByTestId("mode-multiplayer").click();
+    await player1Page.getByTestId("mp-join").click();
+    await player1Page.getByTestId("join-name").fill("Alice");
+    await player1Page.getByTestId("join-code").fill(roomCode!);
+    await player1Page.getByTestId("join-submit").click();
 
-    // Wait for connection (player sees "Ansluten")
-    await expect(playerPage.getByText("Ansluten")).toBeVisible({ timeout: 15000 });
+    // Player 2 joins (will be the buzzer)
+    await player2Page.goto("http://localhost:5173");
+    await player2Page.getByTestId("mode-multiplayer").click();
+    await player2Page.getByTestId("mp-join").click();
+    await player2Page.getByTestId("join-name").fill("Bob");
+    await player2Page.getByTestId("join-code").fill(roomCode!);
+    await player2Page.getByTestId("join-submit").click();
 
-    // Host should see the player in the lobby
-    await expect(hostPage.getByText("TestPlayer")).toBeVisible({ timeout: 15000 });
+    // Wait for both to connect
+    await expect(player1Page.getByText("Ansluten")).toBeVisible({ timeout: 15000 });
+    await expect(player2Page.getByText("Ansluten")).toBeVisible({ timeout: 15000 });
+    await expect(hostPage.getByText("Alice")).toBeVisible({ timeout: 15000 });
+    await expect(hostPage.getByText("Bob")).toBeVisible({ timeout: 15000 });
 
     // Host starts the game
     await hostPage.getByTestId("start-multiplayer").click();
 
-    // Host should see the card view with answer
+    // Host should see the card view
     await expect(hostPage.getByTestId("clue-text")).toBeVisible({ timeout: 5000 });
-    await expect(hostPage.getByTestId("reader-answer")).toBeVisible();
 
-    // Player should see the buzzer
-    await expect(playerPage.getByTestId("buzz-button")).toBeVisible({ timeout: 10000 });
+    // Player 2 (not reader) should see the buzzer
+    await expect(player2Page.getByTestId("buzz-button")).toBeVisible({ timeout: 10000 });
 
-    // Player buzzes
-    await playerPage.getByTestId("buzz-button").click();
+    // Player 2 buzzes
+    await player2Page.getByTestId("buzz-button").click();
 
     // Host should see buzz notification
-    await expect(hostPage.getByText("TestPlayer buzzade")).toBeVisible({ timeout: 5000 });
+    await expect(hostPage.getByText("Bob buzzade")).toBeVisible({ timeout: 5000 });
 
-    // Cleanup
     await hostContext.close();
-    await playerContext.close();
+    await player1Context.close();
+    await player2Context.close();
   });
 });

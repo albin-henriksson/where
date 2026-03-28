@@ -12,7 +12,7 @@ export const cards: CityCard[] = [
       "Hagia Sofia, som varit kyrka, moské och museum, ligger här.",
       "Denna stad vid Bosporen hette tidigare Konstantinopel.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Historical_peninsula_and_modern_skyline_of_Istanbul.jpg/800px-Historical_peninsula_and_modern_skyline_of_Istanbul.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Historical_peninsula_and_modern_skyline_of_Istanbul.jpg?width=600",
   },
   {
     id: "reykjavik",
@@ -25,7 +25,7 @@ export const cards: CityCard[] = [
       "Staden får nästan all sin uppvärmning från geotermisk energi.",
       "Detta är världens nordligaste huvudstad.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Reykjav%C3%ADk%2C_view_from_Hallgr%C3%ADmskirkja_%282%29.jpg/800px-Reykjav%C3%ADk%2C_view_from_Hallgr%C3%ADmskirkja_%282%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Reykjav%C3%ADk%2C_view_from_Hallgr%C3%ADmskirkja_%282%29.jpg?width=600",
   },
   {
     id: "marrakech",
@@ -38,7 +38,7 @@ export const cards: CityCard[] = [
       "Staden var en av de fyra kejserliga huvudstäderna i sitt land.",
       "Denna stad i Nordafrika är känd för sina souker och ligger vid foten av Atlasbergen.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Pavillon_Menarag%C3%A4rten.jpg/800px-Pavillon_Menarag%C3%A4rten.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Pavillon_Menarag%C3%A4rten.jpg?width=600",
   },
   {
     id: "buenos-aires",
@@ -51,7 +51,7 @@ export const cards: CityCard[] = [
       "Avenida 9 de Julio är en av världens bredaste gator.",
       "Denna sydamerikanska huvudstad vid Río de la Plata kallas 'Sydamerikas Paris'.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Avenida_9_de_Julio%2C_Buenos_Aires_%2840089810910%29.jpg/800px-Avenida_9_de_Julio%2C_Buenos_Aires_%2840089810910%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Avenida_9_de_Julio%2C_Buenos_Aires_%2840089810910%29.jpg?width=600",
   },
   {
     id: "kyoto",
@@ -64,7 +64,7 @@ export const cards: CityCard[] = [
       "Staden var Japans huvudstad i över tusen år fram till 1868.",
       "Denna japanska stad, vars namn är ett anagram av 'Tokyo', är känd för sina trädgårdar.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Kiyomizu.jpg/800px-Kiyomizu.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Kiyomizu.jpg?width=600",
   },
   {
     id: "stockholm",
@@ -77,7 +77,7 @@ export const cards: CityCard[] = [
       "Stadens gamla stadsdel heter Gamla Stan och är en av Europas bäst bevarade medeltida stadskärnor med smala kullerstensgränder från 1200-talet.",
       "Denna skandinaviska huvudstad ligger där Mälaren möter Östersjön och är hem till det kungliga slottet med över sexhundra rum.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Royal_Dramatic_Theatre_Stockholm.jpg/800px-Royal_Dramatic_Theatre_Stockholm.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Royal_Dramatic_Theatre_Stockholm.jpg?width=600",
   },
   {
     id: "tokyo",
@@ -90,7 +90,7 @@ export const cards: CityCard[] = [
       "Shibuya-korsningen är känd som världens mest trafikerade övergångsställe, där upp till 3 000 personer korsar gatan vid varje grönljus.",
       "Denna megastad är hemmet för det kejserliga palatset och är en av världens folkrikaste metropoler med över 37 miljoner invånare.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Skyscrapers_of_Shinjuku_2009_January.jpg/800px-Skyscrapers_of_Shinjuku_2009_January.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Skyscrapers_of_Shinjuku_2009_January.jpg?width=600",
   },
   {
     id: "new-york",
@@ -103,7 +103,7 @@ export const cards: CityCard[] = [
       "Stadens ikoniska skyline med Empire State Building och Chrysler Building har inspirerat otaliga filmer och tv-serier.",
       "'The Big Apple' – världsmetropolen som aldrig sover, med Times Square, Central Park och Broadway.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg/800px-View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu_%28cropped%29.jpg?width=600",
   },
   {
     id: "cape-town",
@@ -116,7 +116,7 @@ export const cards: CityCard[] = [
       "I närheten finns en av världens mest kända forna fängelser, beläget på en ö där en framtida nobelpristagare satt fängslad i 18 år.",
       "Staden domineras av Table Mountain, ett av de mest fotograferade naturlandskapen i hela Afrika.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Camps_bay_%2853460319478%29_%28cropped%29.jpg/800px-Camps_bay_%2853460319478%29_%28cropped%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Camps_bay_%2853460319478%29_%28cropped%29.jpg?width=600",
   },
   {
     id: "barcelona",
@@ -129,7 +129,7 @@ export const cards: CityCard[] = [
       "Den ikoniska strandpromenaden La Barceloneta och den livliga gågatan Las Ramblas är två av stadens mest älskade mötesplatser.",
       "Sagrada Família – den storslagna basilikan som påbörjades 1882 och ännu inte är färdigbyggd – är ett av världens mest igenkännbara byggnadsverk.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Aerial_view_of_Barcelona%2C_Spain_%2851227309370%29_edited.jpg/800px-Aerial_view_of_Barcelona%2C_Spain_%2851227309370%29_edited.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_view_of_Barcelona%2C_Spain_%2851227309370%29_edited.jpg?width=600",
   },
   {
     id: "london",
@@ -142,7 +142,7 @@ export const cards: CityCard[] = [
       "Här bor den kungliga familjen i ett palats med en ceremoniell vaktavlösning som turister köar i timmar för att se.",
       "Röda dubbeldäcksbussar och svarta taxibilar dominerar gatorna i denna brittiska huvudstad.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/London_Skyline_%28125508655%29.jpeg/800px-London_Skyline_%28125508655%29.jpeg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/London_Skyline_%28125508655%29.jpeg?width=600",
   },
   {
     id: "paris",
@@ -155,7 +155,7 @@ export const cards: CityCard[] = [
       "Stadens järntorn byggdes ursprungligen som en tillfällig konstruktion för en världsutställning 1889.",
       "Huvudstaden i ett land känt för sitt vin, sin ost och sin höga gastronomikultur, belägen vid floden Seine.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/800px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg?width=600",
   },
   {
     id: "rom",
@@ -168,7 +168,7 @@ export const cards: CityCard[] = [
       "Staden kallas 'den eviga staden' och är byggd på sju kullar vid floden Tibern.",
       "Italiens huvudstad är känd för sina piazzor, sin pasta och sitt rika kulturarv från det antika imperiet.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Trevi_Fountain%2C_Rome%2C_Italy_2_-_May_2007.jpg/800px-Trevi_Fountain%2C_Rome%2C_Italy_2_-_May_2007.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Trevi_Fountain%2C_Rome%2C_Italy_2_-_May_2007.jpg?width=600",
   },
   {
     id: "berlin",
@@ -181,7 +181,7 @@ export const cards: CityCard[] = [
       "En stor grön park mitt i staden, Tiergarten, gömmer ett sovjetiskt krigsmonument.",
       "Tysklands folkrikaste stad och huvudstad, känd för sin tekno-musikscen och sin historia kring det kalla kriget.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Blue_Hour_in_Berlin.jpg/800px-Blue_Hour_in_Berlin.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Blue_Hour_in_Berlin.jpg?width=600",
   },
   {
     id: "amsterdam",
@@ -194,7 +194,7 @@ export const cards: CityCard[] = [
       "Stadens kanaler är uppbyggda i halvmånform och erbjuder en av Europas mest fotograferade stadsbilder från vattnet.",
       "Nederländernas huvudstad är känd för sina smala gavelhus, tulpaner och sina legaliserade coffeeshops.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png/800px-Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png?width=600",
   },
   {
     id: "lissabon",
@@ -207,7 +207,7 @@ export const cards: CityCard[] = [
       "Europas västligaste och en av dess äldsta huvudstäder, belägen vid mynningen av floden Tejo.",
       "Portugals soliga huvudstad med sina kakelplattor, spårvagnar och utsikt över Atlantkusten.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Lisboa_-_Portugal_%2852597836992%29.jpg/800px-Lisboa_-_Portugal_%2852597836992%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Lisboa_-_Portugal_%2852597836992%29.jpg?width=600",
   },
   {
     id: "prag",
@@ -220,7 +220,7 @@ export const cards: CityCard[] = [
       "Staden kallas 'Gyllene staden' eller 'Hundra tornens stad' och har en bevarad medeltida stadskärna på UNESCOs världsarvslista.",
       "Tjeckiens pittoreska huvudstad vid floden Moldau, känd för sin slottsborg och sin stensatta gamla stad.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Prague_%286365119737%29.jpg/800px-Prague_%286365119737%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Prague_%286365119737%29.jpg?width=600",
   },
   {
     id: "wien",
@@ -233,7 +233,7 @@ export const cards: CityCard[] = [
       "Musikens stad är känd för Mozart, Beethoven och Strauss, och nyårskonserten från Musikverein sänds världen över.",
       "Österrikes kejserliga huvudstad vid Donau, hemort för en berömd ridskola med vita lipizzanerhästar.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Schoenbrunn_philharmoniker_2012.jpg/800px-Schoenbrunn_philharmoniker_2012.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Schoenbrunn_philharmoniker_2012.jpg?width=600",
   },
   {
     id: "aten",
@@ -246,7 +246,7 @@ export const cards: CityCard[] = [
       "Stadens centrum omges av kontraster: antika ruiner mitt bland moderna hus och trafikfyllda gator.",
       "Greklands historierika huvudstad, känd för sin akropolis, sina filosofer och medelhavsklimatet.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Monastiraki_Square_and_Acropolis_in_Athens_%2844149181684%29.jpg/800px-Monastiraki_Square_and_Acropolis_in_Athens_%2844149181684%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Monastiraki_Square_and_Acropolis_in_Athens_%2844149181684%29.jpg?width=600",
   },
   {
     id: "dublin",
@@ -259,7 +259,7 @@ export const cards: CityCard[] = [
       "Stadens viktigaste bro, Ha'penny Bridge, fick sitt namn av den tull som passanter fick betala för att korsa Liffey.",
       "Irlands livliga huvudstad vid östkusten, känd för sina pubar, sin folkmusik och den grönaste ön i Europa.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Dublin_-_aerial_-_2025-07-07_01.jpg/800px-Dublin_-_aerial_-_2025-07-07_01.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Dublin_-_aerial_-_2025-07-07_01.jpg?width=600",
   },
   {
     id: "kairo",
@@ -272,7 +272,7 @@ export const cards: CityCard[] = [
       "Precis utanför staden vaktar en enorm lejongestalt med ett mänskligt huvud över ökensanden.",
       "Pyramiderna i Giza ligger bokstavligen i stadens utkant och syns från stadens gator.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Cairo_Skyline_%282020%29.jpg/800px-Cairo_Skyline_%282020%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Cairo_Skyline_%282020%29.jpg?width=600",
   },
   {
     id: "mumbai",
@@ -285,7 +285,7 @@ export const cards: CityCard[] = [
       "Stadens ikoniska Gateway of India uppfördes 1924 för att hedra kung George V:s besök.",
       "Denna kuststad på Arabiska havets östra strand är Indiens ekonomiska huvudstad.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/%E0%A6%93%E0%A6%B0%E0%A6%B2%E0%A6%BF%E0%A6%B0_%E0%A6%97%E0%A6%97%E0%A6%A8%E0%A6%B0%E0%A7%88%E0%A6%96%E0%A6%BF%E0%A6%95_%E0%A6%A6%E0%A7%83%E0%A6%B6%E0%A7%8D%E0%A6%AF.jpg/800px-%E0%A6%93%E0%A6%B0%E0%A6%B2%E0%A6%BF%E0%A6%B0_%E0%A6%97%E0%A6%97%E0%A6%A8%E0%A6%B0%E0%A7%88%E0%A6%96%E0%A6%BF%E0%A6%95_%E0%A6%A6%E0%A7%83%E0%A6%B6%E0%A7%8D%E0%A6%AF.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/%E0%A6%93%E0%A6%B0%E0%A6%B2%E0%A6%BF%E0%A6%B0_%E0%A6%97%E0%A6%97%E0%A6%A8%E0%A6%B0%E0%A7%88%E0%A6%96%E0%A6%BF%E0%A6%95_%E0%A6%A6%E0%A7%83%E0%A6%B6%E0%A7%8D%E0%A6%AF.jpg?width=600",
   },
   {
     id: "bangkok",
@@ -298,7 +298,7 @@ export const cards: CityCard[] = [
       "Det färgstarka flytande marknaderna lockar miljontals besökare utanför stadskärnan.",
       "Denna sydostasiatiska huvudstad är känd för sin livliga gatumat och nattmarknader längs floden Chao Phraya.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Wat_Benjamabophit1.jpg/800px-Wat_Benjamabophit1.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Wat_Benjamabophit1.jpg?width=600",
   },
   {
     id: "singapore",
@@ -311,7 +311,7 @@ export const cards: CityCard[] = [
       "Marina Bay Sands-hotellet med sin unika takpool 200 meter upp i luften har blivit en arkitektonisk ikon.",
       "Denna rika ö vid Malackasundets sydspets är känd som 'Asiens lejon' och ett globalt finanscentrum.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Singapore_Merlion_BCT.jpg/800px-Singapore_Merlion_BCT.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Singapore_Merlion_BCT.jpg?width=600",
   },
   {
     id: "sydney",
@@ -324,7 +324,7 @@ export const cards: CityCard[] = [
       "Trots att det är landets mest befolkade stad är det inte landets huvudstad.",
       "Denna stad vid en naturlig djuphamn i sydöstra Australien arrangerade de Olympiska spelen år 2000.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Sydney_Opera_House_and_Harbour_Bridge_Dusk_%282%29_2019-06-21.jpg/800px-Sydney_Opera_House_and_Harbour_Bridge_Dusk_%282%29_2019-06-21.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Sydney_Opera_House_and_Harbour_Bridge_Dusk_%282%29_2019-06-21.jpg?width=600",
   },
   {
     id: "dubai",
@@ -337,7 +337,7 @@ export const cards: CityCard[] = [
       "Här kan man åka skidor inomhus mitt i öknen i ett av världens största köpcentrum.",
       "Denna glänsande ökenstadsstat vid Persiska vikens kust är känd för sina rekordbrytande skyskrapor.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/Burj_Khalifa_2021.jpg/800px-Burj_Khalifa_2021.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Burj_Khalifa_2021.jpg?width=600",
   },
   {
     id: "moskva",
@@ -350,7 +350,7 @@ export const cards: CityCard[] = [
       "Denna stad är Europas folkrikaste huvudstad med fler än 12 miljoner invånare.",
       "Rysslands historiska centrum vid floden Moskva har fungerat som landets huvudstad sedan 1700-talet.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Saint_Basil%27s_Cathedral_and_the_Red_Square.jpg/800px-Saint_Basil%27s_Cathedral_and_the_Red_Square.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Saint_Basil%27s_Cathedral_and_the_Red_Square.jpg?width=600",
   },
   {
     id: "peking",
@@ -363,7 +363,7 @@ export const cards: CityCard[] = [
       "Denna stad arrangerade de Olympiska spelen 2008 och vinterspelen 2022, som den enda staden att ha gjort båda.",
       "Landets politiska centrum och historiska kejsarstad har varit rikets hjärta i över 700 år.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Skyline_of_Beijing_CBD_from_the_southeast_%2820210907094201%29.jpg/800px-Skyline_of_Beijing_CBD_from_the_southeast_%2820210907094201%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Skyline_of_Beijing_CBD_from_the_southeast_%2820210907094201%29.jpg?width=600",
   },
   {
     id: "seoul",
@@ -376,7 +376,7 @@ export const cards: CityCard[] = [
       "Han-floden delar staden i norra och södra delar och kantas av parker.",
       "Denna teknologiintensiva huvudstad på Koreahalvön är hem för Samsung, LG och Hyundais globala huvudkontor.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/%EC%A4%91%ED%99%94%EC%A0%84%EC%9D%98_%EB%82%AE.jpg/800px-%EC%A4%91%ED%99%94%EC%A0%84%EC%9D%98_%EB%82%AE.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/%EC%A4%91%ED%99%94%EC%A0%84%EC%9D%98_%EB%82%AE.jpg?width=600",
   },
   {
     id: "hanoi",
@@ -389,7 +389,7 @@ export const cards: CityCard[] = [
       "Ho Chi Minhs balsamerade kropp förvaras i ett granitmausoleum som är öppet för allmänheten.",
       "Denna nordvietnamesiska stad vid Röda flodens delta har tjänat som landets centrum i över tusen år.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Hanoi_skyline_with_Ba_Vi_Mountain.jpg/800px-Hanoi_skyline_with_Ba_Vi_Mountain.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Hanoi_skyline_with_Ba_Vi_Mountain.jpg?width=600",
   },
   {
     id: "havanna",
@@ -402,7 +402,7 @@ export const cards: CityCard[] = [
       "Staden är känd för sin livliga musikscen där salsa, son och rumba fyller kvällsgatorna.",
       "Den solstekta karibiska huvudstaden ligger på en ö bara 150 kilometer från Florida.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/DJI_0197_crp_wiki.jpg/800px-DJI_0197_crp_wiki.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/DJI_0197_crp_wiki.jpg?width=600",
   },
   {
     id: "lima",
@@ -415,7 +415,7 @@ export const cards: CityCard[] = [
       "Från stadsdelen Miraflores kan man glida iväg med paraglider ut över Stilla havet.",
       "Denna kustnära huvudstad huserar över tio miljoner invånare och är en av Sydamerikas folkrikaste.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Sanisidroskyscrapers.jpg/800px-Sanisidroskyscrapers.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Sanisidroskyscrapers.jpg?width=600",
   },
   {
     id: "bogota",
@@ -428,7 +428,7 @@ export const cards: CityCard[] = [
       "Stadens bibliotekssystem fick internationellt erkännande och inspirerade stadsplanerare världen över.",
       "Denna sydamerikanska huvudstad är känd för sin myllrande kaffekultur och sina enorma blomstermarknader.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bogota%2C_Colombia_%2836668708290%29.jpg/800px-Bogota%2C_Colombia_%2836668708290%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Bogota%2C_Colombia_%2836668708290%29.jpg?width=600",
   },
   {
     id: "santiago",
@@ -441,7 +441,7 @@ export const cards: CityCard[] = [
       "Staden drabbades av en förödande jordbävning 1985 men är idag ett av Latinamerikas mest moderna finanscentrum.",
       "Denna huvudstad med sju miljoner invånare ligger i en dal omgiven av berg.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Palacio_de_La_Moneda_-_miguelreflex.jpg/800px-Palacio_de_La_Moneda_-_miguelreflex.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Palacio_de_La_Moneda_-_miguelreflex.jpg?width=600",
   },
   {
     id: "mexico-city",
@@ -454,7 +454,7 @@ export const cards: CityCard[] = [
       "Lucha libre – den färgglada mexikanska brottningsformen med maskerade kämpar – har sitt hjärta här.",
       "Denna nordamerikanska megastad med över 20 miljoner invånare är en av världens folkrikaste.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Sobrevuelos_CDMX_HJ2A4913_%2825514321687%29_%28cropped%29.jpg/800px-Sobrevuelos_CDMX_HJ2A4913_%2825514321687%29_%28cropped%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Sobrevuelos_CDMX_HJ2A4913_%2825514321687%29_%28cropped%29.jpg?width=600",
   },
   {
     id: "rio-de-janeiro",
@@ -467,7 +467,7 @@ export const cards: CityCard[] = [
       "Ipanema och Copacabana är stränder som gett namn åt klassisk bossanova-musik.",
       "Denna brasilianska kuststad med sina karakteristiska klippmassiv och bukter är hem för nästan sju miljoner.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Cidade_Maravilhosa.jpg/800px-Cidade_Maravilhosa.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Cidade_Maravilhosa.jpg?width=600",
   },
   {
     id: "medellin",
@@ -480,7 +480,7 @@ export const cards: CityCard[] = [
       "Staden kallas kärleksfullt 'La Ciudad de la Eterna Primavera' – den eviga vårens stad.",
       "Denna colombianska stad i en frodig Andedal är landets näst största med drygt 2,5 miljoner invånare.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/MEDELL%C3%8DN.jpg/800px-MEDELL%C3%8DN.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/MEDELL%C3%8DN.jpg?width=600",
   },
   {
     id: "cartagena",
@@ -493,7 +493,7 @@ export const cards: CityCard[] = [
       "Staden var under kolonialtiden Sydamerikas viktigaste exporthamn för silver och guld.",
       "Denna kuststad vid Karibien är ett av Latinamerikas mest populära turistmål med romantisk kolonialarkitektur.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Museo_Naval_del_Caribe.JPG/800px-Museo_Naval_del_Caribe.JPG",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Museo_Naval_del_Caribe.JPG?width=600",
   },
   {
     id: "cusco",
@@ -506,7 +506,7 @@ export const cards: CityCard[] = [
       "På nästan 3 400 meters höjd rekommenderas nyanlända turister att dricka 'mate de coca' mot höjdsjuka.",
       "Denna peruanska stad med inkafundament och barockkolonial arkitektur är ett UNESCO-världsarv.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Vista_Calle_Suecia.jpg/800px-Vista_Calle_Suecia.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Vista_Calle_Suecia.jpg?width=600",
   },
   {
     id: "montevideo",
@@ -519,7 +519,7 @@ export const cards: CityCard[] = [
       "Stadens rambla, en strandpromenad längs hela kusten, är en av Latinamerikas längsta.",
       "Denna lugna sydamerikanska huvudstad vid Río de la Plata rankas som en av kontinentens mest livskvalitetsvänliga.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/PALACIO_LEGISLATIVO_01.JPG/800px-PALACIO_LEGISLATIVO_01.JPG",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/PALACIO_LEGISLATIVO_01.JPG?width=600",
   },
   {
     id: "nairobi",
@@ -532,7 +532,7 @@ export const cards: CityCard[] = [
       "Staden är hem för FN:s enda huvudkontor på det afrikanska kontinenten.",
       "Landets huvudstad kallas 'Grön stad i solen' och är det ekonomiska hjärtat i Östafrika.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Nairobi_skyline_from_Gem_Hotel.jpg/800px-Nairobi_skyline_from_Gem_Hotel.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Nairobi_skyline_from_Gem_Hotel.jpg?width=600",
   },
   {
     id: "lagos",
@@ -545,7 +545,7 @@ export const cards: CityCard[] = [
       "Staden är känd för sin musikscen där afrobeats-genren föddes.",
       "Landets ekonomiska centrum och viktigaste hamnstad ligger vid Guineabukten i Västafrika.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Tafa_Balewa_Square_%28Onikan%29_in_Lagos._Nigeria.jpg/800px-Tafa_Balewa_Square_%28Onikan%29_in_Lagos._Nigeria.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Tafa_Balewa_Square_%28Onikan%29_in_Lagos._Nigeria.jpg?width=600",
   },
   {
     id: "dakar",
@@ -558,7 +558,7 @@ export const cards: CityCard[] = [
       "African Renaissance-monumentet, ett 49 meter högt bronsstaty, dominerar stadsbilden.",
       "Landets moderna huvudstad är ett kulturellt centrum för fransktalande Västafrika.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Dakar-place-de-l%27Ind%C3%A9pendance.jpg/800px-Dakar-place-de-l%27Ind%C3%A9pendance.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Dakar-place-de-l%27Ind%C3%A9pendance.jpg?width=600",
   },
   {
     id: "addis-abeba",
@@ -571,7 +571,7 @@ export const cards: CityCard[] = [
       "Landet anses vara kaffets ursprungsland och kaffeceremoni är en djupt rotad social tradition.",
       "Denna stad är huvudstad i det enda afrikanska landet som aldrig koloniserades av Europa.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Addis_in_night.jpg/800px-Addis_in_night.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Addis_in_night.jpg?width=600",
   },
   {
     id: "casablanca",
@@ -584,7 +584,7 @@ export const cards: CityCard[] = [
       "Staden är landets ekonomiska motor och största stad, men inte dess politiska huvudstad.",
       "Denna hamnstad vid Atlantkusten är Nordafrikas viktigaste handels- och finanscentrum.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Casa_finance_city_6_%28cropped%29.jpg/800px-Casa_finance_city_6_%28cropped%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Casa_finance_city_6_%28cropped%29.jpg?width=600",
   },
   {
     id: "zanzibar",
@@ -597,7 +597,7 @@ export const cards: CityCard[] = [
       "Stone Town, öns historiska kärna, är ett UNESCO-världsarv känt för sina svarvade träportar.",
       "Denna ö utanför Östafrikas kust är ett populärt solsemestermål med turkost vatten.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Malawi_Rd%2C_Zanzibar_Town%2C_Tanzania_-_panoramio.jpg/800px-Malawi_Rd%2C_Zanzibar_Town%2C_Tanzania_-_panoramio.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Malawi_Rd%2C_Zanzibar_Town%2C_Tanzania_-_panoramio.jpg?width=600",
   },
   {
     id: "accra",
@@ -610,7 +610,7 @@ export const cards: CityCard[] = [
       "Landet är en av världens ledande exportörer av kakao.",
       "Denna kuststad vid Guineabukten är ett av Västafrikas mest stabila demokratiska länders huvudstad.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Acca.jpg/800px-Acca.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Acca.jpg?width=600",
   },
   {
     id: "tunis",
@@ -623,7 +623,7 @@ export const cards: CityCard[] = [
       "Medelhavet ligger precis utanför och landet gränsar till Algeriet och Libyen.",
       "Denna nordafrikanska huvudstad är känd för sina vita och blå byggnader och är porten mot Sahara.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Minaret_et_patio_de_la_mosqu%C3%A9e_Zitouna_au_centre_de_la_M%C3%A9dina_de_Tunis.jpg/800px-Minaret_et_patio_de_la_mosqu%C3%A9e_Zitouna_au_centre_de_la_M%C3%A9dina_de_Tunis.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Minaret_et_patio_de_la_mosqu%C3%A9e_Zitouna_au_centre_de_la_M%C3%A9dina_de_Tunis.jpg?width=600",
   },
   {
     id: "maputo",
@@ -636,7 +636,7 @@ export const cards: CityCard[] = [
       "Landet gränsar till sex länder och Indiska oceanen utgör hela östkusten.",
       "Denna hamnstad vid Indiska oceanen är huvudstad i ett lusofont land i sydöstra Afrika.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Maputo_seen_from_southeast_-_October_2006_%28cropped%29.jpg/800px-Maputo_seen_from_southeast_-_October_2006_%28cropped%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Maputo_seen_from_southeast_-_October_2006_%28cropped%29.jpg?width=600",
   },
   {
     id: "johannesburg",
@@ -649,7 +649,7 @@ export const cards: CityCard[] = [
       "Constitutional Hill, en gång politiskt fängelse för Nelson Mandela, är idag hemvist för konstitutionsdomstolen.",
       "Denna stad i Gautengprovinsen är Afrikas folkrikaste söder om ekvatorn och en global finansmetropol.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Johannesburg_skyline_2017.jpg/800px-Johannesburg_skyline_2017.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Johannesburg_skyline_2017.jpg?width=600",
   },
   {
     id: "oslo",
@@ -662,7 +662,7 @@ export const cards: CityCard[] = [
       "Operahuset är byggt så att allmänheten kan promenera upp på taket och njuta av utsikten över fjorden.",
       "Denna nordiska huvudstad ligger vid en lång havsfjord och är känd för sin höga levnadsstandard.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Nationaltheatret_evening.jpg/800px-Nationaltheatret_evening.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Nationaltheatret_evening.jpg?width=600",
   },
   {
     id: "kopenhamn",
@@ -675,7 +675,7 @@ export const cards: CityCard[] = [
       "Cykeln är det vanligaste transportmedlet med över 400 kilometer cykelvägar.",
       "Denna skandinaviska huvudstad förbinds med Sverige via en 16 kilometer lång bro över sundet.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/2018_-_Christiansborg_from_the_Marble_Bridge.jpg/800px-2018_-_Christiansborg_from_the_Marble_Bridge.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/2018_-_Christiansborg_from_the_Marble_Bridge.jpg?width=600",
   },
   {
     id: "helsingfors",
@@ -688,7 +688,7 @@ export const cards: CityCard[] = [
       "Utanför staden ligger Suomenlinna, ett UNESCO-klassat havsfästningskomplex.",
       "Denna nordiska huvudstad är känd för sin bastukultur och man kan basta på flytande bastur vid strandkajen.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Suomenlinna_%28cropped%29.jpg/800px-Suomenlinna_%28cropped%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Suomenlinna_%28cropped%29.jpg?width=600",
   },
   {
     id: "tallinn",
@@ -701,7 +701,7 @@ export const cards: CityCard[] = [
       "Härifrån seglar dagliga färjor till en grannstad tio mil bort, populärt för shoppingturer.",
       "Denna lilla östersjöhuvudstad är känd för sina spetsiga kyrktorn och en välbevarad medeltida atmosfär.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Raekoja_plats_at_night.jpg/800px-Raekoja_plats_at_night.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Raekoja_plats_at_night.jpg?width=600",
   },
   {
     id: "warszawa",
@@ -714,7 +714,7 @@ export const cards: CityCard[] = [
       "Staden korsas av en bred flod och på dess östra strand finns ett bohemiskt kvarter med strandbarer.",
       "Denna östeuropeiska huvudstad genomgick en av historiens mest dramatiska förstörelser och återuppbyggnader.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Aleja_Niepdleglosci_Warsaw_2022_aerial_%28cropped%29.jpg/800px-Aleja_Niepdleglosci_Warsaw_2022_aerial_%28cropped%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Aleja_Niepdleglosci_Warsaw_2022_aerial_%28cropped%29.jpg?width=600",
   },
   {
     id: "budapest",
@@ -727,7 +727,7 @@ export const cards: CityCard[] = [
       "Stadens ruinbarer har vuxit fram i förfallna hyreskomplex och är nu en av Europas mest kända nattlivssymboler.",
       "Denna centraleuropeiska huvudstad är känd för sin art nouveau-arkitektur och sina termalbad längs Donau.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/View_from_Gell%C3%A9rt_Hill_to_the_Danube%2C_Hungary_-_Budapest_%2828493220635%29.jpg/800px-View_from_Gell%C3%A9rt_Hill_to_the_Danube%2C_Hungary_-_Budapest_%2828493220635%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/View_from_Gell%C3%A9rt_Hill_to_the_Danube%2C_Hungary_-_Budapest_%2828493220635%29.jpg?width=600",
   },
   {
     id: "bukarest",
@@ -740,7 +740,7 @@ export const cards: CityCard[] = [
       "Landets kung tvingades abdikera 1947 och palatset omvandlades till folkrepublikens egendom.",
       "Denna balkaniska storstads historiska centrum har genomgått en renässans med restauranger i renoverade 1800-talshus.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Bucharest_University_Square_%28cropped%29.jpg/800px-Bucharest_University_Square_%28cropped%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Bucharest_University_Square_%28cropped%29.jpg?width=600",
   },
   {
     id: "belgrad",
@@ -753,7 +753,7 @@ export const cards: CityCard[] = [
       "Stadens flottande nightclubs, splavovi, tillhör Europas mest kända nattklubbsscener.",
       "Denna balkanska stad är känd för sitt intensiva nattliv och sin blandning av ottomansk och habsburgsk historia.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Panorama_Belgrad.jpg/800px-Panorama_Belgrad.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Panorama_Belgrad.jpg?width=600",
   },
   {
     id: "zagreb",
@@ -766,7 +766,7 @@ export const cards: CityCard[] = [
       "Landet bytte till euron 2023 och gick samtidigt med i Schengensamarbetet.",
       "Denna centraleuropeiska huvudstad vid foten av Medvednica-berget är känd för sin café-kultur.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Zagreb_%2829255640143%29.jpg/800px-Zagreb_%2829255640143%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Zagreb_%2829255640143%29.jpg?width=600",
   },
   {
     id: "sarajevo",
@@ -779,7 +779,7 @@ export const cards: CityCard[] = [
       "Staden belägrades i nästan fyra år under 1990-talet, den längsta belägringen i modern tid.",
       "Denna balkanska stad är unik – muslimska minareter, ortodoxa kyrkor och synagogor samsas inom några kvarter.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Sarajevo_City_Panorama.JPG/800px-Sarajevo_City_Panorama.JPG",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Sarajevo_City_Panorama.JPG?width=600",
   },
   {
     id: "san-francisco",
@@ -792,7 +792,7 @@ export const cards: CityCard[] = [
       "En berömd bro målad i 'International Orange' hänger över ett känt sund här.",
       "Fängelseön Alcatraz ligger i den kalla bukten precis utanför denna kuststad.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/San_Francisco_Downtown_Aerial%2C_August_2025.jpg/800px-San_Francisco_Downtown_Aerial%2C_August_2025.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/San_Francisco_Downtown_Aerial%2C_August_2025.jpg?width=600",
   },
   {
     id: "los-angeles",
@@ -805,7 +805,7 @@ export const cards: CityCard[] = [
       "Ingen annan stad har fler stjärnor inbäddade i trottoaren längs en berömd boulevard.",
       "Denna solstad är filmindustrins huvudstad, känd för palmträdsklädda boulevarder och evigt soliga stränder.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hollywood_Sign_%28Zuschnitt%29.jpg/800px-Hollywood_Sign_%28Zuschnitt%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Hollywood_Sign_%28Zuschnitt%29.jpg?width=600",
   },
   {
     id: "chicago",
@@ -818,7 +818,7 @@ export const cards: CityCard[] = [
       "En spegelblank skulptur i Millennium Park kallas av lokalbefolkningen för 'The Bean'.",
       "Denna stad vid en av de stora sjöarna är känd för djupfat-pizza och blåsiga vintrar.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Chicago_River_ferry_b.jpg/800px-Chicago_River_ferry_b.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Chicago_River_ferry_b.jpg?width=600",
   },
   {
     id: "toronto",
@@ -831,7 +831,7 @@ export const cards: CityCard[] = [
       "Ett torn som stod som världens högsta fristående byggnad i 34 år reser sig 553 meter.",
       "Denna stad vid en av de stora sjöarna är landets folkrikaste och hem till landets enda NBA-lag.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Toronto_Skyline_from_Snake_Island%2C_February_28_2026_%2808%29.jpg/800px-Toronto_Skyline_from_Snake_Island%2C_February_28_2026_%2808%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Toronto_Skyline_from_Snake_Island%2C_February_28_2026_%2808%29.jpg?width=600",
   },
   {
     id: "vancouver",
@@ -844,7 +844,7 @@ export const cards: CityCard[] = [
       "Staden omges av Coast Mountains och man kan åka skidor och surfa samma dag.",
       "Denna regniga hamnstad på Stillahavskusten är känd för sina bergsutsikter och sitt livfulla Chinatown.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Concord_Pacific_Master_Plan_Area.jpg/800px-Concord_Pacific_Master_Plan_Area.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Concord_Pacific_Master_Plan_Area.jpg?width=600",
   },
   {
     id: "honolulu",
@@ -857,7 +857,7 @@ export const cards: CityCard[] = [
       "Öns alfabet har bara 13 bokstäver och dess statssymbol är den gula hibiskusblomman.",
       "Denna tropiska stad är landets sydligaste storstad och enda delstatshuvudstad utanför fastlandet.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/2022_Views_from_Diamond_Head_02.jpg/800px-2022_Views_from_Diamond_Head_02.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/2022_Views_from_Diamond_Head_02.jpg?width=600",
   },
   {
     id: "new-orleans",
@@ -870,7 +870,7 @@ export const cards: CityCard[] = [
       "Mardi Gras-firandet här är ett av världens största karnevalsfiranden med plastpärlor från flöten.",
       "Denna stad i Louisianasumpmarkerna är känd för sin jazz, sitt Cajun-kök och ligger delvis under havsnivån.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/New_Orleans_from_the_Air_September_2019_-_Central_Business_District_Skyline_%28cropped%29.jpg/800px-New_Orleans_from_the_Air_September_2019_-_Central_Business_District_Skyline_%28cropped%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/New_Orleans_from_the_Air_September_2019_-_Central_Business_District_Skyline_%28cropped%29.jpg?width=600",
   },
   {
     id: "nashville",
@@ -883,7 +883,7 @@ export const cards: CityCard[] = [
       "En typ av stekt kyckling med cayennepeppar kallad 'hot chicken' uppfanns enligt legenden här.",
       "Denna stad i Tennessee är landets country-musikhuvudstad med honky-tonk-barer längs Broadway.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Nashville%2C_TN_skyline.jpg/800px-Nashville%2C_TN_skyline.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Nashville%2C_TN_skyline.jpg?width=600",
   },
   {
     id: "boston",
@@ -896,7 +896,7 @@ export const cards: CityCard[] = [
       "Stadens maraton har arrangerats sedan 1897 och är världens äldsta årliga maraton.",
       "Denna historiska nordoststad är känd för sina röda tegelhus och sin starka irländsk-amerikanska kultur.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/ISH_WC_Boston4.jpg/800px-ISH_WC_Boston4.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/ISH_WC_Boston4.jpg?width=600",
   },
   {
     id: "miami",
@@ -909,7 +909,7 @@ export const cards: CityCard[] = [
       "Everglades nationalpark med både alligatorer och krokodiler börjar precis väster om stadsgränsen.",
       "Denna sydfloridasstad är känd för sina vita sandstränder, South Beach och sitt stora kubanska inflytande.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Villa_Vizcaya_20110228.jpg/800px-Villa_Vizcaya_20110228.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Villa_Vizcaya_20110228.jpg?width=600",
   },
   {
     id: "edinburgh",
@@ -922,7 +922,7 @@ export const cards: CityCard[] = [
       "Stadens 'Royal Mile' förbinder slottet med det kungliga palatset Holyrood.",
       "Denna stad är känd för sin whisky och sina kiltar, och är huvudstad i ett land med distinkt identitet inom Storbritannien.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Skyline_of_Edinburgh.jpg/800px-Skyline_of_Edinburgh.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Skyline_of_Edinburgh.jpg?width=600",
   },
   {
     id: "venedig",
@@ -935,7 +935,7 @@ export const cards: CityCard[] = [
       "Stadens gondoler målas alltid svarta sedan ett dekret på 1600-talet, och bara 400 gondoljärer finns kvar.",
       "Denna stad i nordöstra Italien är byggd på 118 öar i en lagun och sjunker sakta i havet.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Venezia_aerial_view.jpg/800px-Venezia_aerial_view.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Venezia_aerial_view.jpg?width=600",
   },
   {
     id: "florens",
@@ -948,7 +948,7 @@ export const cards: CityCard[] = [
       "Uffizi-galleriet rymmer en av världens viktigaste samlingar av renässanskonst.",
       "Denna stad i Toscana är känd som renässansens vagga och för sin domkyrka med orange kupol.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/FirenzeDec092023_01.jpg/800px-FirenzeDec092023_01.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/FirenzeDec092023_01.jpg?width=600",
   },
   {
     id: "dubrovnik",
@@ -961,7 +961,7 @@ export const cards: CityCard[] = [
       "Stadens namn kommer från det kroatiska ordet 'dubrava' som betyder ekskog.",
       "Denna kuststad i södra Kroatien kallas 'Adriatikens pärla' och är ett UNESCO-världsarv.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/The_walls_of_the_fortress_and_View_of_the_old_city._panorama.jpg/800px-The_walls_of_the_fortress_and_View_of_the_old_city._panorama.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/The_walls_of_the_fortress_and_View_of_the_old_city._panorama.jpg?width=600",
   },
   {
     id: "santorini",
@@ -974,7 +974,7 @@ export const cards: CityCard[] = [
       "Ön producerar ett unikt vitt vin av druvsorten Assyrtiko, odlad i korgformade buskar mot vinden.",
       "Denna grekiska ö med vitkalkade hus och solnedgångar är en av världens mest romantiska resdestinationer.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/2011_Dimos_Thiras.png/800px-2011_Dimos_Thiras.png",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/2011_Dimos_Thiras.png?width=600",
   },
   {
     id: "brygge",
@@ -987,7 +987,7 @@ export const cards: CityCard[] = [
       "Belgisk choklad och öl har djupa rötter här, och det finns ett museum tillägnat pommes frites.",
       "Denna pittoreska stad i Belgien med kanaler, stenbroar och gotiska torn är en av Europas bäst bevarade medeltidsstäder.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Br%C3%BCgge_Blick_vom_Belfried_4.jpg/800px-Br%C3%BCgge_Blick_vom_Belfried_4.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Br%C3%BCgge_Blick_vom_Belfried_4.jpg?width=600",
   },
   {
     id: "zurich",
@@ -1000,7 +1000,7 @@ export const cards: CityCard[] = [
       "Staden ligger vid Zürichsjön och omges av Alperna.",
       "Denna stad i Schweiz är landets största och ett globalt finanscentrum känt för sina banker.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Altstadt_Z%C3%BCrich_2015.jpg/800px-Altstadt_Z%C3%BCrich_2015.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Altstadt_Z%C3%BCrich_2015.jpg?width=600",
   },
   {
     id: "monaco",
@@ -1013,7 +1013,7 @@ export const cards: CityCard[] = [
       "Formel 1-loppet som körs genom gatorna anses vara ett av de mest tekniskt krävande.",
       "Denna lilla stadsstats casino och lyxyacht-hamn vid Medelhavet är symbolen för europeisk glamour.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Monaco_IMG_1205.jpg/800px-Monaco_IMG_1205.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Monaco_IMG_1205.jpg?width=600",
   },
   {
     id: "reims",
@@ -1026,7 +1026,7 @@ export const cards: CityCard[] = [
       "Stadens katedral skadades svårt i första världskriget men restaurerades med Rockefeller-donationer.",
       "Denna stad i Champagneregionen är känd för sina kritvinkällare och sina bubbliga exportprodukter.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Sub%C3%A9_Fountain%2C_Reims%2C_France.jpg/800px-Sub%C3%A9_Fountain%2C_Reims%2C_France.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Sub%C3%A9_Fountain%2C_Reims%2C_France.jpg?width=600",
   },
   {
     id: "sevilla",
@@ -1039,7 +1039,7 @@ export const cards: CityCard[] = [
       "Alcázar-palatset är ett av de bäst bevarade moriska palatsen och är fortfarande ett officiellt kungligt residens.",
       "Denna andalusiska stad är känd för sin sommarvärme, sina apelsinträd och sin livliga tapas-kultur.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Sevilla_Cathedral_-_Southeast.jpg/800px-Sevilla_Cathedral_-_Southeast.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Sevilla_Cathedral_-_Southeast.jpg?width=600",
   },
   {
     id: "kathmandu",
@@ -1052,7 +1052,7 @@ export const cards: CityCard[] = [
       "Durbar Square innehåller palats som delvis raserades i jordbävningen 2015 men håller på att återuppbyggas.",
       "Stadens namn betyder ungefär 'träpalats' och är uppkallat efter ett tempel byggt av ett enda träd.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Kathmandu-Durbar_Square-06-Mahavishnu-Kuh-Vishnu-Pratapamalla-Jagannath-2007-gje.jpg/800px-Kathmandu-Durbar_Square-06-Mahavishnu-Kuh-Vishnu-Pratapamalla-Jagannath-2007-gje.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Kathmandu-Durbar_Square-06-Mahavishnu-Kuh-Vishnu-Pratapamalla-Jagannath-2007-gje.jpg?width=600",
   },
   {
     id: "hongkong",
@@ -1065,7 +1065,7 @@ export const cards: CityCard[] = [
       "Victoriafjärden är en av Asiens mest fotograferade vyer.",
       "Stadsnamnet betyder 'doftande hamn' på kantonesiska, troligen efter rökelseprodukter som exporterades härifrån.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Hong_Kong_Skyline_Restitch_-_Dec_2007.jpg/800px-Hong_Kong_Skyline_Restitch_-_Dec_2007.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Hong_Kong_Skyline_Restitch_-_Dec_2007.jpg?width=600",
   },
   {
     id: "taipei",
@@ -1078,7 +1078,7 @@ export const cards: CityCard[] = [
       "Staden ligger på den seismiskt aktiva Eldringen, vilket gör jordbävningssäkra byggnader till ett måste.",
       "Huvudstad i en ö som producerar mer än 60 procent av världens halvledarchips.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Taipei_Skyline_2022.06.29.jpg/800px-Taipei_Skyline_2022.06.29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Taipei_Skyline_2022.06.29.jpg?width=600",
   },
   {
     id: "jakarta",
@@ -1091,7 +1091,7 @@ export const cards: CityCard[] = [
       "Storstadsregionen har 30 miljoner invånare, en av Sydostasiens folkrikaste.",
       "Belägen på nordkusten av Java och ekonomiskt centrum i världens fjärde folkrikaste nation.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Bundaran_Hotel_Indonesia_%282025%29.jpg/800px-Bundaran_Hotel_Indonesia_%282025%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Bundaran_Hotel_Indonesia_%282025%29.jpg?width=600",
   },
   {
     id: "kuala-lumpur",
@@ -1104,7 +1104,7 @@ export const cards: CityCard[] = [
       "Putrajaya byggdes som administrativ huvudstad på 1990-talet medan denna stad förblev ekonomisk kärna.",
       "Varje år firas självständighetsdagen den 31 augusti på Merdekatorget där friheten proklamerades 1957.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Bukit_Bintang_junction_in_2024_2.jpg/800px-Bukit_Bintang_junction_in_2024_2.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Bukit_Bintang_junction_in_2024_2.jpg?width=600",
   },
   {
     id: "manila",
@@ -1117,7 +1117,7 @@ export const cards: CityCard[] = [
       "Manilabukten är känd för sina spektakulära solnedgångar längs Roxas Boulevard.",
       "Jeepney-bussar i lysande färger och ett av världens tätaste gatunätverk utmärker denna sydostasiatiska metropol.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Cityscape_of_Manila%2C_2025_%2801%29.jpg/800px-Cityscape_of_Manila%2C_2025_%2801%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Cityscape_of_Manila%2C_2025_%2801%29.jpg?width=600",
   },
   {
     id: "colombo",
@@ -1130,7 +1130,7 @@ export const cards: CityCard[] = [
       "Pettah-bazaren är ett av regionens mest kaotiska marknadsdistrikt med allt från örter till elektronik.",
       "Ön är känd som 'Teöns pärla' och är en av världens ledande producenter av svart te.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Colombo_city_skyline_at_night.png/800px-Colombo_city_skyline_at_night.png",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Colombo_city_skyline_at_night.png?width=600",
   },
   {
     id: "ulaanbaatar",
@@ -1143,7 +1143,7 @@ export const cards: CityCard[] = [
       "Staden grundades 1639 som ett buddhistiskt kloster och förflyttades 28 gånger innan den fick sin nuvarande plats.",
       "Landets enda storstad är navet för ett land vars nomadkultur lever kvar på de väldiga stepperna.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/UB_downtown.jpg/800px-UB_downtown.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/UB_downtown.jpg?width=600",
   },
   {
     id: "tbilisi",
@@ -1156,7 +1156,7 @@ export const cards: CityCard[] = [
       "Narikala-fästningen på klipporna ovanför floden har övervakat dalen sedan 400-talet.",
       "Landet har ett eget alfabet från 400-talet, ett av världens tolv unika skriftsystem.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/View_of_Tbilisi_from_Tabori_Church_2023-10-08-2.jpg/800px-View_of_Tbilisi_from_Tabori_Church_2023-10-08-2.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_Tbilisi_from_Tabori_Church_2023-10-08-2.jpg?width=600",
   },
   {
     id: "samarkand",
@@ -1169,7 +1169,7 @@ export const cards: CityCard[] = [
       "Shah-i-Zinda är en nekropol med mausoleer rika på handmålade keramikplattor.",
       "Staden räknas som en av världens äldsta med en historia på minst 2 750 år, äldre än Rom.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/RegistanSquare_Samarkand.jpg/800px-RegistanSquare_Samarkand.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/RegistanSquare_Samarkand.jpg?width=600",
   },
   {
     id: "goteborg",
@@ -1182,7 +1182,7 @@ export const cards: CityCard[] = [
       "Älven som delar staden bär samma namn och över den spänner flertalet karaktäristiska broar.",
       "Denna västsvenska stad är Sveriges näst största och kallas ofta 'lilla London' för sitt regniga klimat.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/G%C3%B6teborg_2503_stitch_%2828573994096%29.jpg/800px-G%C3%B6teborg_2503_stitch_%2828573994096%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/G%C3%B6teborg_2503_stitch_%2828573994096%29.jpg?width=600",
   },
   {
     id: "malmo",
@@ -1195,7 +1195,7 @@ export const cards: CityCard[] = [
       "Staden har genomgått en omvandling från gammal varvsindustri till hållbar stadsplanering.",
       "Denna skånska stad ligger så nära Danmark att man kan se Köpenhamns silhuett på klara dagar.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Malm%C3%B6%E2%80%93flygbild_06_september_2014.jpg/800px-Malm%C3%B6%E2%80%93flygbild_06_september_2014.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Malm%C3%B6%E2%80%93flygbild_06_september_2014.jpg?width=600",
   },
   {
     id: "kiruna",
@@ -1208,7 +1208,7 @@ export const cards: CityCard[] = [
       "Staden ligger norr om polcirkeln och upplever midnattssol på sommaren och mörker i veckor på vintern.",
       "Denna norrbottniska stad är Sveriges nordligaste och känd för Icehotel i närheten.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Kiruna_montage.png/800px-Kiruna_montage.png",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Kiruna_montage.png?width=600",
   },
   {
     id: "visby",
@@ -1221,7 +1221,7 @@ export const cards: CityCard[] = [
       "Ruinerna av över ett dussin medeltida kyrkor ger staden ett unikt och spöklikt utseende.",
       "Denna gotländska stad med kullerstensgator kallas 'de rosors och ruiners stad'.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/0522Visby_domkyrka.jpg/800px-0522Visby_domkyrka.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/0522Visby_domkyrka.jpg?width=600",
   },
   {
     id: "tromso",
@@ -1234,7 +1234,7 @@ export const cards: CityCard[] = [
       "Staden kallas 'Nordens Paris' för sitt livliga nattliv trots det arktiska klimatet.",
       "Denna norska stad är ett av världens bästa ställen att se norrsken och ligger långt norr om polcirkeln.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Troms%C3%B8_sentrum_%285835702754%29.jpg/800px-Troms%C3%B8_sentrum_%285835702754%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Troms%C3%B8_sentrum_%285835702754%29.jpg?width=600",
   },
   {
     id: "bergen",
@@ -1247,7 +1247,7 @@ export const cards: CityCard[] = [
       "Det regnar här i genomsnitt 240 dagar per år, en av Europas regnigaste städer.",
       "Denna norska västerhavsstad var Norges huvudstad under medeltiden och är porten till fjordarna.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Bergen_panorama_at_night_-_panoramio_%281%29.jpg/800px-Bergen_panorama_at_night_-_panoramio_%281%29.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Bergen_panorama_at_night_-_panoramio_%281%29.jpg?width=600",
   },
   {
     id: "abo",
@@ -1260,7 +1260,7 @@ export const cards: CityCard[] = [
       "Floden Aura delar staden och längs stränderna samsas restaurangbåtar och caféer.",
       "Denna finska stad på sydvästkusten är centrum för det finlandssvenska kulturlivet.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/View_from_Turku_Cathedral_tower.jpg/800px-View_from_Turku_Cathedral_tower.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/View_from_Turku_Cathedral_tower.jpg?width=600",
   },
   {
     id: "rovaniemi",
@@ -1273,7 +1273,7 @@ export const cards: CityCard[] = [
       "Lapsk kultur, renskötsel och traditionell slöjd är en levande del av stadens identitet.",
       "Denna lappländska stad är världsberömd som den officiella hemstaden för en känd julkaraktär.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Rovaniemi_Montage.jpg/800px-Rovaniemi_Montage.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Rovaniemi_Montage.jpg?width=600",
   },
   {
     id: "torshavn",
@@ -1286,7 +1286,7 @@ export const cards: CityCard[] = [
       "Staden grundades på 800-talet av vikingar och fick sitt namn från guden Tor.",
       "Denna atlantiska huvudstad ligger på en ögrupp mellan Norge och Island under dansk krona.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Is03002-Torshavn.jpg/800px-Is03002-Torshavn.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Is03002-Torshavn.jpg?width=600",
   },
   {
     id: "nuuk",
@@ -1299,6 +1299,6 @@ export const cards: CityCard[] = [
       "Här bor ungefär en tredjedel av hela territoriets befolkning.",
       "Denna arktiska huvudstad omges av isfyllda fjordar och är porten till ett av jordens mest otillgängliga landskap.",
     ],
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Nuuk%2C_Greenland_skyline_aerial_view.jpg/800px-Nuuk%2C_Greenland_skyline_aerial_view.jpg",
+    imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Nuuk%2C_Greenland_skyline_aerial_view.jpg?width=600",
   },
 ];

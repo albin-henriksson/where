@@ -2,6 +2,7 @@ import { useGameOrchestrator } from "./hooks/useGameOrchestrator";
 import { StartScreen } from "./components/StartScreen";
 import { MultiplayerLobby } from "./components/MultiplayerLobby";
 import { BuzzerView } from "./components/BuzzerView";
+import { ReaderView } from "./components/ReaderView";
 import { CardView } from "./components/CardView";
 import { Scoreboard } from "./components/Scoreboard";
 import { ScoreSummary } from "./components/ScoreSummary";
@@ -29,6 +30,22 @@ function App() {
         players={o.gameSync.players}
         imageUrl={o.gameSync.imageUrl}
         onBuzz={o.buzz}
+      />
+    );
+  }
+
+  if (o.screen === "mp-reader" && o.gameSync) {
+    return (
+      <ReaderView
+        clueText={o.gameSync.clueText}
+        clueIndex={o.gameSync.clueIndex}
+        pointValue={o.gameSync.pointValue}
+        revealed={o.gameSync.revealed}
+        cityName={o.gameSync.cityName}
+        country={o.gameSync.country}
+        earnedPoints={o.gameSync.earnedPoints}
+        imageUrl={o.gameSync.imageUrl}
+        players={o.gameSync.players}
       />
     );
   }

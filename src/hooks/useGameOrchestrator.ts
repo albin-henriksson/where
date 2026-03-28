@@ -9,6 +9,7 @@ export type AppScreen =
   | "mp-lobby"
   | "mp-waiting"
   | "mp-buzzer"
+  | "mp-reader"
   | "playing"
   | "summary";
 
@@ -112,18 +113,18 @@ export function useGameOrchestrator(): Orchestrator {
   const isMultiplayerHost = mp.role === "host" && mpScreen === "playing";
   const isMultiplayerPlayer = mp.role === "player";
 
-  // Current reader indicator (rotating, informational only — host always shows card)
+  // Current reader rotates among peers
   const currentReader = isMultiplayerHost && mp.peers.length > 0
     ? mp.peers[readerIndex % mp.peers.length]?.name ?? null
     : null;
 
-  // Players always see buzzer (host is the device showing cards)
-  const isReader = false;
+  // Player is the reader if their name matches currentReader from the sync
+  const isReader = isMultiplayerPlayer && !!mp.gameSync?.currentReader && mp.gameSync.currentReader === playerName;
 
   // Derive screen
   let screen: AppScreen;
   if (isMultiplayerPlayer && mp.gameSync) {
-    screen = isReader ? "playing" : "mp-buzzer";
+    screen = isReader ? "mp-reader" : "mp-buzzer";
   } else if (isMultiplayerPlayer && !mp.gameSync) {
     screen = "mp-waiting";
   } else if (mpScreen === "lobby") {
@@ -174,8 +175,8 @@ export function useGameOrchestrator(): Orchestrator {
       clueIndex: session.clueIndex,
       pointValue: 5 - session.clueIndex,
       revealed: session.revealed,
-      cityName: session.revealed ? session.currentCard.city : undefined,
-      country: session.revealed ? session.currentCard.country : undefined,
+      cityName: session.currentCard.city,
+      country: session.currentCard.country,
       earnedPoints: session.earnedPoints,
       buzzWinner: mp.buzzWinner,
       players: game.players,
