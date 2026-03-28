@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { joinRoom } from "trystero";
-import type { Room } from "trystero";
+import { joinRoom } from "@trystero-p2p/mqtt";
+import type { Room } from "@trystero-p2p/mqtt";
 import { TRYSTERO_CONFIG } from "./useMultiplayer";
 
 const LOBBY_ROOM = "lobby";

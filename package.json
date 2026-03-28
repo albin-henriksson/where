@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
+    "@trystero-p2p/mqtt": "^0.23.0",
+    "@trystero-p2p/torrent": "^0.23.0",
     "cmdk": "^1.1.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",

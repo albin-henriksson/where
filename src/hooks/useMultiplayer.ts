@@ -1,14 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { joinRoom, selfId } from "trystero";
-import type { Room } from "trystero";
+import { joinRoom, selfId } from "@trystero-p2p/mqtt";
+import type { Room } from "@trystero-p2p/mqtt";
 
 export const TRYSTERO_CONFIG = {
   appId: "where-city-quiz-game",
-  relayUrls: [
-    "wss://relay.damus.io",
-    "wss://nos.lol",
-    "wss://relay.snort.social",
-  ],
 };
 
 export type MultiplayerRole = "host" | "player";
