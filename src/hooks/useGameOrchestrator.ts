@@ -17,6 +17,8 @@ export type AppScreen =
 interface RoundResult {
   points: number;
   winnerName: string | null;
+  cityName: string | null;
+  country: string | null;
 }
 
 export interface Orchestrator {
@@ -109,7 +111,7 @@ export function useGameOrchestrator(): Orchestrator {
   const [mpScreen, setMpScreen] = useState<"lobby" | "playing" | null>(null);
   const [playerName, setPlayerName] = useState("");
   const [showSummary, setShowSummary] = useState(false);
-  const [lastRound, setLastRound] = useState<RoundResult>({ points: 0, winnerName: null });
+  const [lastRound, setLastRound] = useState<RoundResult>({ points: 0, winnerName: null, cityName: null, country: null });
   const [cmdBarOpen, setCmdBarOpen] = useState(false);
   const [initialRoomCode, setInitialRoomCode] = useState<string | null>(null);
   const [readerIndex, setReaderIndex] = useState(0);
@@ -211,7 +213,7 @@ export function useGameOrchestrator(): Orchestrator {
           setTimeout(() => {
             const points = 5 - session.clueIndex;
             game.awardPoints(player.id, points);
-            setLastRound({ points, winnerName: player.name });
+            setLastRound({ points, winnerName: player.name, cityName: session.currentCard?.city ?? null, country: session.currentCard?.country ?? null });
             mp.resetBuzzFull();
             mp.clearHintVotes();
             setReaderIndex((i) => i + 1);
@@ -326,7 +328,7 @@ export function useGameOrchestrator(): Orchestrator {
       if (session.earnedPoints && session.earnedPoints > 0) {
         game.awardPoints(playerId, session.earnedPoints);
         const player = game.players.find((p) => p.id === playerId);
-        setLastRound({ points: session.earnedPoints, winnerName: player?.name ?? null });
+        setLastRound({ points: session.earnedPoints, winnerName: player?.name ?? null, cityName: session.currentCard?.city ?? null, country: session.currentCard?.country ?? null });
       }
       mp.resetBuzzFull();
       if (isCompetition) {
@@ -339,7 +341,7 @@ export function useGameOrchestrator(): Orchestrator {
   );
 
   const noOneGuessed = useCallback(() => {
-    setLastRound({ points: 0, winnerName: null });
+    setLastRound({ points: 0, winnerName: null, cityName: session.currentCard?.city ?? null, country: session.currentCard?.country ?? null });
     mp.resetBuzzFull();
     if (isCompetition) {
       setShowSummary(true);
@@ -355,7 +357,7 @@ export function useGameOrchestrator(): Orchestrator {
 
   const nextCardFromSummary = useCallback(() => {
     setShowSummary(false);
-    setLastRound({ points: 0, winnerName: null });
+    setLastRound({ points: 0, winnerName: null, cityName: session.currentCard?.city ?? null, country: session.currentCard?.country ?? null });
     setReaderIndex((i) => i + 1);
     session.nextCard();
   }, [session]);
@@ -368,7 +370,7 @@ export function useGameOrchestrator(): Orchestrator {
       setTimeout(() => {
         const points = 5 - session.clueIndex;
         game.awardPoints(player.id, points);
-        setLastRound({ points, winnerName: player.name });
+        setLastRound({ points, winnerName: player.name, cityName: session.currentCard?.city ?? null, country: session.currentCard?.country ?? null });
         mp.resetBuzzFull();
         setReaderIndex((i) => i + 1);
         setShowSummary(true);

@@ -4,6 +4,8 @@ interface ScoreSummaryProps {
   players: Player[];
   lastRoundPoints: number;
   lastRoundWinner: string | null;
+  cityName?: string;
+  country?: string;
   onNextCard: () => void;
 }
 
@@ -11,6 +13,8 @@ export function ScoreSummary({
   players,
   lastRoundPoints,
   lastRoundWinner,
+  cityName,
+  country,
   onNextCard,
 }: ScoreSummaryProps) {
   const sorted = [...players].sort((a, b) => b.score - a.score);
@@ -18,9 +22,22 @@ export function ScoreSummary({
 
   return (
     <div className="flex flex-col items-center gap-6 p-8 w-full max-w-sm mx-auto animate-scale-in">
-      <h2 className="text-xs uppercase tracking-[0.3em] text-muted">
+      {/* City reveal */}
+      {cityName && (
+        <div className="text-center animate-fade-in">
+          <h2 className="text-2xl font-bold text-white">{cityName}</h2>
+          <p className="text-sm text-text-dim">{country}</p>
+          {lastRoundPoints > 0 && lastRoundWinner && (
+            <p className="text-emerald-400 text-sm mt-1">
+              {lastRoundWinner} +{lastRoundPoints}p
+            </p>
+          )}
+        </div>
+      )}
+
+      <h3 className="text-xs uppercase tracking-[0.3em] text-muted">
         Ställning
-      </h2>
+      </h3>
 
       <div className="w-full flex flex-col gap-2">
         {sorted.map((player, i) => {

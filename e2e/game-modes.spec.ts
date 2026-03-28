@@ -33,7 +33,7 @@ test.describe("Game Modes (US5)", () => {
 
     // Score summary should appear with Anna's points
     await expect(page.getByTestId("summary-next")).toBeVisible();
-    await expect(page.getByText("+5")).toBeVisible();
+    await expect(page.getByText("Anna +5p")).toBeVisible();
 
     // Click through to next card
     await page.getByTestId("summary-next").click();

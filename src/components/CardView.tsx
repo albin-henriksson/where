@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { CityCard, Player } from "../data/types";
 
 interface CardViewProps {
@@ -28,6 +29,7 @@ export function CardView({
   onAwardPoints,
 }: CardViewProps) {
   const isCompetition = players && players.length > 0;
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   if (revealed) {
     return (
@@ -140,12 +142,18 @@ export function CardView({
 
           {/* Clue: image or text */}
           {clueIndex === 2 && card.imageUrl ? (
-            <div className="w-full min-h-[10rem] flex items-center justify-center animate-fade-in">
+            <div className="w-full min-h-[10rem] flex items-center justify-center animate-fade-in relative">
+              {!imgLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-6 h-6 border-2 border-card-border border-t-white rounded-full animate-spin" />
+                </div>
+              )}
               <img
                 data-testid="clue-image"
                 src={card.imageUrl}
                 alt="Bildledtråd"
-                className="max-h-48 w-full object-cover rounded-xl"
+                className={`max-h-48 w-full object-cover rounded-xl transition-opacity duration-300 ${imgLoaded ? "opacity-100" : "opacity-0"}`}
+                onLoad={() => setImgLoaded(true)}
               />
               <span data-testid="clue-text" className="hidden">{card.clues[clueIndex]}</span>
             </div>

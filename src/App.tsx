@@ -141,6 +141,8 @@ function App() {
           players={o.players}
           lastRoundPoints={o.lastRound.points}
           lastRoundWinner={o.lastRound.winnerName}
+          cityName={o.lastRound.cityName ?? undefined}
+          country={o.lastRound.country ?? undefined}
           onNextCard={o.nextCardFromSummary}
         />
       </div>

@@ -110,7 +110,7 @@ export function BuzzerView({
         )}
 
         {/* Vote for next hint */}
-        {onVoteNextHint && !revealed && totalNonReaders > 0 && (
+        {onVoteNextHint && !revealed && clueIndex < 4 && totalNonReaders > 0 && (
           <button
             data-testid="vote-next-hint"
             onClick={onVoteNextHint}
