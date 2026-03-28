@@ -253,7 +253,7 @@ export function MultiplayerLobby({
         >
           <h3 className="text-lg font-semibold text-white">Skapa spel</h3>
           <p className="text-sm text-muted mt-0.5">
-            Du läser ledtrådarna — andra buzzer in.
+            Alla spelar — läsaren roterar varje runda.
           </p>
         </button>
 
